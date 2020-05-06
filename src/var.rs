@@ -1,0 +1,25 @@
+const VAR:u32 = 10;
+fn main() {
+   // const VAR:u32 = 20;
+
+    let mut x = 5;
+    println!("The value of x is: {}", x);
+    x = 6;
+    println!("The value of x is: {}", x);
+    println!("The const is:{}", VAR);
+
+    let y = 100;
+    println!("The value of y is: {}", y);
+
+    let y = "yyy";
+    println!("The value of y is: {}", y);
+
+    let t:(u32,char,bool) = (1,'a',false);
+    println!("tuple is {},{},{}", t.0,t.1,t.2);
+
+    let arr = [1,2,3,4,5];
+    let str_arr = ["a","b"];
+    println!("arr len is:{}", arr.len());
+    println!("arr string  first is:{}", str_arr[0])
+}
+
