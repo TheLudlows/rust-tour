@@ -12,4 +12,5 @@ fn main() {
 
     println!("You guessed: {}", guess);
 
+    guess.clear()
 }
