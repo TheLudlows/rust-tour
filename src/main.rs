@@ -1,4 +1,8 @@
 use std::io;
+pub mod func ;
+pub mod collection;
+pub mod string;
+
 
 fn main() {
     println!("Guess the number!");
@@ -13,4 +17,6 @@ fn main() {
     println!("You guessed: {}", guess);
 
     guess.clear()
+
 }
+
