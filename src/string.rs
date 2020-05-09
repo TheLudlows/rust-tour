@@ -21,7 +21,19 @@ fn main() {
 
     let s = format!("{}-{}-{}", s1, s2, s3);
 
-    let s = "abcde".to_string();
-    let c = s[0..2];
+    let s = "世界".to_string();
+    // let c = &s[0..1];编译不会错误，执行会报错
 
+    let zh = "你好啊";
+    let en = "hello !";
+
+    println!("zh size {}",zh.len());
+
+    for i in zh.chars(){
+        println!("{}",i)
+    }
+
+    for i in en.bytes(){
+        println!("{}",i)
+    }
 }

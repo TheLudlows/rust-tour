@@ -1,7 +1,8 @@
 use std::io;
 pub mod func ;
-pub mod collection;
+pub mod vector;
 pub mod string;
+pub mod hashmap;
 
 
 fn main() {
