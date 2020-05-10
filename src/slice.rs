@@ -12,7 +12,7 @@ fn main() {
     let all = &s[0..11];
     let all_ = &s[..];
 
-    s.clear();
+    //s.clear();
     println!("{}", all_)
 
 }

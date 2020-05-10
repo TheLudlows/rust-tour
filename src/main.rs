@@ -3,6 +3,7 @@ pub mod func ;
 pub mod vector;
 pub mod string;
 pub mod hashmap;
+pub mod error;
 
 
 fn main() {
