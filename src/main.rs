@@ -4,6 +4,9 @@ pub mod vector;
 pub mod string;
 pub mod hashmap;
 pub mod error;
+pub mod error2;
+pub mod error3;
+pub mod generic;
 
 
 fn main() {
