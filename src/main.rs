@@ -8,6 +8,7 @@ pub mod error2;
 pub mod error3;
 pub mod generic;
 pub mod traits;
+pub mod lifecircle;
 
 
 fn main() {
