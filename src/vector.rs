@@ -32,5 +32,5 @@ fn main() {
     let i = v[0];
     v.push(200);
 
-    let x = v[0..1];
+    //let x = v[0..1];
 }
