@@ -1,5 +1,5 @@
+/*
 
-pub use crate::common;
 
 pub mod fns{
 
@@ -7,4 +7,4 @@ pub mod fns{
         common::utils::print(str)
     }
 
-}
+}*/
