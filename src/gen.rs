@@ -1,4 +1,4 @@
-fn largest(list: &[i32]) -> i32 {
+fn largest(list: &vec<i32>) -> i32 {
     let mut largest = list[0];
 
     for &item in list {
