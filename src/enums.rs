@@ -21,9 +21,9 @@ fn main() {
         enum_::s { num, name } => println!("s")
     }
 
-    let n: Option<u32> = Some(1);
-    if let n = Some(1) {
-        println!("1")
+    let n = Some(1);
+    if let x = n {
+        println!("{}",x.unwrap())
     }
 }
 

@@ -1,17 +1,35 @@
 use std::{env, fs};
+use std::process::exit;
+use std::error::Error;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
 
-    let a1 = &args[1];
-    let a2 = &args[2];
-    let filename = &args[3];
-    println!("a1:{},a2:{}", a1, a2);
+    let cmd = Cmd::new(&args).unwrap_or_else(|err| {
+        println!("error cause by:{}", err);
+        exit(1);
+    });
+    run(cmd);
+}
 
-    println!("In file {}", filename);
+struct Cmd<'a> {
+    query: &'a str,
+    file_name: &'a str,
+}
 
-    let contents = fs::read_to_string(filename)
-        .expect("Something went wrong reading the file");
+impl<'a> Cmd<'a> {
+    fn new(args: &[String]) -> Result<Cmd, &str> {
+        if args.len() < 3 {
+            return Err("param not enough");
+        }
+        let query = &args[1];
+        let file_name = &args[2];
+        return Ok(Cmd { query, file_name });
+    }
+}
+fn run(cmd: Cmd) -> Result<(), Box<dyn Error>> {
+    let contents = fs::read_to_string(cmd.file_name)?;
     println!("With text:\n{}", contents);
+    Ok(())
 }

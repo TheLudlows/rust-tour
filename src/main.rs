@@ -11,6 +11,7 @@ pub mod traits;
 pub mod lifecircle;
 pub mod mods;
 pub mod common;
+pub mod enums;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
