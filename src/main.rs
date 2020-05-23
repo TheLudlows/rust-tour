@@ -12,6 +12,7 @@ pub mod lifecircle;
 pub mod mods;
 pub mod common;
 pub mod enums;
+pub mod closures;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
