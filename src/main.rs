@@ -13,6 +13,7 @@ pub mod mods;
 pub mod common;
 pub mod enums;
 pub mod closures;
+pub mod iter;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
