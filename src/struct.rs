@@ -10,7 +10,6 @@ struct User {
 fn main() {
     let mut a = "a";
 
-
     let user1 = User {
         email: String::from("someone@example.com"),
         username: String::from("someusername123"),
