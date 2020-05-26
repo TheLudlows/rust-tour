@@ -44,9 +44,20 @@ fn main() {
     assert_eq!(5, x);
     assert_eq!(5, *y);
 
-    hello(&MyBox::new(String::from("a")))
+    hello(&MyBox::new(String::from("a")));
+    let a = CustomSmartPointer{data:String::from("aaa")};
+    let b = CustomSmartPointer{data:String::from("bbb")};
 }
 fn hello(name: &str) {
     println!("Hello, {}!", name);
+}
+struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+    }
 }
 
