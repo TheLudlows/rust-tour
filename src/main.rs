@@ -16,6 +16,7 @@ pub mod closures;
 pub mod iter;
 pub mod boxes;
 pub mod var;
+pub mod rc;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
