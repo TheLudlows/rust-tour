@@ -4,10 +4,9 @@ enum List {
 }
 
 use std::rc::Rc;
-use crate::rc::List::{Cons, Nil};
 
 fn main() {
-    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
-    let b = Cons(3, Rc::clone(&a));
-    let c = Cons(4, Rc::clone(&a));
+    let a = Rc::new(List::Cons(5, Rc::new(List::Cons(10, Rc::new(List::Nil)))));
+    let b = List::Cons(3, a.clone());
+    let c = List::Cons(4, a.clone());
 }

@@ -17,6 +17,9 @@ pub mod iter;
 pub mod boxes;
 pub mod var;
 pub mod rc;
+pub mod refcell;
+pub mod rcrefcell;
+pub mod weakref;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
