@@ -20,6 +20,9 @@ pub mod rc;
 pub mod refcell;
 pub mod rcrefcell;
 pub mod weakref;
+pub mod weak2;
+pub mod weak3;
+
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
