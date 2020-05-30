@@ -22,6 +22,10 @@ pub mod rcrefcell;
 pub mod weakref;
 pub mod weak2;
 pub mod weak3;
+pub mod thread1;
+pub mod thread2;
+pub mod thread3;
+pub mod thread5;
 
 use common::utils as u;
 fn main() {
