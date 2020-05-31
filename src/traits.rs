@@ -8,6 +8,7 @@ pub trait Summary {
     fn content(&self) -> String {
         String::from("content")
     }
+    fn f1();
 }
 
 pub struct NewsArticle {
@@ -25,6 +26,10 @@ impl Summary for NewsArticle {
     fn content(&self) ->  String {
         self.content.clone()
     }
+
+    fn f1() {
+        unimplemented!()
+    }
 }
 pub struct Tweet {
     pub username: String,
@@ -36,6 +41,10 @@ pub struct Tweet {
 impl Summary for Tweet {
     fn summarize(&self) -> String {
         format!("{}: {}", self.username, self.content)
+    }
+
+    fn f1() {
+        unimplemented!()
     }
 }
 

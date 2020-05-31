@@ -27,6 +27,8 @@ pub mod thread2;
 pub mod thread3;
 pub mod thread5;
 
+pub mod moshi;
+
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
