@@ -30,6 +30,8 @@ pub mod thread6;
 
 pub mod moshi;
 
+pub mod unsafes;
+
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
