@@ -26,6 +26,7 @@ pub mod thread1;
 pub mod thread2;
 pub mod thread3;
 pub mod thread5;
+pub mod thread6;
 
 pub mod moshi;
 
