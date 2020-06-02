@@ -1,3 +1,5 @@
+use std::slice;
+
 fn main() {
 
 
@@ -20,4 +22,20 @@ fn main() {
 
     assert_eq!(a, &mut [1, 2, 3]);
     assert_eq!(b, &mut [4, 5, 6]);
+
+
+    let address = 0x01234usize;
+    let r = address as *mut i32;
+    // 可能崩溃
+    let slice: &[i32] = unsafe {
+        slice::from_raw_parts_mut(r, 10000)
+    };
+
+    
+    static NAME:&str = "four";
+    static mut COUNTER: u32 = 0;
+    unsafe {
+        COUNTER += 100;
+        println!("{}", COUNTER)
+    }
 }

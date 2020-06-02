@@ -31,6 +31,7 @@ pub mod thread6;
 pub mod moshi;
 
 pub mod unsafes;
+pub mod trait2;
 
 use common::utils as u;
 fn main() {
