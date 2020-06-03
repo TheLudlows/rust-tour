@@ -47,6 +47,7 @@ fn main() {
     hello(&MyBox::new(String::from("a")));
     let a = CustomSmartPointer{data:String::from("aaa")};
     let b = CustomSmartPointer{data:String::from("bbb")};
+    Box
 }
 fn hello(name: &str) {
     println!("Hello, {}!", name);
