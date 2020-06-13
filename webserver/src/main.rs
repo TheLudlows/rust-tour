@@ -1,6 +1,5 @@
 use std::net::{TcpListener, TcpStream};
 use std::io::{Read, Write};
-use std::thread;
 use webserver::ThreadPool;
 
 fn main() {
@@ -22,13 +21,14 @@ fn main() {
 fn handle_connection(mut stream: TcpStream) {
     let mut buffer = [0; 512];
 
-    stream.read(&mut buffer);
+    stream.read(&mut buffer).unwrap();
     let get = b"GET / HTTP/1.1\r\n";
     if buffer.starts_with(get) {
         let response = "HTTP/1.1 200 OK\r\n\r\n aaa";
-        stream.write(response.as_bytes());
+        stream.write(response.as_bytes()).unwrap();
     }
-    println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
+
+    //println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
 
 
 }
