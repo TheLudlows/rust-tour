@@ -35,6 +35,8 @@ pub mod trait2;
 pub mod trait3;
 pub mod trait4;
 pub mod trait6;
+pub mod method2;
+pub mod FlowControl;
 
 use common::utils as u;
 fn main() {
