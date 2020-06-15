@@ -37,6 +37,14 @@ pub mod trait4;
 pub mod trait6;
 pub mod method2;
 pub mod FlowControl;
+pub mod array;
+pub mod range;
+pub mod slice2;
+pub mod str;
+pub mod rowp;
+pub mod never;
+pub mod tuple;
+pub mod structs;
 
 use common::utils as u;
 fn main() {

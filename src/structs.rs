@@ -6,9 +6,12 @@ struct User {
     sign_in_count: u64,
     active: bool,
 }
+struct empty;
 
 fn main() {
+    type Int=i32;
     let mut a = "a";
+    let a:Int = 10;
 
     let user1 = User {
         email: String::from("someone@example.com"),
@@ -26,8 +29,15 @@ fn main() {
     };
     println!("{}", user3.username);
 
-    struct person (string,string,usize);
+    struct person (String,String,usize);
     let p1 = person(String::from("four"),String::from("ai"),12);
+
+    let e1 = empty;
+    let e2 = empty;
+
+    println!("{:p}",&e1);
+    println!("{:p}",&e2);
+
 }
 
 fn build_user(email: String, username: String) -> User {
@@ -38,4 +48,5 @@ fn build_user(email: String, username: String) -> User {
         sign_in_count: 1,
     }
 }
+
 
