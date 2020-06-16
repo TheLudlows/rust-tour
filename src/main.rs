@@ -45,6 +45,10 @@ pub mod rowp;
 pub mod never;
 pub mod tuple;
 pub mod structs;
+pub mod dequeue;
+pub mod map;
+pub mod heap;
+pub mod trait7;
 
 use common::utils as u;
 fn main() {
