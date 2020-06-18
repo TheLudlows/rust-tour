@@ -49,6 +49,8 @@ pub mod dequeue;
 pub mod map;
 pub mod heap;
 pub mod trait7;
+pub mod trait8;
+pub mod trait9;
 
 use common::utils as u;
 fn main() {
