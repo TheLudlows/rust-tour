@@ -11,3 +11,8 @@ impl Man for Me {
 fn main () {
     let me = Me;
 }
+
+struct traitObject{
+    pub data: *mut (),
+    pub vtable: *mut ()
+}
