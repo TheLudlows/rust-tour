@@ -52,7 +52,8 @@ pub mod trait7;
 pub mod trait8;
 pub mod trait9;
 pub mod trait10;
-
+pub mod clone;
+pub mod sendsync;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
