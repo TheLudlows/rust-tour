@@ -55,6 +55,8 @@ pub mod trait10;
 pub mod clone;
 pub mod sendsync;
 pub mod lifetime;
+pub mod BoxOwnship;
+pub mod cell;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
