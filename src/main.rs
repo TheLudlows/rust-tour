@@ -57,6 +57,8 @@ pub mod sendsync;
 pub mod lifetime;
 pub mod BoxOwnship;
 pub mod cell;
+pub mod array2;
+pub mod cow;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
