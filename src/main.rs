@@ -59,6 +59,9 @@ pub mod BoxOwnship;
 pub mod cell;
 pub mod array2;
 pub mod cow;
+pub mod send;
+pub mod func2;
+pub mod func3;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
