@@ -1,3 +1,5 @@
+#![feature(cow_is_borrowed)]
+
 use std::{io, env};
 pub mod func ;
 pub mod vector;
@@ -62,6 +64,9 @@ pub mod cow;
 pub mod send;
 pub mod func2;
 pub mod func3;
+pub mod func4;
+pub mod func5;
+pub mod method;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");

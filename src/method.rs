@@ -6,7 +6,7 @@ struct Rectangle {
 
 
 impl Rectangle {
-    fn area(&self) -> u32 {
+    fn area(self) -> u32 {
         self.width * self.height
     }
     fn can_hold(&self, other: &Rectangle) -> bool {
@@ -22,8 +22,8 @@ impl Rectangle {
 
 fn main() {
     let rect1 = Rectangle { width: 30, height: 50 };
-    println!("The area of the rectangle is {} square pixels.", rect1.area()
-    );
+    println!("The area of the rectangle is {} square pixels.", rect1.area());
+    rect1.area();
     let rect2 = Rectangle { width: 20, height: 50 };
     println!("{}", rect1.can_hold(&rect2));
     Rectangle::from(21,32);
