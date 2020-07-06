@@ -17,7 +17,7 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::leetcode::p0001_two_sum::Solution;
 
     #[test]
     fn two_sum_test() {

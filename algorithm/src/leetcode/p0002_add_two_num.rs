@@ -46,7 +46,7 @@ fn get_sum(head: &Option<Box<ListNode>>) -> i128 {
 
 #[cfg(test)]
 mod test {
-    use crate::p0002_add_two_num::{ListNode, build_list, add_two_numbers};
+    use crate::leetcode::p0002_add_two_num::{add_two_numbers, build_list};
 
     #[test]
     fn two_sum_test() {

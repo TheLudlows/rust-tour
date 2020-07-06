@@ -8,6 +8,6 @@ edition = "2018"
 members =  [
 "minigrep",
 "webserver",
-"leetcode"
+"algorithm"
 ]
 [dependencies]
