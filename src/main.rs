@@ -67,6 +67,7 @@ pub mod func3;
 pub mod func4;
 pub mod func5;
 pub mod method;
+pub mod option;
 use common::utils as u;
 fn main() {
     println!("Guess the number!");
