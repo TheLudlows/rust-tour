@@ -3,3 +3,12 @@
 [[package]]
 name = "algorithm"
 version = "0.1.0"
+dependencies = [
+ "simd",
+]
+
+[[package]]
+name = "simd"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f2b30e0b688441c71fc3f3450953e08fb5a0ec3217d4d226d35b39d2beabf7b5"
