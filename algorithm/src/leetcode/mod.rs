@@ -1,3 +1,4 @@
+mod p0004_mid;
 mod p0003_longest_sub_string;
 mod p0008_str_int;
 mod p0002_add_two_num;
