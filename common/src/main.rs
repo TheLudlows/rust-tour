@@ -6,7 +6,7 @@ mod json;
 struct Foo;
 type Boo =  Foo;
 impl Foo{
-    pub fn say_hello() {
+    pub fn say_hello(&self) {
         println!("hello")
     }
 }
