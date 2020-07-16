@@ -4,5 +4,4 @@ use compressed_vec::section::AutoEncoder;
 
 #[test]
 fn test_int() {
-    let mut encoder:VectorAppender<u32,AutoEncoder> = VectorAppender::try_new(32).unwrap();
 }
