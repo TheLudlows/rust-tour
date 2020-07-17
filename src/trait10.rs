@@ -30,5 +30,4 @@ fn main() {
     assert_eq!(fly_dyn(&duck),true);
     assert_eq!(fly_static(pig),false);
     assert_eq!(fly_static(duck),true);
-    let c:Copy
 }

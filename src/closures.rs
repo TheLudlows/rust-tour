@@ -1,4 +1,6 @@
-fn main() {
+
+#[test]
+fn closure_test() {
     let double = |num| num * 2;
     println!("{}", double(10));
     let x = 4;
@@ -7,16 +9,3 @@ fn main() {
     assert!(equal_to_x(y));
 }
 
-struct Cache<T: Fn(u32) -> u32> {
-    double: T,
-    value: Option<u32>,
-}
-
-impl<T> Cache<T> where T: Fn(u32) -> u32 {
-    fn new(t: T) -> Cache<T> {
-        Cache {
-            double: t,
-            value: None,
-        }
-    }
-}

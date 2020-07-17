@@ -7,6 +7,5 @@ fn main() {
     let handle = thread::spawn(move || {
         println!("Here's a vector: {:?}", v);
     });
-    println!("{:?}",vv );
     handle.join().unwrap();
 }

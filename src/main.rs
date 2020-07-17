@@ -1,6 +1,5 @@
 #![feature(cow_is_borrowed)]
 
-use std::{io, env};
 pub mod func ;
 pub mod vector;
 pub mod string;
@@ -12,7 +11,6 @@ pub mod generic;
 pub mod traits;
 pub mod lifecircle;
 pub mod mods;
-pub mod common;
 pub mod enums;
 pub mod closures;
 pub mod iter;
@@ -57,9 +55,7 @@ pub mod trait10;
 pub mod clone;
 pub mod sendsync;
 pub mod lifetime;
-pub mod BoxOwnship;
 pub mod cell;
-pub mod array2;
 pub mod cow;
 pub mod send;
 pub mod func2;
@@ -68,23 +64,6 @@ pub mod func4;
 pub mod func5;
 pub mod method;
 pub mod option;
-use common::utils as u;
 fn main() {
-    println!("Guess the number!");
-
-    println!("Please input your guess.");
-
-    let mut guess = String::new();
-
-    io::stdin().read_line(&mut guess)
-        .expect("Failed to read line");
-
-    println!("You guessed: {}", guess);
-
-    guess.clear();
-    common::utils::print(&String::from("aa"));
-
-    let args: Vec<String> = env::args().collect();
-    println!("{:?}", args);
 }
 

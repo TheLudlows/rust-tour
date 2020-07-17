@@ -12,8 +12,8 @@ fn abs_all(input: &mut Cow<[i32]>) {
 }
 
 fn main() {
-    let slice = [0, 1, 2];
-    let mut input = Cow::from(&slice[..]);
+    let arr = [0, 1, 2];
+    let mut input = Cow::from(&arr[..]);
     abs_all(&mut input);
 
     let slice = [-1, 0, 1];
