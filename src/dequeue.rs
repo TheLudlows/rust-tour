@@ -1,6 +1,7 @@
 use std::collections::{VecDeque, LinkedList};
 
-fn main() {
+#[test]
+fn queue() {
     let mut dq = VecDeque::new();
     dq.push_front("a");
     assert_eq!(dq.get(0),Some(&"a"));

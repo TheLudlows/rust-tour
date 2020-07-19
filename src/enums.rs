@@ -1,4 +1,5 @@
-fn main() {
+#[test]
+fn enums() {
     #[derive(Debug)]
     enum enum_ {
         a,

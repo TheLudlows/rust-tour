@@ -1,11 +1,38 @@
-fn main () {
+use std::ops::Mul;
 
-    say(10);
-    println!("result is{}",add(10));
+fn add_one(x: i32) -> i32 {
+    x + 1
 }
-fn say(age :u32) {
-    println!("age is {}", age);
+
+fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
+    f(arg) + f(arg)
 }
-fn add(age:u32) -> u32 {
-    return age + 10;
+#[test]
+fn func_pointer() {
+    let answer = do_twice(add_one, 5);
+    println!("The answer is: {}", answer);
+}
+
+#[test]
+fn trans_p() {
+    let f = Foo { i: 32 };
+    print(&f);
+    println!("{:p}", &f)
+}
+
+#[derive(Debug)]
+struct Foo { i: i32 }
+
+fn print( f: &Foo) {
+    println!("{:p}", f);
+}
+
+#[test]
+fn add_test() {
+    let z = square(100,200);
+    let r = square::<f32>(4.2,5.0);
+}
+
+fn square<T: Mul<T,Output=T>>(x: T, y: T) -> T {
+    x * y
 }
