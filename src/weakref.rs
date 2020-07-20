@@ -1,38 +1,53 @@
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::{Weak, Rc};
+use std::borrow::Borrow;
 
 #[derive(Debug)]
-enum List {
-    Cons(i32, RefCell<Rc<List>>),
-    Nil,
+struct Node {
+    value: i32,
+    parent: RefCell<Weak<Node>>,
+    children: RefCell<Vec<Rc<Node>>>,
 }
 
-impl List {
-    fn next(&self) -> Option<&RefCell<Rc<List>>> {
-        match self {
-            List::Cons(_, item) => Some(item),
-            Nil => None,
-        }
-    }
-}
 fn main() {
-    let a = Rc::new(List::Cons(5, RefCell::new(Rc::new(List::Nil))));
+    let leaf = Rc::new(Node {
+        value: 3,
+        parent: RefCell::new(Weak::new()),
+        children: RefCell::new(vec![]),
+    });
+    println!(
+        "leaf strong = {}, weak = {}",
+        Rc::strong_count(&leaf),
+        Rc::weak_count(&leaf),
+    );
 
-    println!("a initial rc count = {}", Rc::strong_count(&a));
-    println!("a next item = {:?}", a.next());
+    {
+        let branch = Rc::new(Node {
+            value: 5,
+            parent: RefCell::new(Weak::new()),
+            children: RefCell::new(vec![Rc::clone(&leaf)]),
+        });
 
-    let b = Rc::new(List::Cons(10, RefCell::new(Rc::clone(&a))));
+        *leaf.parent.borrow_mut() = Rc::downgrade(&branch);
 
-    println!("a rc count after b creation = {}", Rc::strong_count(&a));
-    println!("b initial rc count = {}", Rc::strong_count(&b));
-    println!("b next item = {:?}", b.next());
+        println!(
+            "branch strong = {}, weak = {}",
+            Rc::strong_count(&branch),
+            Rc::weak_count(&branch),
+        );
 
-    if let Some(link) = a.next() {
-        *link.borrow_mut() = Rc::clone(&b);
+        println!(
+            "leaf strong = {}, weak = {}",
+            Rc::strong_count(&leaf),
+            Rc::weak_count(&leaf),
+        );
     }
+    println!("leaf  = {:?}", *leaf);
 
-    println!("b rc count after changing a = {}", Rc::strong_count(&b));
-    println!("a rc count after changing a = {}", Rc::strong_count(&a));
-    // it will overflow the stack
-    // println!("a next item = {:?}", a.tail());
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+    println!(
+        "leaf strong = {}, weak = {}",
+        Rc::strong_count(&leaf),
+        Rc::weak_count(&leaf),
+    );
 }

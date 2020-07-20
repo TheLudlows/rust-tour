@@ -1,8 +1,6 @@
 use std::slice;
 
 fn main() {
-
-
     let mut num = 5;
 
     let r1 = &num as *const i32;
@@ -31,8 +29,8 @@ fn main() {
         slice::from_raw_parts_mut(r, 10000)
     };
 
-    
-    static NAME:&str = "four";
+
+    static NAME: &str = "four";
     static mut COUNTER: u32 = 0;
     unsafe {
         COUNTER += 100;

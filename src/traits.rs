@@ -1,66 +1,116 @@
+use std::ops::Add;
 
-#![allow(unused_variables)]
-
-use std::fmt::format;
-
-pub trait Summary {
-    fn summarize(&self) -> String;
-    fn content(&self) -> String {
-        String::from("content")
-    }
-    fn f1();
+#[derive(Debug, PartialEq)]
+struct Point {
+    x: i32,
+    y: i32,
 }
 
-pub struct NewsArticle {
-    pub headline: String,
-    pub location: String,
-    pub author: String,
-    pub content: String,
-}
+impl Add for Point {
+    type Output = Point;
 
-impl Summary for NewsArticle {
-    fn summarize(&self) -> String {
-        format!("{}, by {} ({})", self.headline, self.author, self.location)
-    }
-
-    fn content(&self) ->  String {
-        self.content.clone()
-    }
-
-    fn f1() {
-        unimplemented!()
-    }
-}
-pub struct Tweet {
-    pub username: String,
-    pub content: String,
-    pub reply: bool,
-    pub retweet: bool,
-}
-
-impl Summary for Tweet {
-    fn summarize(&self) -> String {
-        format!("{}: {}", self.username, self.content)
-    }
-
-    fn f1() {
-        unimplemented!()
+    fn add(self, other: Self::Output) -> Point {
+        Point {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
     }
 }
 
-impl NewsArticle {
-    fn headline(&self) -> &String{
-        &(&self.headline)
-    }
-}
 fn main() {
-    let a = NewsArticle{
-        headline:String::from("aa"),
-        location:String::from("bb"),
-        author:String::from("cc"),
-        content:String::from("dd"),
-    };
-    println!("{}", a.summarize());
-    println!("{}", a.content());
+    assert_eq!(Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
+               Point { x: 3, y: 3 });
+}
 
+trait Pilot {
+    fn fly(&self);
+}
+
+trait Wizard {
+    fn fly(&self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+    fn fly(&self) {
+        println!("This is your captain speaking.");
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&self) {
+        println!("Up!");
+    }
+}
+
+impl Human {
+    fn fly(&self) {
+        println!("*waving arms furiously*");
+    }
+}
+
+#[test]
+fn func_test() {
+    let person = Human;
+    person.fly();
+    Pilot::fly(&person);
+    Wizard::fly(&person);
+}
+
+trait Animal {
+    fn baby_name() -> String;
+}
+
+struct Dog;
+impl Dog {
+    fn baby_name() -> String {
+        String::from("Spot")
+    }
+}
+
+impl Animal for Dog {
+    fn baby_name() -> String {
+        String::from("puppy")
+    }
+}
+
+#[test]
+fn func_test2() {
+    println!("A baby dog is called a {}", Dog::baby_name());
+    println!("A baby dog is called a {}", <Dog as Animal>::baby_name());
+}
+
+
+struct Pig;
+struct Duck;
+trait Fly{
+    fn fly(&self) -> bool;
+}
+impl Fly for Pig{
+    fn fly(&self) -> bool {
+        false
+    }
+}
+
+impl Fly for Duck{
+    fn fly(&self) -> bool {
+        true
+    }
+}
+
+fn fly_static<T: Fly>(t:&T) -> bool{
+    t.fly()
+}
+fn fly_dyn(t:& dyn Fly) -> bool{
+    t.fly()
+}
+#[test]
+fn func3_test() {
+    let pig = Pig;
+    let duck = Duck;
+    assert_eq!(fly_dyn(&pig),false);
+    assert_eq!(fly_dyn(&duck),true);
+    assert_eq!(fly_static(&pig),false);
+    assert_eq!(fly_static(&duck),true);
 }
