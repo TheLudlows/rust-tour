@@ -1,5 +1,8 @@
-#![feature(cow_is_borrowed)]
 
+#![feature(cow_is_borrowed)]
+#![feature(async_closure)]
+mod drop;
+mod pin;
 pub mod func ;
 pub mod vector;
 pub mod string;
