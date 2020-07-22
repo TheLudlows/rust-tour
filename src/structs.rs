@@ -8,6 +8,7 @@ struct User {
 }
 struct empty;
 
+#[test]
 fn main() {
     type Int=i32;
     let mut a = "a";
@@ -29,8 +30,8 @@ fn main() {
     };
     println!("{}", user3.username);
 
-    struct person (String,String,usize);
-    let p1 = person(String::from("four"),String::from("ai"),12);
+    struct Person (String,String,usize);
+    let p1 = Person(String::from("four"),String::from("ai"),12);
 
     let e1 = empty;
     let e2 = empty;

@@ -1,6 +1,8 @@
 
 #![feature(cow_is_borrowed)]
 #![feature(async_closure)]
+#![allow(unused_variables)]
+
 mod drop;
 mod pin;
 pub mod func ;
@@ -21,7 +23,7 @@ pub mod rcrefcell;
 pub mod weakref;
 pub mod thread;
 pub mod unsafes;
-pub mod FlowControl;
+pub mod flow_control;
 pub mod array;
 pub mod range;
 pub mod str;

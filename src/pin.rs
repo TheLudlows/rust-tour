@@ -1,4 +1,3 @@
-use std::pin::Pin;
 
 #[test]
 fn main() {

@@ -11,7 +11,7 @@ impl List {
     fn next(&self) -> Option<&RefCell<Rc<List>>> {
         match self {
             List::Cons(_, item) => Some(item),
-            Nil => None,
+            List::Nil => None,
         }
     }
 }

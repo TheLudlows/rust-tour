@@ -1,5 +1,4 @@
 
-#![allow(unused_variables)]
 fn main() {
     use std::collections::HashMap;
 

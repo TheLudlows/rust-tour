@@ -9,7 +9,7 @@ fn new_thread() {
         thread::sleep(Duration::from_secs(1));
         println!("thread run end");
     });
-    h.join();
+    h.join().unwrap();
     println!("main thread");
 }
 
