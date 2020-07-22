@@ -1,9 +1,9 @@
 struct Inspector<'a>(&'a u8);
-/*impl<'a> Drop for Inspector<'a> {
+impl<'a> Drop for Inspector<'a> {
     fn drop(&mut self) {
         println!("{}", self.0);
     }
-}*/
+}
 
 #[test]
 fn test() {
