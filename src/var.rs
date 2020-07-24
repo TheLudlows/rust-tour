@@ -1,3 +1,5 @@
+use std::borrow::BorrowMut;
+
 const VAR:u32 = 10;
 fn main() {
    // const VAR:u32 = 20;
@@ -43,6 +45,15 @@ fn first_words(s: &String) -> usize {
         }
     }
     s.len()
+}
+#[test]
+fn test() {
+    let mut x = 10;
+    let  p = &mut x;
+    let v = p;
+    //println!("{:p}",p);
+    println!("{:p}",v);
+
 }
 
 

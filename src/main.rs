@@ -1,8 +1,9 @@
-
 #![feature(cow_is_borrowed)]
 #![feature(async_closure)]
+#![feature(ptr_internals)]
+#![feature(generators)]
 #![allow(unused_variables)]
-
+mod unique;
 mod drop;
 mod pin;
 pub mod func ;
