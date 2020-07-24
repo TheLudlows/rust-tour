@@ -48,6 +48,14 @@ fn first_words(s: &String) -> usize {
 }
 #[test]
 fn test() {
+    let mut a = "a".to_string();
+    //let b = &mut a;
+    //let c = *b;
+    //let c = &a;
+    //let d = *c;
+}
+#[test]
+fn test_var() {
     let mut x = 10;
     let  p = &mut x;
     let v = p;
