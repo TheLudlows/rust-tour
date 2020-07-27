@@ -1,8 +1,8 @@
-extern crate tokio;
+mod executor;
 
-use tokio::*;
 use std::process::exit;
-use tokio::prelude::*;
+use std::net::TcpStream;
+use tokio;
 
 fn main() {
     let r = "127.0.0.1:8088".parse();
