@@ -119,5 +119,5 @@ fn test() {
         }).join().unwrap();
     }
     thread::sleep(Duration::from_millis(100));
-    println!("over")
+    println!("data:{:?}",data.lock().unwrap())
 }

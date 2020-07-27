@@ -1,12 +1,17 @@
 use std::future::Future;
-use futures::executor::block_on;
+use futures::{self,executor};
+use std::thread::sleep;
+use std::time::Duration;
 
 #[test]
 fn main() {
-    block_on(say());
-    block_on(see());
+    executor::block_on(say());
+    executor::block_on(see());
 
+    //say();
+    //see();
 }
+
 fn say() -> impl Future {
     async {
         println!("bbb")
@@ -15,4 +20,29 @@ fn say() -> impl Future {
 
 async fn see() {
     println!("ccc")
+}
+
+async fn lean() {
+    println!("lean")
+}
+
+async fn exe() {
+    sleep(Duration::from_secs(5));
+    println!("exe")
+}
+
+async fn exam() {
+    println!("exam")
+}
+
+async fn ready() {
+    lean().await;
+    exe().await;
+}
+async fn all() {
+    futures::join!(ready(),exam());
+}
+#[test]
+fn test_await() {
+    executor::block_on(all())
 }
