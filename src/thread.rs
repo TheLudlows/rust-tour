@@ -103,3 +103,21 @@ fn arc_test() {
 
     println!("Result: {}", *counter.lock().unwrap());
 }
+#[test]
+fn test() {
+    // Declaring a Arc type data
+    let data = Arc::new(Mutex::new(vec![2, 5, 6]));
+    // Creating 3 threads and implementing lock
+    for i in 0..3 {
+        let data1 = data.clone();
+        thread::spawn(move || {
+            let mut data2 = data1.lock().unwrap();
+            data2[0] += i;
+            println!("Thread id :{:?}",i );
+            println!("Data value :{:?}", data2[0]);
+            println!("in")
+        }).join().unwrap();
+    }
+    thread::sleep(Duration::from_millis(100));
+    println!("over")
+}
