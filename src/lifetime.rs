@@ -45,3 +45,14 @@ impl Foo {
         self
     }
 }
+
+#[test]
+fn test() {
+    let n = 10;
+    let x = &n;
+    let y = &n;
+    do_nothing(x,y);
+}
+fn do_nothing<'a,'b:'a>(x: &'a u32, y:&'b u32) -> &'a u32{
+    x
+}
