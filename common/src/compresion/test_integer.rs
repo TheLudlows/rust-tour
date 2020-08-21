@@ -4,5 +4,4 @@ use compressed_vec::section::AutoEncoder;
 
 #[test]
 fn test_int() {
-    Log
 }

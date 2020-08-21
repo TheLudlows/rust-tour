@@ -1,7 +1,12 @@
 use futures::executor;
+use futures::join;
+use async_std::task::sleep;
+use std::time::Duration;
 
 async fn learn_song() {
     println!("Learn song!");
+    let sleep = sleep(Duration::from_secs(1));
+    join!(sleep);
 }
 
 async fn sing_song() {
@@ -27,6 +32,5 @@ async fn async_main() {
 
 #[test]
 fn test() {
-    executor::block_on(async_main());
-    println!("Hello, world!");
+    executor::block_on(learn_and_sing_song());
 }
