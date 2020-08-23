@@ -4,6 +4,8 @@
 #![feature(ptr_internals)]
 #![feature(generators)]
 #![allow(unused_variables)]
+mod from_into;
+mod debug_display;
 mod asyncs;
 mod unique;
 mod drop;
