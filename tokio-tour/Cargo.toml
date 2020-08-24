@@ -9,3 +9,5 @@ edition = "2018"
 [dependencies]
 tokio = "0.2"
 futures-preview = "0.3.0-alpha.9"
+mio = "0.6"
+failure = "0.1.8"

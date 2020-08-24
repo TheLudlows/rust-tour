@@ -1,6 +1,6 @@
 use std::thread;
 use std::time::Duration;
-use std::sync::{mpsc, Mutex, Arc};
+use std::sync::{mpsc, Mutex, Arc, RwLock};
 
 #[test]
 fn new_thread() {
@@ -120,4 +120,23 @@ fn test() {
     }
     thread::sleep(Duration::from_millis(100));
     println!("data:{:?}",data.lock().unwrap())
+}
+#[test]
+fn test_rwLock() {
+    let lock = RwLock::new(5);
+
+    // many reader locks can be held at once
+    {
+        let r1 = lock.read().unwrap();
+        let r2 = lock.read().unwrap();
+        assert_eq!(*r1, 5);
+        assert_eq!(*r2, 5);
+    } // read locks are dropped at this point
+
+    // only one write lock may be held, however
+    {
+        let mut w = lock.write().unwrap();
+        *w += 1;
+        assert_eq!(*w, 6);
+    }
 }
