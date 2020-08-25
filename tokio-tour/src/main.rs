@@ -1,3 +1,5 @@
+mod async_demo;
+
 use mio::*;
 use mio::net::{TcpListener, TcpStream};
 use std::io::{Read, Write, self};
