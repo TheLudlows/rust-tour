@@ -17,6 +17,5 @@ async fn all() {
 #[test]
 fn start() {
     let f = do_some();
-    (f);
 
 }
