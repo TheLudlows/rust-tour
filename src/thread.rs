@@ -1,6 +1,6 @@
 use std::thread;
 use std::time::Duration;
-use std::sync::{mpsc, Mutex, Arc, RwLock};
+use std::sync::{mpsc, Mutex, Arc, RwLock, Barrier};
 use std::cell::RefCell;
 use std::thread::{JoinHandle, Builder};
 
@@ -73,6 +73,7 @@ fn mpsc_test2() {
         println!("Got: {}", received);
     }
 }
+
 #[test]
 fn lock_test() {
     let m = Mutex::new(5);
@@ -83,6 +84,7 @@ fn lock_test() {
 
     println!("m = {:?}", m);
 }
+
 #[test]
 fn arc_test() {
     let counter = Arc::new(Mutex::new(0));
@@ -105,6 +107,7 @@ fn arc_test() {
 
     println!("Result: {}", *counter.lock().unwrap());
 }
+
 #[test]
 fn test() {
     // Declaring a Arc type data
@@ -115,14 +118,15 @@ fn test() {
         thread::spawn(move || {
             let mut data2 = data1.lock().unwrap();
             data2[0] += i;
-            println!("Thread id :{:?}",i );
+            println!("Thread id :{:?}", i);
             println!("Data value :{:?}", data2[0]);
             println!("in")
         }).join().unwrap();
     }
     thread::sleep(Duration::from_millis(100));
-    println!("data:{:?}",data.lock().unwrap())
+    println!("data:{:?}", data.lock().unwrap())
 }
+
 #[test]
 fn test_rwLock() {
     let lock = RwLock::new(5);
@@ -148,7 +152,7 @@ fn test_build() {
     let t = thread::Builder::new()
         .name("four".to_string())
         .stack_size(1024)
-        .spawn(||println!("hello")).unwrap();
+        .spawn(|| println!("hello")).unwrap();
 
     t.join();
     print!("rust")
@@ -157,18 +161,18 @@ fn test_build() {
 #[test]
 fn thread_local() {
     thread_local!(static Local:RefCell<i32> = RefCell::new(1));
-    Local.with(|v|{
-         *v.borrow_mut() = 100;
+    Local.with(|v| {
+        *v.borrow_mut() = 100;
     });
 
-    thread::spawn(||{
-        Local.with(|v|{
-            println!("in sub thread {:?}",v.borrow());
+    thread::spawn(|| {
+        Local.with(|v| {
+            println!("in sub thread {:?}", v.borrow());
             *v.borrow_mut() = 200;
         });
     }).join();
 
-    Local.with(|v|println!("{:?}",v.borrow()))
+    Local.with(|v| println!("{:?}", v.borrow()))
 }
 
 pub fn spawn_new<F, T>(f: F) -> JoinHandle<T>
@@ -181,9 +185,42 @@ pub fn spawn_new<F, T>(f: F) -> JoinHandle<T>
 
 #[test]
 fn test_new() {
-    let join = spawn_new(||{
+    let join = spawn_new(|| {
         println!("new thread");
     });
     join.join();
-    let a:Sync
+}
+
+#[test]
+fn test_posion() {
+    let rc = Arc::new(Mutex::new(String::from("hello")));
+    let rc_clone = rc.clone();
+    let join = thread::spawn(move || {
+        let mut s = rc_clone.lock().unwrap();
+        s.push_str(" rust");
+        panic!("oh no");
+    }).join();
+    match rc.lock() {
+        Ok(s) =>  println!("{}", s),
+        Err(e) => println!("err {}",e)
+    };
+
+}
+
+#[test]
+fn test_barrier() {
+    let barrier = Arc::new(Barrier::new(5));
+    let mut joins = vec![];
+    for i in 0..5 {
+        let b = barrier.clone();
+        let j = thread::spawn(move || {
+            println!("wait");
+            b.wait();
+            println!("pass");
+        });
+        joins.push(j);
+    }
+    for join in joins {
+        join.join().unwrap();
+    };
 }
