@@ -1,5 +1,7 @@
 use std::rc::Rc;
 use std::cell::RefCell;
+use std::borrow::{BorrowMut, Borrow};
+use std::ops::Deref;
 
 #[derive(Debug)]
 enum List {
@@ -15,6 +17,7 @@ impl List {
         }
     }
 }
+
 fn main() {
     let a = Rc::new(List::Cons(5, RefCell::new(Rc::new(List::Nil))));
 
@@ -35,4 +38,23 @@ fn main() {
     println!("a rc count after changing a = {}", Rc::strong_count(&a));
     // it will overflow the stack
     // println!("a next item = {:?}", a.tail());
+}
+
+#[test]
+fn test_rc() {
+    #[derive(Debug)]
+    enum ListNode {
+        Cons(i32, Rc<ListNode>),
+        Nil,
+    }
+
+    use ListNode::Cons;
+    use ListNode::Nil;
+
+    let mut  a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&a));
+    let c = Cons(4, Rc::clone(&a));
+    println!("{:?}",b);
+    println!("{:?}",c);
+    let d = a.borrow_mut();
 }

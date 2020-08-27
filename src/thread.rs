@@ -1,6 +1,8 @@
 use std::thread;
 use std::time::Duration;
 use std::sync::{mpsc, Mutex, Arc, RwLock};
+use std::cell::RefCell;
+use std::thread::{JoinHandle, Builder};
 
 #[test]
 fn new_thread() {
@@ -139,4 +141,49 @@ fn test_rwLock() {
         *w += 1;
         assert_eq!(*w, 6);
     }
+}
+
+#[test]
+fn test_build() {
+    let t = thread::Builder::new()
+        .name("four".to_string())
+        .stack_size(1024)
+        .spawn(||println!("hello")).unwrap();
+
+    t.join();
+    print!("rust")
+}
+
+#[test]
+fn thread_local() {
+    thread_local!(static Local:RefCell<i32> = RefCell::new(1));
+    Local.with(|v|{
+         *v.borrow_mut() = 100;
+    });
+
+    thread::spawn(||{
+        Local.with(|v|{
+            println!("in sub thread {:?}",v.borrow());
+            *v.borrow_mut() = 200;
+        });
+    }).join();
+
+    Local.with(|v|println!("{:?}",v.borrow()))
+}
+
+pub fn spawn_new<F, T>(f: F) -> JoinHandle<T>
+    where
+        F: (FnOnce() -> T) + Send + 'static,
+        T: Send + 'static,
+{
+    Builder::new().spawn(f).expect("failed to spawn thread")
+}
+
+#[test]
+fn test_new() {
+    let join = spawn_new(||{
+        println!("new thread");
+    });
+    join.join();
+    let a:Sync
 }
