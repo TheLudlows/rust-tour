@@ -32,3 +32,24 @@ fn change_str_arr(arr: &mut [String; 3]) {
     arr[1] = "e".to_string();
     arr[1].push_str("rust");
 }
+
+#[test]
+fn test_iter() {
+    let mut arr = [1,2,3];
+    for n in &arr {
+        println!("{}",n)
+    }
+
+    for n in arr.iter() {
+        println!("{}",n)
+    }
+
+    for n in (&arr).into_iter() {
+        println!("{}",n)
+    }
+    for n in (&mut arr).iter_mut() {
+        *n = *n*2;
+    }
+    let p:&[i32] = &mut arr;
+    println!("{}",p)
+}
