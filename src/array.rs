@@ -51,5 +51,26 @@ fn test_iter() {
         *n = *n*2;
     }
     let p:&[i32] = &mut arr;
-    println!("{}",p)
+
+    arr[0] = 100;
+    println!("{:?}",arr)
+}
+
+#[test]
+fn test_any() {
+    let arr = [1,2,3];
+    assert_eq!(arr.iter().any(|x| *x > 3),false);
+    assert_eq!((&arr).into_iter().any(|&x| x > 3),false);
+}
+
+#[test]
+fn test_fold() {
+    let arr = [1,2,3];
+    assert_eq!(arr.iter().fold(0,|total,&x| x+total),6);
+}
+
+#[test]
+fn test_fold_vec() {
+    let v = vec![1,2,3];
+    assert_eq!(v.into_iter().fold(0,|total,x| x + total),6);
 }
