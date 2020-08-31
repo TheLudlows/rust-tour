@@ -1,17 +1,22 @@
-use futures::executor::block_on;
-use failure::_core::future::Future;
-
-async fn say() {
-    println!("say hello")
+async fn learn_sing() {
+    println!("learn sing")
 }
 
-async fn do_some() {
-    println!("do some thing")
+async fn sing_song() {
+    println!("sing song")
+}
+
+async fn dance() {
+    println!("dance")
+}
+
+async fn sing() {
+    learn_sing().await;
+    sing_song().await
 }
 
 async fn all() {
-    say().await;
-    do_some().await
+    futures::join!(sing(), dance());
 }
 
 #[test]
