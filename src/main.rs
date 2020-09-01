@@ -5,7 +5,6 @@
 #![feature(generators)]
 #![feature(generator_trait)]
 #![allow(unused_variables)]
-#![feature(generators, generator_trait)]
 mod from_into;
 mod debug_display;
 mod asyncs;
