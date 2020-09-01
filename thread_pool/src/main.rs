@@ -1,9 +1,13 @@
 use std::sync::{Mutex, Condvar, Arc};
 use std::sync::mpsc::{Receiver, Sender, channel};
 use std::sync::atomic::{AtomicUsize, Ordering, AtomicBool};
+use std::thread;
 
 fn main() {
-    println!("Hello, world!");
+    let pool = Builder::new().build();
+    println!("{:?}",pool.pool_data.max_thread_count);
+    pool.execute(||print!("hello"));
+    pool.join();
 }
 
 struct PoolData {
@@ -15,12 +19,12 @@ struct PoolData {
     panic_count: AtomicUsize,
     stack_size: Option<usize>,
     lock: Mutex<()>,
-    wait: Condvar,
+    condition: Condvar,
 }
 
 impl PoolData {
     fn has_word(&self) -> bool {
-        self.queue_count.load(Ordering::AcqRel) > 0 || self.active_count.load(Ordering::AcqRel) > 0
+        self.queue_count.load(Ordering::Acquire) > 0 || self.active_count.load(Ordering::Acquire) > 0
     }
 }
 
@@ -42,11 +46,7 @@ pub struct ThreadPool {
 }
 
 impl ThreadPool {
-    fn new(thread_nums: usize) -> ThreadPool {
-        Builder::new().thread_nums(thread_nums).build()
-    }
-
-    fn execute<F>(&self, f: F) where F: FnOnce() + Send + 'static{
+    fn execute<F>(&self, f: F) where F: FnOnce() + Send + 'static {
         self.sender.send(Box::new(f)).expect("send task failed");
         self.pool_data.queue_count.fetch_add(1, Ordering::SeqCst);
     }
@@ -56,7 +56,7 @@ impl ThreadPool {
         }
         let mut lock = self.pool_data.lock.lock().unwrap();
         while self.pool_data.has_word() {
-            lock = self.pool_data.wait.wait(lock).unwrap()
+            lock = self.pool_data.condition.wait(lock).unwrap()
         }
     }
 }
@@ -93,8 +93,11 @@ impl Builder {
             panic_count: AtomicUsize::new(0),
             stack_size: self.stack_size,
             lock: Mutex::new(()),
-            wait: Default::default(),
+            condition: Default::default(),
         });
+        for _ in 0..thread_num {
+            generate_thread(pool_data.clone());
+        }
         ThreadPool {
             sender,
             pool_data,
@@ -103,6 +106,32 @@ impl Builder {
 }
 
 fn generate_thread(pool_data: Arc<PoolData>) {
-    pool_data;
-    ()
+    let mut thread_builder = thread::Builder::new();
+    if let Some(name) = &pool_data.name {
+        thread_builder = thread_builder.name(name.clone());
+    }
+    if let Some(stack_size) = &pool_data.stack_size {
+        thread_builder = thread_builder.stack_size(stack_size.to_owned()); // clone
+    }
+
+    thread_builder.spawn(move || {
+        loop {
+            let thread_count = pool_data.active_count.load(Ordering::Acquire);
+            let max_count = pool_data.max_thread_count.load(Ordering::Relaxed);
+            if thread_count > max_count {
+                break;
+            }
+            let receiver = pool_data.receiver.lock().expect("err");
+            let result = receiver.recv();
+            if result.is_err() {
+                break;
+            }
+            let task = result.unwrap();
+            pool_data.queue_count.fetch_sub(1, Ordering::SeqCst);
+            pool_data.active_count.fetch_add(1, Ordering::SeqCst);
+            task.call();
+            pool_data.active_count.fetch_sub(1, Ordering::SeqCst);
+            pool_data.condition.notify_all();
+        }
+    }).unwrap();
 }
