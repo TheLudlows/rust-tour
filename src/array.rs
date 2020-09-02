@@ -32,6 +32,16 @@ fn change_str_arr(arr: &mut [String; 3]) {
     arr[1] = "e".to_string();
     arr[1].push_str("rust");
 }
+#[test]
+fn test() {
+    let a = [1,2,3];
+    let mut s:&[i32] = &a[1..2];
+    println!("{}", s.len());
+    let v = vec![1,2,3,4];
+    let vs = &v[0..2];
+    println!("{}", vs.len());
+
+}
 
 #[test]
 fn test_iter() {
