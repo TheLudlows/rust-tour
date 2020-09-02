@@ -36,3 +36,20 @@ fn add_test() {
 fn square<T: Mul<T,Output=T>>(x: T, y: T) -> T {
     x * y
 }
+
+ fn ya_iif(flag: bool) -> &'static str {
+    if flag {
+        "true"
+    } else {
+        "false"
+    }
+}
+fn iif(flag: bool) -> &'static str {
+    ["false", "true"][flag as usize]
+}
+#[test]
+fn test_fn() {
+    println!("{}",ya_iif(false));
+    println!("{}",iif(true));
+
+}
