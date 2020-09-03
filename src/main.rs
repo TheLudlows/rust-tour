@@ -4,6 +4,7 @@
 #![feature(ptr_internals)]
 #![feature(generators)]
 #![feature(generator_trait)]
+#![feature(type_name_of_val)]
 #![allow(unused_variables)]
 mod from_into;
 mod debug_display;
