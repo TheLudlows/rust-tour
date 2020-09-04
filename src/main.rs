@@ -49,6 +49,7 @@ pub mod option;
 mod generator;
 mod reflect;
 mod any;
+mod macros;
 
 fn main() {
 }
