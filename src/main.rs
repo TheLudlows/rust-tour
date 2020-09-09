@@ -50,6 +50,7 @@ mod generator;
 mod reflect;
 mod any;
 mod macros;
+mod ref_test;
 
 fn main() {
 }
