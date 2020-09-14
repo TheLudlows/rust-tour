@@ -1,52 +1,41 @@
-pub struct ListNode {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>,
-}
+use crate::leetcode::common::{ListNode, Solution};
 
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode {
-            next: None,
-            val,
+
+impl Solution {
+    pub fn add_two_numbers(
+        l1: Option<Box<ListNode>>,
+        l2: Option<Box<ListNode>>,
+    ) -> Option<Box<ListNode>> {
+        let (mut p, mut q, mut carry) = (l1, l2, 0);
+        let mut head = Some(Box::new(ListNode::new(0)));
+        let mut current = head.as_mut();
+        while p.is_some() || q.is_some() {
+            let mut sum = carry;
+            if let Some(v) = p {
+                sum += v.val;
+                p = v.next;
+            }
+            if let Some(v) = q {
+                sum += v.val;
+                q = v.next;
+            }
+            carry = sum / 10;
+            let v = current.unwrap();
+            v.next = Some(Box::new(ListNode::new(sum % 10)));
+            current = v.next.as_mut();
         }
+        if carry > 0 {
+            let v = current.unwrap();
+            v.next = Some(Box::new(ListNode::new(carry)));
+        }
+        head.unwrap().next
     }
-}
-
-fn add_two_numbers(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-    let l1_sum = get_sum(&l1);
-    let l2_sum = get_sum(&l2);
-    let mut sum = l1_sum + l2_sum;
-    let mut head = Some(Box::new(ListNode::new(0)));
-    let mut root = &mut head;
-    if sum == 0 {
-        return head;
-    }
-    while sum != 0 {
-        let node = Some(Box::new(ListNode::new(sum.wrapping_rem(10) as i32)));
-        root.as_mut().unwrap().next = node;
-        root = &mut root.as_mut().unwrap().next;
-        sum = sum / 10;
-    }
-    head.unwrap().next
-}
-
-fn get_sum(head: &Option<Box<ListNode>>) -> i128 {
-    let mut root = head;
-    let mut sum: i128 = 0;
-    let mut bit: i128 = 1;
-    while let Some(node) = root {
-        sum += node.val as i128 * bit;
-        bit *= 10;
-        root = &node.next;
-    }
-    println!("{}",sum);
-    sum
 }
 
 #[cfg(test)]
 mod test {
-    use crate::leetcode::p0002_add_two_num::{add_two_numbers, build_list};
+    use crate::leetcode::p0002_add_two_num::{build_list};
+    use crate::leetcode::common::Solution;
 
     #[test]
     fn two_sum_test() {
@@ -54,13 +43,15 @@ mod test {
         let b = vec![5, 6, 4, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 9, 9, 9, 9];
         let l1 = build_list(&a);
         let l2 = build_list(&b);
-        add_two_numbers(l1,l2);
+
+        Solution::add_two_numbers(l1, l2);
     }
 }
-fn build_list(arr : &[i32]) -> Option<Box<ListNode>>{
-    let mut head =  Some(Box::new(ListNode::new(0)));
+
+fn build_list(arr: &[i32]) -> Option<Box<ListNode>> {
+    let mut head = Some(Box::new(ListNode::new(0)));
     let mut cur = &mut head;
-    for a in arr{
+    for a in arr {
         let node = Some(Box::new(ListNode::new(*a)));
         cur.as_mut().unwrap().next = node;
         cur = &mut cur.as_mut().unwrap().next;
