@@ -9,6 +9,9 @@ use std::fs::read;
 impl Solution {
     // 暴力
     pub fn longest_palindrome(s: String) -> String {
+        if s.len() <= 1 {
+            return s;
+        }
         let bytes = s.as_bytes();
         let size = s.len();
         let mut max = 1;
@@ -21,11 +24,9 @@ impl Solution {
                 }
             }
         }
-        println!("{},{}",start,max);
-        //std::str::from_utf8(&bytes[start..start + max]).unwrap().into_string()
+        //std::str::from_utf8(&bytes[start..start + max]).unwrap().to_string()
         unsafe { String::from_utf8_unchecked(Vec::from(&bytes[start..start + max])) }
     }
-
 }
 
 fn is_huiwen(str: &[u8], mut left: usize, mut right: usize) -> bool {
@@ -41,6 +42,43 @@ fn is_huiwen(str: &[u8], mut left: usize, mut right: usize) -> bool {
 
 #[test]
 fn test() {
-    let str ="abccdc".to_string();
-    println!("{}",Solution::longest_palindrome(str))
+    let str = "abccdcc".to_string();
+    println!("{}", Solution::longest_palindrome(str.clone()));
+    println!("{}", Solution2::longest_palindrome(str));
+}
+
+struct Solution2;
+
+impl Solution2 {
+    pub fn longest_palindrome(s: String) -> String {
+        if s.len() <= 1 {
+            return s;
+        }
+        let s = s.as_bytes();
+        let mut start = 0;
+        let mut max = 1;
+
+        let mut dp = vec![vec![false; s.len()]; s.len()];
+        for i in 0..s.len() {
+            dp[i][i] = true
+        }
+        for i in 1..s.len() {
+            for j in 0..i {
+                if &s[i] != &s[j] {
+                    dp[j][i] = false;
+                } else {
+                    if i - j < 3 {
+                        dp[j][i] = true;
+                    } else {
+                        dp[j][i] = dp[j + 1][i - 1]
+                    }
+                }
+                if dp[j][i] && i - j + 1 > max {
+                    max = i - j + 1;
+                    start = j;
+                }
+            }
+        }
+        unsafe { String::from_utf8_unchecked(Vec::from(&s[start..start + max])) }
+    }
 }
