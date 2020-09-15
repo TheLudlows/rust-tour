@@ -6,3 +6,5 @@ mod p0001_two_sum;
 mod p0109_to_btree;
 mod common;
 mod p0005_max_huiwen;
+mod p0096_nums_tree;
+mod p0622_ring_buf;
