@@ -8,3 +8,8 @@ mod common;
 mod p0005_max_huiwen;
 mod p0096_nums_tree;
 mod p0622_ring_buf;
+mod p0046_permute;
+mod p0047_permute;
+mod p0308_set;
+mod p0222_count_node;
+mod p0098_is_valid_bst;
