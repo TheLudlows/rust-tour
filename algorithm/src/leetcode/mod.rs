@@ -1,3 +1,4 @@
+mod p0032_longest_valid_parentheses;
 mod p0004_mid;
 mod p0003_longest_sub_string;
 mod p0008_str_int;
