@@ -14,3 +14,5 @@ mod p0047_permute;
 mod p0308_set;
 mod p0222_count_node;
 mod p0098_is_valid_bst;
+mod p0094_inorder_traversal;
+mod p0704_bin_search;
