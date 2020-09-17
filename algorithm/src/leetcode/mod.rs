@@ -16,3 +16,7 @@ mod p0222_count_node;
 mod p0098_is_valid_bst;
 mod p0094_inorder_traversal;
 mod p0704_bin_search;
+mod p0007_reverse_int;
+mod p0009_is_palindrome;
+mod p0010_is_match;
+mod p0011_max_area;
