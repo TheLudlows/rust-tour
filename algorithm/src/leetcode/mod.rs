@@ -1,3 +1,5 @@
+mod p0015_three_sum;
+mod p0014_longest_common_prefix;
 mod p0032_longest_valid_parentheses;
 mod p0004_mid;
 mod p0003_longest_sub_string;
