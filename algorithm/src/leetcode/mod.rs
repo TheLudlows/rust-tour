@@ -22,3 +22,5 @@ mod p0007_reverse_int;
 mod p0009_is_palindrome;
 mod p0010_is_match;
 mod p0011_max_area;
+mod p0016_three_sum_closest;
+mod p0018_four_sum;
