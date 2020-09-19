@@ -14,12 +14,16 @@ impl Solution {
             }
         }
         nums.sort();
-        for a in 0..nums.len() - 4 {
-            let mut tag1 = None;
+        println!("{:?}",nums);
+        for a in 0..nums.len() - 3 {
             if a > 0 && nums[a] == nums[a - 1] {
                 continue;
             }
-            for b in a + 1..nums.len() - 3 {
+            for b in a + 1..nums.len() - 2 {
+                let mut tag1 = None;
+                if b>a+1 && nums[b] == nums[b - 1] {
+                    continue;
+                }
                 //定义指针c
                 let mut c = b + 1;
                 //定义指针 d
@@ -50,7 +54,7 @@ impl Solution {
 }
 #[test]
 fn test() {
-    let v = vec![0,0,0,0,1];
-    let r = Solution::four_sum(v,0);
+    let v = vec![-1,-5,-5,-3,2,5,0,4];
+    let r = Solution::four_sum(v,-7);
     println!("{:?}",r)
 }

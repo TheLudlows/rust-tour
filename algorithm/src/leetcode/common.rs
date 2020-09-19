@@ -1,6 +1,7 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
+#[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
     pub next: Option<Box<ListNode>>,
@@ -11,6 +12,12 @@ impl ListNode {
     pub(crate) fn new(val: i32) -> Self {
         ListNode {
             next: None,
+            val,
+        }
+    }
+    pub(crate) fn new_withNext(val: i32,next:Option<Box<ListNode>>) -> Self {
+        ListNode {
+            next,
             val,
         }
     }
