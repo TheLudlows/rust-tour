@@ -25,3 +25,5 @@ mod p0010_is_match;
 mod p0011_max_area;
 mod p0016_three_sum_closest;
 mod p0018_four_sum;
+mod p0020_is_valid;
+mod p0021_merge_two_list;
