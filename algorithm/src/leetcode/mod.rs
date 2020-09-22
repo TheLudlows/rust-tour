@@ -36,3 +36,4 @@ mod p0029_divide;
 mod p0033_search;
 mod p0034_search_range;
 mod p0035_search_insert;
+mod p0039_combine_sum;
