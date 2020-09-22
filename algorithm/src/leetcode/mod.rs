@@ -33,3 +33,6 @@ mod p0026_remove_duplicates;
 mod p0027_remove_element;
 mod p0028_str_str;
 mod p0029_divide;
+mod p0033_search;
+mod p0034_search_range;
+mod p0035_search_insert;
