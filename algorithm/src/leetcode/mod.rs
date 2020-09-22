@@ -1,3 +1,4 @@
+mod p0040_combination_sum2;
 mod p0019_remove_nth_from_end;
 mod p0015_three_sum;
 mod p0014_longest_common_prefix;
