@@ -1,7 +1,9 @@
 use std::collections::HashMap;
+use crate::leetcode::common::Solution;
 
-struct Solution;
-
+/// 遍历数组，将元素加入map，k-v分别是数组元素和下标，插入的时候判断target-x是否在map中，如果在返回结果。
+///
+/// 排序数组，双指针分别指向首位，然后向中间移动。
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut map = HashMap::new();

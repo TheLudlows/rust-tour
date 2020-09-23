@@ -38,3 +38,5 @@ mod p0033_search;
 mod p0034_search_range;
 mod p0035_search_insert;
 mod p0039_combine_sum;
+mod p0041_first_missing_positive;
+mod p0617_merge_trees;

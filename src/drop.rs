@@ -1,7 +1,7 @@
 struct Inspector<'a>(&'a u8);
 impl<'a> Drop for Inspector<'a> {
     fn drop(&mut self) {
-        println!("{}", self.0);
+        println!("drop {}", self.0);
     }
 }
 
@@ -10,4 +10,6 @@ fn test() {
     let (b, inspector);
     b = Box::new(1);
     inspector = Inspector(&b);
+    inspector;
+    println!("last")
 }

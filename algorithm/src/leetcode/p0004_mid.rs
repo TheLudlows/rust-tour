@@ -1,3 +1,5 @@
+use crate::leetcode::common::Solution;
+
 impl Solution {
     pub fn find_median_sorted_arrays(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
         let mut v1 = nums1;
@@ -12,7 +14,6 @@ impl Solution {
         }
     }
 }
-struct Solution;
 #[test]
 fn test() {
 
