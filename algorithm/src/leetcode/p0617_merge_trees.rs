@@ -13,7 +13,6 @@ impl Solution {
 
 fn mt(t1: &mut Option<Rc<RefCell<TreeNode>>>, t2: &Option<Rc<RefCell<TreeNode>>>) {
     if let Some(n1) = t1 {
-        println!("{}",type(n1));
         if let Some(n2) = t2 {
             let mut n1 = n1.borrow_mut();
             let n2 = n2.borrow();

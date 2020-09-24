@@ -3,7 +3,7 @@ mod p0019_remove_nth_from_end;
 mod p0015_three_sum;
 mod p0014_longest_common_prefix;
 mod p0032_longest_valid_parentheses;
-mod p0004_mid;
+mod p0004_find_median_sorted_arrays;
 mod p0003_longest_sub_string;
 mod p0008_str_int;
 mod p0002_add_two_num;
