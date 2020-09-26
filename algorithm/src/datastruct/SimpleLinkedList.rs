@@ -1,4 +1,3 @@
-use std::fs::read;
 
 pub struct SimpleLinkedList<T> {
     head: Option<Box<Node<T>>>,

@@ -1,5 +1,4 @@
 use crate::leetcode::common::Solution;
-use crate::datastruct::SimpleLinkedList::Node;
 use std::cmp::min;
 
 impl Solution {
@@ -38,17 +37,19 @@ impl Solution {
 }
 
 fn findK(v1: &Vec<i32>, i: usize, v2: &Vec<i32>, j: usize, k: usize) -> i32 {
+    // 当nums1 删除完，则直接返回j+k-1位置的数字，nums2删完同理
     if i >= v1.len() {
-        return v2[j + k - 1];
+        return v2[j + k - 1]
     }
     if j >= v2.len() {
-        return v1[i + k - 1];
+        return v1[i + k - 1]
     }
+    // k==1时表示找最小的数字
     if k == 1 {
         return min(v1[i], v2[j]);
     }
-    let max1 = if (i + k - 1) < v1.len() { v1[i + k - 1] } else { i32::MAX };
-    let max2 = if (j + k - 1) < v2.len() { v2[j + k - 1] } else { i32::MAX };
+    let max1 = if (i + k/2 - 1) < v1.len() { v1[i + k/2 - 1] } else { i32::MAX };
+    let max2 = if (j + k/2 - 1) < v2.len() { v2[j + k/2 - 1] } else { i32::MAX };
     return if max1 > max2 {
         findK(v1, i, v2, j + k / 2, k - k / 2)
     } else {
@@ -59,7 +60,7 @@ fn findK(v1: &Vec<i32>, i: usize, v2: &Vec<i32>, j: usize, k: usize) -> i32 {
 #[test]
 fn test() {
     let v1 = vec![1, 2];
-    let v2 = vec![3, 4];
+    let v2 = vec![3, 4,5,6];
 
     let r = Solution::find_median_sorted_arrays_2(v1, v2);
 
