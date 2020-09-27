@@ -2,7 +2,7 @@ use std::rc::Rc;
 use std::cell::RefCell;
 use crate::leetcode::common::{Solution, TreeNode};
 use std::collections::VecDeque;
-
+/// VecDeque转Vec
 impl Solution {
     pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, sum: i32) -> Vec<Vec<i32>> {
         let mut result = vec![];
@@ -24,20 +24,16 @@ pub fn addNode(node:&Option<Rc<RefCell<TreeNode>>>, result:&mut Vec<Vec<i32>>, c
                 }
             }
             addNode(&n.borrow().left,result, cur,sum);
+            cur.pop_back();
             addNode(&n.borrow().right,result,cur,sum);
             cur.pop_back();
         },
         None => {
+            cur.push_back(0)
         }
     }
 }
 #[test]
 fn test() {
-    let root = Some(Rc::new(RefCell::new(TreeNode::new())));
-    let l2 = Some(Rc::new(RefCell::new(5)));
-    let l1 = Some(Rc::new(RefCell::new(5)));
-    let l1 = Some(Rc::new(RefCell::new(5)));
-
-    let l1 = Some(Rc::new(RefCell::new(5)));
 
 }

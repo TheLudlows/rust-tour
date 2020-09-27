@@ -41,3 +41,5 @@ mod p0035_search_insert;
 mod p0039_combine_sum;
 mod p0041_first_missing_positive;
 mod p0617_merge_trees;
+mod p0050_my_pow;
+mod p0053_max_sub_array;
