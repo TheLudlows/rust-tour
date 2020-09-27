@@ -1,3 +1,6 @@
+mod p0058_length_of_last_word;
+mod p0057_merge2;
+mod p0056_merge;
 mod p0113_path_sum;
 mod p0040_combination_sum2;
 mod p0019_remove_nth_from_end;
