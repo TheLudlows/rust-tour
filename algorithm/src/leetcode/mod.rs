@@ -47,3 +47,8 @@ mod p0617_merge_trees;
 mod p0050_my_pow;
 mod p0053_max_sub_array;
 mod p0055_can_jump;
+mod p0061_rotate_right;
+mod p0062_unique_paths;
+mod p0063_unique_paths_with_obstacles;
+mod p0064_min_path_sum;
+mod p0069_my_sqrt;
