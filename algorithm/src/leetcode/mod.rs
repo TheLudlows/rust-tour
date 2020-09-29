@@ -1,3 +1,5 @@
+mod p0075_sort_colors;
+mod p0074_search_matrix;
 mod p0058_length_of_last_word;
 mod p0057_merge2;
 mod p0056_merge;
