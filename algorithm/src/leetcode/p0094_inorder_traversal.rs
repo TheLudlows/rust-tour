@@ -12,12 +12,50 @@ impl Solution {
         println!("{:?}", root);
         v
     }
-    /// 迭代
-    pub fn inorder_traversal_iter(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        let mut stack = VecDeque::new();
-        stack.push_back(root.as_ref());
-        while Some(node) = stack.pop_back() {}
-        vec![]
+    /// 中序迭代
+    pub fn mid_iter(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut stack = Vec::new();
+        let mut result = Vec::new();
+        while !stack.is_empty() || root.is_some() {
+            if root.is_some() {
+                stack.push(root.clone());
+                root = root.unwrap().borrow().left.clone();
+            } else {
+                let node = stack.pop().unwrap().unwrap();
+                result.push(node.borrow().val);
+                root = node.borrow().right.clone();
+            }
+        }
+        result
+    }
+
+    /// 前序迭代
+    pub fn preorder_iter(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut answer: Vec<i32> = Vec::new();
+        let mut stack: Vec<Option<Rc<RefCell<TreeNode>>>> = vec![root];
+        while let Some(last) = stack.pop() {
+            if let Some(n) = last {
+                answer.push(n.borrow().val);
+                stack.push(n.borrow().right.clone());
+                stack.push(n.borrow().left.clone());
+            }
+        }
+        answer
+    }
+
+    /// 后序迭代,前序的方式 逆序
+    pub fn posorder_iter(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut answer: Vec<i32> = Vec::new();
+        let mut stack: Vec<Option<Rc<RefCell<TreeNode>>>> = vec![root];
+        while let Some(last) = stack.pop() {
+            if let Some(n) = last {
+                answer.push(n.borrow().val);
+                stack.push(n.borrow().left.clone());
+                stack.push(n.borrow().right.clone());
+            }
+        }
+        answer.reverse();
+        answer
     }
 }
 

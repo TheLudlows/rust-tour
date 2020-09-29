@@ -19,7 +19,7 @@ fn combination2(candidates: &[i32], begin: usize, target: i32, result: &mut Vec<
         return;
     }
     if target == 0 {//当前分支符合，加入结果集并返回。
-        result.push(Vec::from(path.clone());
+        result.push(Vec::from(path.clone()));
         return;
     }
     if begin == candidates.len() {
