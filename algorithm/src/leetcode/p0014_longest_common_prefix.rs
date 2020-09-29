@@ -1,5 +1,6 @@
-use crate::leetcode::common::Solution;
 use std::str::Chars;
+
+use crate::leetcode::common::Solution;
 
 impl Solution {
     pub fn longest_common_prefix(strs: Vec<String>) -> String {
@@ -18,17 +19,17 @@ impl Solution {
                     same = false;
                     break;
                 }
-                if i >= bytes[0].len() || i >= bytes[j].len() ||  bytes[j][i] != bytes[0][i] {
+                if i >= bytes[0].len() || i >= bytes[j].len() || bytes[j][i] != bytes[0][i] {
                     same = false;
                     break;
                 }
             }
-            if same && bytes[0].len() > i{
+            if same && bytes[0].len() > i {
                 res.push(bytes[0][i] as char)
-            } else{
-                break
+            } else {
+                break;
             }
-            i+=1;
+            i += 1;
         }
         res
     }
@@ -36,7 +37,7 @@ impl Solution {
 
 #[test]
 fn test() {
-    let v = vec!["abc".to_string(),"a".to_string()];
+    let v = vec!["abc".to_string(), "a".to_string()];
     let r = Solution::longest_common_prefix(v);
-    println!("{}",r)
+    println!("{}", r)
 }

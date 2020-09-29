@@ -7,31 +7,31 @@ impl Solution {
         }
         let source = &s.as_bytes();
         let patten = &p.as_bytes();
-        let (mut i,mut j) = (0, 0);
+        let (mut i, mut j) = (0, 0);
         while i < s.len() || j < patten.len() {
-
             if source[i] == patten[j] {
-                i+=1;
-                j+=1;
+                i += 1;
+                j += 1;
             } else {
-                if patten[j] == '.' as u8{
-                    i+=1;
-                    j+=1;
+                if patten[j] == '.' as u8 {
+                    i += 1;
+                    j += 1;
                 } else if patten[j] == '*' as u8 {
-                    if patten[j-1] == source[i] {
-                        i+=1;
+                    if patten[j - 1] == source[i] {
+                        i += 1;
                     }
-                } else{
+                } else {
                     return false;
                 }
             }
         }
-        println!("{},{}",i,j);
+        println!("{},{}", i, j);
         true
     }
 }
+
 #[test]
 fn test() {
-    let r = Solution::is_match("aa".to_string(),"a*aa".to_string());
-    println!("{}",r);
+    let r = Solution::is_match("aa".to_string(), "a*aa".to_string());
+    println!("{}", r);
 }

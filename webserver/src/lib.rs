@@ -1,24 +1,24 @@
+use std::sync::{Arc, mpsc, Mutex};
 use std::thread;
-use std::sync::{mpsc, Arc, Mutex};
 use std::thread::JoinHandle;
 
 pub struct ThreadPool {
     workers: Vec<Worker>,
-    sender: mpsc::Sender<Job>
+    sender: mpsc::Sender<Job>,
 }
 
 impl ThreadPool {
     pub fn new(size: usize) -> ThreadPool {
         let mut workers = Vec::with_capacity(size);
 
-        let (sender,receiver) = mpsc::channel();
+        let (sender, receiver) = mpsc::channel();
         let rec = Arc::new(Mutex::new(receiver));
         for id in 0..size {
-            workers.push(Worker::new(id,rec.clone()));
+            workers.push(Worker::new(id, rec.clone()));
         }
         ThreadPool {
             workers,
-            sender
+            sender,
         }
     }
     pub fn execute<F>(&self, f: F)
@@ -28,12 +28,12 @@ impl ThreadPool {
     }
 }
 
-impl Drop for ThreadPool{
+impl Drop for ThreadPool {
     fn drop(&mut self) {
-        for worker in  & mut self.workers {
-           if let Some(j) = worker.h.take() {
-               j.join().unwrap();
-           }
+        for worker in &mut self.workers {
+            if let Some(j) = worker.h.take() {
+                j.join().unwrap();
+            }
         }
     }
 }
@@ -44,7 +44,7 @@ struct Worker {
 }
 
 impl Worker {
-    fn new(id: usize, receiver : Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
+    fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
         let t = thread::spawn(move || {
             loop {
                 let job = receiver.lock().unwrap().recv().unwrap();
@@ -52,10 +52,11 @@ impl Worker {
                 job();
             }
         });
-        Worker{
+        Worker {
             id,
-            h:Option::Some(t)
+            h: Option::Some(t),
         }
     }
 }
+
 type Job = Box<dyn FnOnce() + Send + 'static>;

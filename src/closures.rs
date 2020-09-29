@@ -1,4 +1,3 @@
-
 #[test]
 fn closure_test() {
     let double = |num| num * 2;

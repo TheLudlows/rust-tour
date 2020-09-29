@@ -1,5 +1,5 @@
-
 #![allow(unused_variables)]
+
 fn main() {
     let mut s = String::from("hello world");
 
@@ -14,5 +14,4 @@ fn main() {
 
     //s.clear();
     println!("{}", all_)
-
 }

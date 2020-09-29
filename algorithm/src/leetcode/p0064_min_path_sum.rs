@@ -1,5 +1,6 @@
-use crate::leetcode::common::Solution;
 use std::cmp::min;
+
+use crate::leetcode::common::Solution;
 
 impl Solution {
     pub fn min_path_sum(grid: Vec<Vec<i32>>) -> i32 {

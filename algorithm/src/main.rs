@@ -1,9 +1,11 @@
 struct Foo;
-impl Drop for Foo{
+
+impl Drop for Foo {
     fn drop(&mut self) {
-       println!("dropped")
+        println!("dropped")
     }
 }
+
 fn main() {
     let f = Foo;
     if let Foo = f {

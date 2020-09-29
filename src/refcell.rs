@@ -4,25 +4,27 @@ pub trait MessageQueue {
     fn send(&self, msg: &str);
     fn println(&self);
 }
-struct MyMQ{
-    queue:RefCell<Vec<String>>
+
+struct MyMQ {
+    queue: RefCell<Vec<String>>
 }
+
 impl MessageQueue for MyMQ {
-    fn send(& self, msg: &str) {
+    fn send(&self, msg: &str) {
         self.queue.borrow_mut().push(String::from(msg))
     }
 
     fn println(&self) {
-      for str in  self.queue.borrow().iter() {
-          println!("{}",str)
-      }
+        for str in self.queue.borrow().iter() {
+            println!("{}", str)
+        }
     }
 }
 
 impl MyMQ {
-    fn new() -> MyMQ{
-        MyMQ{
-            queue:RefCell::new(vec![])
+    fn new() -> MyMQ {
+        MyMQ {
+            queue: RefCell::new(vec![])
         }
     }
 }

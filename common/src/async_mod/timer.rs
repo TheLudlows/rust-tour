@@ -1,9 +1,9 @@
-use std::sync::{Mutex, Arc};
-use std::task::{Waker, Context, Poll};
 use std::future::Future;
 use std::pin::Pin;
-use std::time::Duration;
+use std::sync::{Arc, Mutex};
+use std::task::{Context, Poll, Waker};
 use std::thread;
+use std::time::Duration;
 
 pub struct TimerFuture {
     shared_state: Arc<Mutex<SharedState>>,
@@ -19,6 +19,7 @@ struct SharedState {
     /// `TimerFuture`的任务来唤醒, 观察 `completed = true`, 并前进
     waker: Option<Waker>,
 }
+
 impl Future for TimerFuture {
     type Output = ();
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {

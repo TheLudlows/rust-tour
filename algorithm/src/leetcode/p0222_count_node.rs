@@ -1,6 +1,7 @@
-use crate::leetcode::common::{Solution, TreeNode};
 use std::cell::RefCell;
 use std::rc::Rc;
+
+use crate::leetcode::common::{Solution, TreeNode};
 
 impl Solution {
     pub fn count_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
@@ -14,6 +15,4 @@ impl Solution {
 }
 
 #[test]
-pub fn test() {
-
-}
+pub fn test() {}

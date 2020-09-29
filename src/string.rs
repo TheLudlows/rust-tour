@@ -1,5 +1,5 @@
-
 #![allow(unused_variables)]
+
 fn main() {
     let data = "initial contents";
     let s = "initial contents".to_string();
@@ -9,7 +9,7 @@ fn main() {
     let mut s = String::from("foo");
     let str = "bar";
     s.push_str(str);
-    println!("{}",str);
+    println!("{}", str);
 
     let s1 = String::from("Hello, ");
     let s2 = String::from("world!");
@@ -27,13 +27,13 @@ fn main() {
     let zh = "你好啊";
     let en = "hello !";
 
-    println!("zh size {}",zh.len());
+    println!("zh size {}", zh.len());
 
-    for i in zh.chars(){
-        println!("{}",i)
+    for i in zh.chars() {
+        println!("{}", i)
     }
 
-    for i in en.bytes(){
-        println!("{}",i)
+    for i in en.bytes() {
+        println!("{}", i)
     }
 }

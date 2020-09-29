@@ -1,7 +1,6 @@
-use compressed_vec::{VectorU32Appender, VectorF32XorAppender, VectorReader};
-use compressed_vec::vector::VectorAppender;
+use compressed_vec::{VectorF32XorAppender, VectorReader, VectorU32Appender};
 use compressed_vec::section::AutoEncoder;
+use compressed_vec::vector::VectorAppender;
 
 #[test]
-fn test_int() {
-}
+fn test_int() {}

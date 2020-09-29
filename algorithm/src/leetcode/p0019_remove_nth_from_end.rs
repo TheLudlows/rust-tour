@@ -1,4 +1,5 @@
 use crate::leetcode::common::{ListNode, Solution};
+
 /// 注意as_mut 返回 Option<&mut T>
 /// as_ref 返回的是  Option<& T>
 impl Solution {
@@ -22,11 +23,12 @@ impl Solution {
         dummy.next
     }
 }
-# [test]
-fn test() {
-let mut tail = Some(Box::new(ListNode::new(3)));
-let mut mid = Some(Box::new(ListNode::new_withNext(2, tail)));
 
-let mut head = Some(Box::new(ListNode::new_withNext(1, mid)));
-Solution::remove_nth_from_end(head, 1);
+#[test]
+fn test() {
+    let mut tail = Some(Box::new(ListNode::new(3)));
+    let mut mid = Some(Box::new(ListNode::new_withNext(2, tail)));
+
+    let mut head = Some(Box::new(ListNode::new_withNext(1, mid)));
+    Solution::remove_nth_from_end(head, 1);
 }

@@ -1,5 +1,6 @@
-use std::collections::BinaryHeap;
 use std::cmp::Ordering;
+use std::collections::BinaryHeap;
+
 use crate::leetcode::common::{ListNode, Solution};
 
 impl PartialOrd<ListNode> for ListNode {
@@ -13,6 +14,7 @@ impl Ord for ListNode {
         other.val.cmp(&self.val)
     }
 }
+
 /// 最小堆的使用
 impl Solution {
     pub fn merge_k_lists(lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {

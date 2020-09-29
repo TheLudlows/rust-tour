@@ -7,6 +7,7 @@ fn add_one(x: i32) -> i32 {
 fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
     f(arg) + f(arg)
 }
+
 #[test]
 fn func_pointer() {
     let answer = do_twice(add_one, 5);
@@ -23,33 +24,34 @@ fn trans_p() {
 #[derive(Debug)]
 struct Foo { i: i32 }
 
-fn print( f: &Foo) {
+fn print(f: &Foo) {
     println!("{:p}", f);
 }
 
 #[test]
 fn add_test() {
-    let z = square(100,200);
-    let r = square::<f32>(4.2,5.0);
+    let z = square(100, 200);
+    let r = square::<f32>(4.2, 5.0);
 }
 
-fn square<T: Mul<T,Output=T>>(x: T, y: T) -> T {
+fn square<T: Mul<T, Output=T>>(x: T, y: T) -> T {
     x * y
 }
 
- fn ya_iif(flag: bool) -> &'static str {
+fn ya_iif(flag: bool) -> &'static str {
     if flag {
         "true"
     } else {
         "false"
     }
 }
+
 fn iif(flag: bool) -> &'static str {
     ["false", "true"][flag as usize]
 }
+
 #[test]
 fn test_fn() {
-    println!("{}",ya_iif(false));
-    println!("{}",iif(true));
-
+    println!("{}", ya_iif(false));
+    println!("{}", iif(true));
 }

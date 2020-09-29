@@ -1,4 +1,3 @@
-
 #[test]
 fn no_mutable_aliasing() {
     let mut name = String::from("Vivian");

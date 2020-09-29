@@ -15,7 +15,7 @@ impl ListNode {
             val,
         }
     }
-    pub(crate) fn new_withNext(val: i32,next:Option<Box<ListNode>>) -> Self {
+    pub(crate) fn new_withNext(val: i32, next: Option<Box<ListNode>>) -> Self {
         ListNode {
             next,
             val,
@@ -23,7 +23,7 @@ impl ListNode {
     }
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq,Clone)]
 pub struct TreeNode {
     pub val: i32,
     pub left: Option<Rc<RefCell<TreeNode>>>,

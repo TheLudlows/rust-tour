@@ -1,6 +1,7 @@
+use std::borrow::{Borrow, BorrowMut};
 use std::ops::{Deref, DerefMut};
-use crate::boxes::List::{Node, Nil};
-use std::borrow::{BorrowMut, Borrow};
+
+use crate::boxes::List::{Nil, Node};
 
 pub enum List {
     Node(i32, Box<List>),
@@ -80,6 +81,6 @@ fn owner_test() {
 #[test]
 fn mut_test() {
     let mut a: Box<i32> = Box::new(1);
-    let x:&i32 = a.borrow();
+    let x: &i32 = a.borrow();
     let y = a.as_ref();
 }

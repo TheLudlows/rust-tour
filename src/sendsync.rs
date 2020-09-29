@@ -5,7 +5,7 @@ fn main() {
     );
 
     let y = String::from("a");
-    let h = std::thread::spawn(||y);
+    let h = std::thread::spawn(|| y);
 
     let z = 32;
     let h = std::thread::spawn(move || z);

@@ -1,10 +1,10 @@
-mod async_demo;
-
+use failure::Error;
 use mio::*;
 use mio::net::{TcpListener, TcpStream};
-use std::io::{Read, Write, self};
-use failure::Error;
+use std::io::{self, Read, Write};
 use std::time::{Duration, Instant};
+
+mod async_demo;
 
 const SERVER_ACCEPT: Token = Token(0);
 const SERVER: Token = Token(1);

@@ -25,8 +25,9 @@ impl Solution {
         pow * x
     }
 }
+
 #[test]
 fn test() {
-    let r = Solution::my_pow(2f64,4);
-    println!("{}",r);
+    let r = Solution::my_pow(2f64, 4);
+    println!("{}", r);
 }

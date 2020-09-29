@@ -1,4 +1,3 @@
-
 #![feature(cow_is_borrowed)]
 #![feature(async_closure)]
 #![feature(ptr_internals)]
@@ -6,13 +5,14 @@
 #![feature(generator_trait)]
 #![feature(type_name_of_val)]
 #![allow(unused_variables)]
+
 mod from_into;
 mod debug_display;
 mod asyncs;
 mod unique;
 mod drop;
 mod pin;
-pub mod func ;
+pub mod func;
 pub mod vector;
 pub mod string;
 pub mod hashmap;
@@ -52,6 +52,5 @@ mod any;
 mod macros;
 mod ref_test;
 
-fn main() {
-}
+fn main() {}
 
