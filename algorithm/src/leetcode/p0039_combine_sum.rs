@@ -1,23 +1,23 @@
 use crate::leetcode::common::Solution;
-use std::collections::VecDeque;
+
 /// 回溯 + 减枝
 impl Solution {
     pub fn combination_sum(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
         let mut candidates = candidates;
         candidates.sort();
         let mut result = Vec::new();
-        let mut path = VecDeque::new();
+        let mut path = Vec::new();
         combination(&candidates, 0, target, &mut result, &mut path);
         result
     }
 }
 
-fn combination(candidates: &[i32], begin: usize, target: i32, result: &mut Vec<Vec<i32>>, path: &mut VecDeque<i32>) {
+fn combination(candidates: &[i32], begin: usize, target: i32, result: &mut Vec<Vec<i32>>, path: &mut Vec<i32>) {
     if target < 0 {// 当前分支不符合
         return;
     }
     if target == 0 {//当前分支符合，加入结果集并返回。
-        result.push(Vec::from(path.clone().as_slices().0));//VecDeque转化为Vec有些挫
+        result.push(Vec::from(path.clone()));
         return;
     }
     for i in begin..candidates.len() {
@@ -26,9 +26,9 @@ fn combination(candidates: &[i32], begin: usize, target: i32, result: &mut Vec<V
         if new_target < 0 {
             return;
         }
-        path.push_back(candidates[i as usize]);
+        path.push(candidates[i as usize]);
         combination(candidates, i, new_target, result, path);
-        path.pop_back();
+        path.pop();
     }
 }
 

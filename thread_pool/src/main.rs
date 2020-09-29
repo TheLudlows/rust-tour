@@ -1,12 +1,12 @@
-use std::sync::{Mutex, Condvar, Arc};
-use std::sync::mpsc::{Receiver, Sender, channel};
-use std::sync::atomic::{AtomicUsize, Ordering, AtomicBool};
+use std::sync::{Arc, Condvar, Mutex};
+use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+use std::sync::mpsc::{channel, Receiver, Sender};
 use std::thread;
 
 fn main() {
     let pool = Builder::new().build();
-    println!("{:?}",pool.pool_data.max_thread_count);
-    pool.execute(||print!("hello"));
+    println!("{:?}", pool.pool_data.max_thread_count);
+    pool.execute(|| print!("hello"));
     pool.join();
 }
 

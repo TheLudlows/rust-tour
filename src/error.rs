@@ -11,13 +11,10 @@ fn match_error() {
             println!("Failed to open the file.");
         }
     };
-
-
 }
 
 fn f(i: i32) -> Result<i32, bool> {
-    if i >= 0 { Ok(i) }
-    else { Err(false) }
+    if i >= 0 { Ok(i) } else { Err(false) }
 }
 
 fn g(i: i32) -> Result<i32, bool> {

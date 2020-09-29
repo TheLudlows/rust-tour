@@ -1,4 +1,5 @@
 use crate::leetcode::common::{ListNode, Solution};
+
 /// emm...
 
 impl Solution {
@@ -34,8 +35,8 @@ impl Solution {
 
 #[cfg(test)]
 mod test {
-    use crate::leetcode::p0002_add_two_num::{build_list};
     use crate::leetcode::common::Solution;
+    use crate::leetcode::p0002_add_two_num::build_list;
 
     #[test]
     fn two_sum_test() {

@@ -1,6 +1,6 @@
-use std::ptr::NonNull;
-use std::fmt::{Display, Formatter};
 use core::fmt;
+use std::fmt::{Display, Formatter};
+use std::ptr::NonNull;
 
 struct Node<T> {
     val: T,

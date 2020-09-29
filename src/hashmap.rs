@@ -1,4 +1,3 @@
-
 fn main() {
     use std::collections::HashMap;
 
@@ -13,11 +12,11 @@ fn main() {
     map.insert(field_name, "Blue");
     //println!("{}",field_name)
 
-    let  o = map.get(&("Favorite color".to_string()));
-    println!("{}",o.unwrap());
+    let o = map.get(&("Favorite color".to_string()));
+    println!("{}", o.unwrap());
 
-    for (k,v) in map{
-        println!("{},{}", k,v)
+    for (k, v) in map {
+        println!("{},{}", k, v)
     }
 
     let mut scores = HashMap::new();
@@ -25,5 +24,4 @@ fn main() {
     let v = scores.entry(String::from("Yellow")).or_insert(50);
     *v += 100;
     println!("{}", scores.get(&String::from("Yellow")).unwrap());
-
 }

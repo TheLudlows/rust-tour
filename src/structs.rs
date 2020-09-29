@@ -1,18 +1,19 @@
 #![allow(unused_variables)]
 
 struct User {
-    username: String ,
-    email:  String,
+    username: String,
+    email: String,
     sign_in_count: u64,
     active: bool,
 }
+
 struct empty;
 
 #[test]
 fn main() {
-    type Int=i32;
+    type Int = i32;
     let mut a = "a";
-    let a:Int = 10;
+    let a: Int = 10;
 
     let user1 = User {
         email: String::from("someone@example.com"),
@@ -21,24 +22,23 @@ fn main() {
         sign_in_count: 1,
     };
 
-    println!("{}{}",user1.username,user1.email);
+    println!("{}{}", user1.username, user1.email);
 
-    let user2 = build_user(String::from("abc.com"),String::from("four"));
+    let user2 = build_user(String::from("abc.com"), String::from("four"));
 
-    let user3 = User{
+    let user3 = User {
         ..user1
     };
     println!("{}", user3.username);
 
-    struct Person (String,String,usize);
-    let p1 = Person(String::from("four"),String::from("ai"),12);
+    struct Person(String, String, usize);
+    let p1 = Person(String::from("four"), String::from("ai"), 12);
 
     let e1 = empty;
     let e2 = empty;
 
-    println!("{:p}",&e1);
-    println!("{:p}",&e2);
-
+    println!("{:p}", &e1);
+    println!("{:p}", &e2);
 }
 
 fn build_user(email: String, username: String) -> User {

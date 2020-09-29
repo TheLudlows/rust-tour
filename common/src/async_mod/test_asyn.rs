@@ -1,6 +1,6 @@
+use async_std::task::sleep;
 use futures::executor;
 use futures::join;
-use async_std::task::sleep;
 use std::time::Duration;
 
 async fn learn_song() {
@@ -27,7 +27,6 @@ async fn async_main() {
     let f2 = dance();
     f1.await;
     f2.await;
-    
 }
 
 #[test]

@@ -1,4 +1,5 @@
 use crate::leetcode::common::{ListNode, Solution};
+
 ///
 /// take的用法
 impl Solution {

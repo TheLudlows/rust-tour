@@ -1,4 +1,3 @@
-
 #[test]
 fn main() {
     async fn func1() -> i32 { 12 }
@@ -13,5 +12,4 @@ fn main() {
 
     let fut = func2();
     println!("future size: {}", std::mem::size_of_val(&fut));
-
 }

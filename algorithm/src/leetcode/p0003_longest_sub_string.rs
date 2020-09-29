@@ -8,33 +8,32 @@ impl Solution {
         if s.len() == 0 {
             return 0;
         }
-        let mut max_len  = 0;
+        let mut max_len = 0;
         let ss = s.as_bytes();
         let mut s_index: usize = 0;
-        let mut e_index : usize = 0;
+        let mut e_index: usize = 0;
 
         let mut i = 1;
         while i < s.len() {
-            let index = indexOf(ss,ss[i],s_index,e_index);
-            e_index+=1;
+            let index = indexOf(ss, ss[i], s_index, e_index);
+            e_index += 1;
             if index == -1 {
                 if e_index - s_index > max_len {
-                    max_len = e_index -s_index;
+                    max_len = e_index - s_index;
                 }
-            } else{
+            } else {
                 s_index = index as usize + 1;
             }
-            i+=1;
-
+            i += 1;
         }
-        (max_len+1) as i32
+        (max_len + 1) as i32
     }
 }
 
-fn indexOf(arr:&[u8], c:u8, start:usize,end:usize) -> i32 {
+fn indexOf(arr: &[u8], c: u8, start: usize, end: usize) -> i32 {
     for i in start..=end {
         if arr[i] == c {
-            return  i as i32
+            return i as i32;
         }
     }
     -1
@@ -43,6 +42,5 @@ fn indexOf(arr:&[u8], c:u8, start:usize,end:usize) -> i32 {
 #[test]
 fn test() {
     let n = Solution::length_of_longest_substring("acbae".to_string());
-    println!("{}",n);
-
+    println!("{}", n);
 }

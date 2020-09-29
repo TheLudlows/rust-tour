@@ -1,4 +1,5 @@
 use crate::leetcode::common::Solution;
+
 ///
 impl Solution {
     pub fn search_insert(nums: Vec<i32>, target: i32) -> i32 {
@@ -10,12 +11,12 @@ impl Solution {
                 return mid as i32;
             }
             if nums[mid] < target {
-                i=mid+1;
-            }else {
+                i = mid + 1;
+            } else {
                 if mid == 0 {
-                    break
+                    break;
                 }
-                j=mid-1;
+                j = mid - 1;
             }
         }
         i as i32
@@ -24,7 +25,7 @@ impl Solution {
 
 #[test]
 fn test() {
-    let v = vec![1,2,3,4,5];
-    let r = Solution::search_insert(v,0);
-    println!("{}",r)
+    let v = vec![1, 2, 3, 4, 5];
+    let r = Solution::search_insert(v, 0);
+    println!("{}", r)
 }

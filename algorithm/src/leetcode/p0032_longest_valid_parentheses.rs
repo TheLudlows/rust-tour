@@ -1,5 +1,6 @@
-use crate::leetcode::common::Solution;
 use std::collections::VecDeque;
+
+use crate::leetcode::common::Solution;
 
 impl Solution {
     pub fn longest_valid_parentheses(s: String) -> i32 {
@@ -13,16 +14,16 @@ impl Solution {
                 old.map(|&oc|
                     if oc == '(' {
                         cur += 2;
-                    }else {
-                        cur=0;
+                    } else {
+                        cur = 0;
                     }
                 );
             } else {
                 let old = stack.back();
                 old.map(|&oc| {
-                   if oc == '(' {
-                       cur = 0;
-                   }
+                    if oc == '(' {
+                        cur = 0;
+                    }
                 });
             }
             stack.push_back(c);
@@ -34,8 +35,8 @@ impl Solution {
         max
     }
 }
+
 #[test]
 fn test() {
-    println!("{}",Solution::longest_valid_parentheses("()()()(())".to_string()));
-
+    println!("{}", Solution::longest_valid_parentheses("()()()(())".to_string()));
 }

@@ -13,7 +13,7 @@ impl Solution {
             }
         }
 
-        for (i, n) in nums.into_iter().enumerate(){
+        for (i, n) in nums.into_iter().enumerate() {
             if n != i as i32 {
                 return i as i32;
             }

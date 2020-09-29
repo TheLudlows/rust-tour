@@ -1,4 +1,4 @@
-macro_rules! unless{
+macro_rules! unless {
     ($arg:expr, $branch:expr) => (if !$arg { $branch };);
 }
 

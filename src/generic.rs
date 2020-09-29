@@ -10,6 +10,7 @@ impl<T> Point<T> {
         &self.x
     }
 }
+
 impl Point<f32> {
     fn distance_from_origin(&self) -> f32 {
         (self.x.powi(2) + self.y.powi(2)).sqrt()
@@ -19,10 +20,12 @@ impl Point<f32> {
 trait Double<T> {
     fn double(&self) -> Option<T>;
 }
+
 struct S {
-    data:i32
+    data: i32
 }
-impl Double<i32> for S{
+
+impl Double<i32> for S {
     fn double(&self) -> Option<i32> {
         unimplemented!()
     }

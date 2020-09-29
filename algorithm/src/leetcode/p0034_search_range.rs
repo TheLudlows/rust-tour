@@ -3,7 +3,7 @@ use crate::leetcode::common::Solution;
 impl Solution {
     pub fn search_range(nums: Vec<i32>, target: i32) -> Vec<i32> {
         if nums.is_empty() {
-            return vec![-1,-1]
+            return vec![-1, -1];
         }
         let mut l = 0;
         let mut r = nums.len() - 1;
@@ -21,7 +21,7 @@ impl Solution {
             }
         }
         if i == -1 {
-            return vec![-1,-1]
+            return vec![-1, -1];
         }
         while i >= 0 && nums[i as usize] == target {
             i -= 1;
@@ -29,7 +29,8 @@ impl Solution {
         while j <= (nums.len() - 1) as i32 && nums[j as usize] == target {
             j += 1;
         }
-        i+=1;j-=1;
+        i += 1;
+        j -= 1;
         vec![i, j]
     }
 }
@@ -37,6 +38,6 @@ impl Solution {
 #[test]
 fn test() {
     let v = vec![5, 7, 7, 8, 8, 10];
-    let r = Solution::search_range(v,8);
-    println!("{:?}",r);
+    let r = Solution::search_range(v, 8);
+    println!("{:?}", r);
 }

@@ -63,6 +63,7 @@ trait Animal {
 }
 
 struct Dog;
+
 impl Dog {
     fn baby_name() -> String {
         String::from("Spot")
@@ -83,34 +84,39 @@ fn func_test2() {
 
 
 struct Pig;
+
 struct Duck;
-trait Fly{
+
+trait Fly {
     fn fly(&self) -> bool;
 }
-impl Fly for Pig{
+
+impl Fly for Pig {
     fn fly(&self) -> bool {
         false
     }
 }
 
-impl Fly for Duck{
+impl Fly for Duck {
     fn fly(&self) -> bool {
         true
     }
 }
 
-fn fly_static<T: Fly>(t:&T) -> bool{
+fn fly_static<T: Fly>(t: &T) -> bool {
     t.fly()
 }
-fn fly_dyn(t:& dyn Fly) -> bool{
+
+fn fly_dyn(t: &dyn Fly) -> bool {
     t.fly()
 }
+
 #[test]
 fn func3_test() {
     let pig = Pig;
     let duck = Duck;
-    assert_eq!(fly_dyn(&pig),false);
-    assert_eq!(fly_dyn(&duck),true);
-    assert_eq!(fly_static(&pig),false);
-    assert_eq!(fly_static(&duck),true);
+    assert_eq!(fly_dyn(&pig), false);
+    assert_eq!(fly_dyn(&duck), true);
+    assert_eq!(fly_static(&pig), false);
+    assert_eq!(fly_static(&duck), true);
 }

@@ -15,7 +15,7 @@ impl ListNode {
             val,
         }
     }
-    pub(crate) fn new_withNext(val: i32,next:Option<Box<ListNode>>) -> Self {
+    pub(crate) fn new_withNext(val: i32, next: Option<Box<ListNode>>) -> Self {
         ListNode {
             next,
             val,

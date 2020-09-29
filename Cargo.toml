@@ -5,9 +5,9 @@ authors = ["four <ai-l@outlook.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-members =  [
-"minigrep",
-"algorithm"
+members = [
+    "minigrep",
+    "algorithm"
 ]
 [dependencies]
-futures="0.3.4"
+futures = "0.3.4"

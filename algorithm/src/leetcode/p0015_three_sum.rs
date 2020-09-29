@@ -1,5 +1,7 @@
-use crate::leetcode::common::Solution;
 use std::collections::HashSet;
+
+use crate::leetcode::common::Solution;
+
 ///  [-3,-2,-1,2,3,5]
 ///  先进性排序， a指针从头向后遍历，b指针在a指针之后开始，c指针从结尾开始
 ///  bc指针指向值和a的值进行累加，如果大于0，则移动c指针，如果小于0，则移动b指针。直到找到或者b==c
@@ -26,7 +28,7 @@ impl Solution {
             //左边的指针小于右边的指针
             while b < c {
                 let sum = nums[b] + nums[c] + nums[a];
-                if  sum < 0{
+                if sum < 0 {
                     b += 1;
                 } else if sum > 0 {
                     c -= 1;

@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+
 use crate::leetcode::common::Solution;
 
 /// 遍历数组，将元素加入map，k-v分别是数组元素和下标，插入的时候判断target-x是否在map中，如果在返回结果。
@@ -7,16 +8,17 @@ use crate::leetcode::common::Solution;
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut map = HashMap::new();
-        for (index,num) in nums.iter().enumerate() {
+        for (index, num) in nums.iter().enumerate() {
             let v = map.get(&(target - *num));
             match v {
-                None => {map.insert(num, index);},
-                Some(i) => {return vec![*i as i32, (index) as i32];}
+                None => { map.insert(num, index); }
+                Some(i) => { return vec![*i as i32, (index) as i32]; }
             }
         }
         vec![]
     }
 }
+
 #[cfg(test)]
 mod tests {
     use crate::leetcode::p0001_two_sum::Solution;

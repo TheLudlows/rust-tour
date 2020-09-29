@@ -13,12 +13,13 @@ impl Rectangle {
         other.height <= self.height && self.width >= other.width
     }
     fn from(width: u32, height: u32) -> Rectangle {
-        Rectangle{
+        Rectangle {
             width,
-            height
+            height,
         }
     }
 }
+
 #[test]
 fn main() {
     let rect1 = Rectangle { width: 30, height: 50 };
@@ -26,5 +27,5 @@ fn main() {
     //rect1.area();
     let rect2 = Rectangle { width: 20, height: 50 };
     //println!("{}", rect1.can_hold(&rect2));
-    Rectangle::from(21,32);
+    Rectangle::from(21, 32);
 }

@@ -11,7 +11,7 @@ impl Solution {
         let mut quotient = x;
         while quotient != 0 {
             rem = quotient % 10;
-            quotient /=10;
+            quotient /= 10;
             y = y * 10 + rem;
         }
         return y == x;

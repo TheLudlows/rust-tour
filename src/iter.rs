@@ -18,8 +18,8 @@ fn main() {
 
     let v1: Vec<i32> = vec![1, 2, 3];
     let i = 2;
-    let sum:i32 = v1.iter().filter(|e| e > &&i).sum();
-    assert_eq!(sum,3);
+    let sum: i32 = v1.iter().filter(|e| e > &&i).sum();
+    assert_eq!(sum, 3);
 
 
     struct Counter {
@@ -44,5 +44,4 @@ fn main() {
             }
         }
     }
-
 }

@@ -24,7 +24,7 @@ fn enums() {
 
     let n = Some(1);
     if let x = n {
-        println!("{}",x.unwrap())
+        println!("{}", x.unwrap())
     }
 }
 

@@ -1,5 +1,6 @@
-use crate::leetcode::common::{Solution, ListNode};
 use std::borrow::BorrowMut;
+
+use crate::leetcode::common::{ListNode, Solution};
 
 impl Solution {
     pub fn rotate_right(mut head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
@@ -18,8 +19,8 @@ impl Solution {
 #[test]
 fn test() {
     let tail = Some(Box::new(ListNode::new(3)));
-    let mid = Some(Box::new(ListNode{ val: 2, next: tail }));
-    let head = Some(Box::new(ListNode{ val: 1, next: mid }));
+    let mid = Some(Box::new(ListNode { val: 2, next: tail }));
+    let head = Some(Box::new(ListNode { val: 1, next: mid }));
 
-    Solution::rotate_right(head,2);
+    Solution::rotate_right(head, 2);
 }

@@ -2,7 +2,6 @@ use crate::leetcode::common::Solution;
 
 impl Solution {
     pub fn reverse(x: i32) -> i32 {
-
         x.abs()
             .to_string()
             .chars().rev()

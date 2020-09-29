@@ -1,6 +1,7 @@
-use std::rc::Rc;
 use std::cell::RefCell;
-use crate::leetcode::common::{ListNode, TreeNode, Solution};
+use std::rc::Rc;
+
+use crate::leetcode::common::{ListNode, Solution, TreeNode};
 
 /// 链表从中间切开,那么这时候主体是一个相对平衡的二叉树
 /// 左边,右边分别像第一步一样递归求解即可.

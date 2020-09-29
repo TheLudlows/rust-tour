@@ -1,8 +1,8 @@
-use std::thread;
-use std::time::Duration;
-use std::sync::{mpsc, Mutex, Arc, RwLock, Barrier};
 use std::cell::RefCell;
-use std::thread::{JoinHandle, Builder};
+use std::sync::{Arc, Barrier, mpsc, Mutex, RwLock};
+use std::thread;
+use std::thread::{Builder, JoinHandle};
+use std::time::Duration;
 
 #[test]
 fn new_thread() {
@@ -201,10 +201,9 @@ fn test_posion() {
         panic!("oh no");
     }).join();
     match rc.lock() {
-        Ok(s) =>  println!("{}", s),
-        Err(e) => println!("err {}",e)
+        Ok(s) => println!("{}", s),
+        Err(e) => println!("err {}", e)
     };
-
 }
 
 #[test]

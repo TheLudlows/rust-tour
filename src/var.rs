@@ -1,8 +1,9 @@
 use std::borrow::BorrowMut;
 
-const VAR:u32 = 10;
+const VAR: u32 = 10;
+
 fn main() {
-   // const VAR:u32 = 20;
+    // const VAR:u32 = 20;
 
     let mut x = 5;
     println!("The value of x is: {}", x);
@@ -16,11 +17,11 @@ fn main() {
     let y = "yyy";
     println!("The value of y is: {}", y);
 
-    let t:(u32,char,bool) = (1,'a',false);
-    println!("tuple is {},{},{}", t.0,t.1,t.2);
+    let t: (u32, char, bool) = (1, 'a', false);
+    println!("tuple is {},{},{}", t.0, t.1, t.2);
 
-    let arr = [1,2,3,4,5];
-    let str_arr = ["a","b"];
+    let arr = [1, 2, 3, 4, 5];
+    let str_arr = ["a", "b"];
     println!("arr len is:{}", arr.len());
     println!("arr string  first is:{}", str_arr[0])
 }
@@ -36,6 +37,7 @@ fn first_word(s: &String) -> usize {
 
     s.len()
 }
+
 fn first_words(s: &String) -> usize {
     let bytes = s.as_bytes();
 
@@ -46,6 +48,7 @@ fn first_words(s: &String) -> usize {
     }
     s.len()
 }
+
 #[test]
 fn test() {
     let mut a = "a".to_string();
@@ -54,14 +57,14 @@ fn test() {
     //let c = &a;
     //let d = *c;
 }
+
 #[test]
 fn test_var() {
     let mut x = 10;
-    let  p = &mut x;
+    let p = &mut x;
     let v = p;
     //println!("{:p}",p);
-    println!("{:p}",v);
-
+    println!("{:p}", v);
 }
 
 

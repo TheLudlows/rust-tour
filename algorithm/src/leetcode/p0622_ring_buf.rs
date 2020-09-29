@@ -1,8 +1,8 @@
 use std::collections::VecDeque;
 
 struct MyCircularQueue {
-    data:VecDeque<i32>,
-    size:i32
+    data: VecDeque<i32>,
+    size: i32,
 }
 
 /**
@@ -10,27 +10,26 @@ struct MyCircularQueue {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyCircularQueue {
-
     /** Initialize your data structure here. Set the size of the queue to be k. */
     fn new(k: i32) -> Self {
-        Self{
-            size:k,
-            data: VecDeque::with_capacity(k as usize)
+        Self {
+            size: k,
+            data: VecDeque::with_capacity(k as usize),
         }
     }
 
     /** Insert an element into the circular queue. Return true if the operation is successful. */
-    fn en_queue(& mut self, value: i32) -> bool {
+    fn en_queue(&mut self, value: i32) -> bool {
         if self.data.len() == self.size as usize {
             //self.data.pop();
-            return false
+            return false;
         }
         self.data.push_back(value);
         true
     }
 
     /** Delete an element from the circular queue. Return true if the operation is successful. */
-    fn de_queue(& mut self) -> bool {
+    fn de_queue(&mut self) -> bool {
         if self.data.len() == 0 {
             false
         } else {
@@ -70,8 +69,5 @@ impl MyCircularQueue {
  * let ret_5: bool = obj.is_empty();
  * let ret_6: bool = obj.is_full();
  */
-
 #[test]
-fn test() {
-
-}
+fn test() {}

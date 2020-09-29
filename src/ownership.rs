@@ -1,4 +1,3 @@
-
 fn main() {
     let s1 = String::from("hello");
     let s2 = s1;
@@ -47,7 +46,7 @@ fn test_move_fn() {
     let s2 = String::from("hello");             // s2 进入作用域
 
     let s3 = takes_and_gives_back(s2);  // s2 被移动到 takes_and_gives_back 中,
-                                                // 它也将返回值移给 s3
+    // 它也将返回值移给 s3
 } // 这里, s3 移出作用域并被丢弃。s2 也移出作用域，但已被移走，所以什么也不会发生
 //s1 移出作用域并被丢弃
 
@@ -65,12 +64,12 @@ fn takes_and_gives_back(a_string: String) -> String { // a_string 进入作用�
 }
 
 fn ref_test() {
-    let  s1 = String::from("hello");
-    let len = calculate_length(& s1);
+    let s1 = String::from("hello");
+    let len = calculate_length(&s1);
     println!("The length of '{}' is {}.", s1, len);
 }
 
-fn calculate_length(s: & String) -> usize {
+fn calculate_length(s: &String) -> usize {
     s.len()
 }
 
@@ -79,9 +78,11 @@ fn change_test() {
     change(&mut s);
     println!("change to {}", s)
 }
+
 fn change(s: &mut String) {
     s.push_str(", world");
 }
+
 fn limit() {
     let mut s = String::from("hello");
 
@@ -94,7 +95,7 @@ fn limit() {
 fn limit2() {
     let mut s = String::from("hello");
 
-    let r1 = & s;
+    let r1 = &s;
     let r2 = &mut s;
 
     println!(" {}", r2);
@@ -103,6 +104,7 @@ fn limit2() {
 fn dangling() {
     let s = dangle();
 }
+
 fn dangle() -> String {
     let s = String::from("hello");
     s

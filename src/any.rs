@@ -1,4 +1,5 @@
-use std::any::{Any, TypeId, type_name_of_val};
+use std::any::{Any, type_name_of_val, TypeId};
+
 fn is_string1(s: &dyn Any) -> bool {
     TypeId::of::<String>() == s.type_id()
 }
@@ -6,6 +7,7 @@ fn is_string1(s: &dyn Any) -> bool {
 fn is_string2(s: &dyn Any) -> bool {
     s.is::<String>()
 }
+
 #[test]
 fn test_type_id() {
     struct Foo {
@@ -14,7 +16,7 @@ fn test_type_id() {
     }
     let f = Foo { x: 0, y: 10 };
     let num = 200;
-    let str:&str = "abc";
+    let str: &str = "abc";
 
     println!("{:?}", (&f).type_id());
     println!("{:?}", f.type_id());
@@ -25,15 +27,16 @@ fn test_type_id() {
 #[test]
 fn test_is() {
     let str = &"abc" as &dyn Any;
-    let s : &str = "a";
-    println!("{}",type_name_of_val(&s));
+    let s: &str = "a";
+    println!("{}", type_name_of_val(&s));
 
-    println!("{}",type_name_of_val("a"));
+    println!("{}", type_name_of_val("a"));
 
-    println!("{}",str.is::<&str>());
+    println!("{}", str.is::<&str>());
 
     assert!(!is_string1(&"a"));
 }
+
 #[test]
 fn test_cast() {
     print_if_string(&0);

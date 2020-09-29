@@ -1,7 +1,8 @@
 use std::future::Future;
-use futures::{self,executor};
 use std::thread::sleep;
 use std::time::Duration;
+
+use futures::{self, executor};
 
 #[test]
 fn main() {
@@ -39,9 +40,11 @@ async fn ready() {
     lean().await;
     exe().await;
 }
+
 async fn all() {
     futures::join!(ready(),exam());
 }
+
 #[test]
 fn test_await() {
     executor::block_on(all())

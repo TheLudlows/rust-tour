@@ -7,7 +7,7 @@ fn abs_all(input: &mut Cow<[i32]>) {
             // Clones into a vector if not already owned.
             input.to_mut()[i] = -v;
         }
-        println!("{:?}",input.is_owned());
+        println!("{:?}", input.is_owned());
     }
 }
 

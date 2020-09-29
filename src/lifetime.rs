@@ -31,17 +31,19 @@ fn lt_test() {
 fn lt_test2() {
     let mut foo = Foo(1);
     let f1 = foo.share();
-    println!("{:?}",f1);
+    println!("{:?}", f1);
     let f2 = foo.mutate_and_share();
     //println!("{:?}",f1); 这里不行
     f2.0 = 3;
-    println!("{:?}",f2)
+    println!("{:?}", f2)
 }
+
 #[derive(Debug)]
 struct Foo(i32);
+
 impl Foo {
     fn mutate_and_share(&mut self) -> &mut Self { self }
-    fn share(&self) -> &Self{
+    fn share(&self) -> &Self {
         self
     }
 }
@@ -51,8 +53,9 @@ fn test() {
     let n = 10;
     let x = &n;
     let y = &n;
-    do_nothing(x,y);
+    do_nothing(x, y);
 }
-fn do_nothing<'a,'b:'a>(x: &'a u32, y:&'b u32) -> &'a u32{
+
+fn do_nothing<'a, 'b: 'a>(x: &'a u32, y: &'b u32) -> &'a u32 {
     x
 }

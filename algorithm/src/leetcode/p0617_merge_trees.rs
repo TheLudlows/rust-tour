@@ -1,7 +1,8 @@
-use std::rc::Rc;
-use std::cell::RefCell;
-use crate::leetcode::common::{Solution, TreeNode};
 use std::any::type_name_of_val;
+use std::cell::RefCell;
+use std::rc::Rc;
+
+use crate::leetcode::common::{Solution, TreeNode};
 
 impl Solution {
     pub fn merge_trees(t1: Option<Rc<RefCell<TreeNode>>>, t2: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {

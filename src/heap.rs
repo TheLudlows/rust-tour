@@ -6,5 +6,5 @@ fn main() {
     heap.push(10);
     heap.push(20);
     heap.push(0);
-    println!("{}",heap.pop().unwrap())
+    println!("{}", heap.pop().unwrap())
 }

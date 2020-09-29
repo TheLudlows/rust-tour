@@ -1,10 +1,11 @@
+use std::cell::RefCell;
+use std::rc::Rc;
+
 #[derive(Debug)]
 enum List {
     Cons(Rc<RefCell<i32>>, Rc<List>),
     Nil,
 }
-use std::rc::Rc;
-use std::cell::RefCell;
 
 fn main() {
     let value = Rc::new(RefCell::new(5));
