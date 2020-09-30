@@ -1,38 +1,35 @@
 use std::collections::VecDeque;
 
 use crate::leetcode::common::Solution;
+use std::cmp::max;
 
 impl Solution {
     pub fn longest_valid_parentheses(s: String) -> i32 {
-        let mut stack = VecDeque::new();
-        let chars = s.chars();
-        let mut max = 0;
-        let mut cur = 0;
-        for c in chars.into_iter() {
-            if c == ')' {
-                let old = stack.back();
-                old.map(|&oc|
-                    if oc == '(' {
-                        cur += 2;
+        let len = s.len();
+        let bytes = s.as_bytes();
+        let mut max_v = 0;
+        let mut dp: Vec<usize> = vec![0; len()];
+        for i in 1..len {
+            if bytes[i] == ')' as u8 {
+                if bytes[i - 1] == '(' as u8 {
+                    if i == 1 {
+                        dp[i] = 2;
                     } else {
-                        cur = 0;
+                        dp[i] = dp[i - 2] + 2;
                     }
-                );
-            } else {
-                let old = stack.back();
-                old.map(|&oc| {
-                    if oc == '(' {
-                        cur = 0;
+                } else {
+                    if i - dp[i - 1] > 0 && bytes[i - dp[i - 1] - 1] == '(' as u8 {
+                        if i - dp[i-1] >= 2 {
+                            dp[i] = dp[i-1] + dp[i-dp[i-1]-2] +2
+                        }else{
+                            dp[i] = dp[i-1] + 2;
+                        }
                     }
-                });
-            }
-            stack.push_back(c);
-
-            if cur > max {
-                max = cur;
+                }
+                max_v = max(max_v,dp[i]);
             }
         }
-        max
+        max_v as i32
     }
 }
 

@@ -8,9 +8,7 @@ impl Solution {
         let mut queue = VecDeque::new();
         queue.push_back(root);
         let result = vec![];
-        while let Some() = queue.pop_front() {
 
-        }
         result
     }
 }
