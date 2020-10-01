@@ -8,7 +8,7 @@ impl Solution {
         let len = s.len();
         let bytes = s.as_bytes();
         let mut max_v = 0;
-        let mut dp: Vec<usize> = vec![0; len()];
+        let mut dp: Vec<usize> = vec![0; len];
         for i in 1..len {
             if bytes[i] == ')' as u8 {
                 if bytes[i - 1] == '(' as u8 {
