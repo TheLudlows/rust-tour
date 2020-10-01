@@ -1,11 +1,13 @@
 #![feature(type_name_of_val)]
 
+use std::cell::RefCell;
+use std::rc::Rc;
+
 pub mod sort;
 pub mod leetcode;
 pub mod datastruct;
-
-use std::cell::RefCell;
-use std::rc::Rc;
+mod array;
+mod dp;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -29,7 +31,7 @@ impl ListNode {
     }
 }
 
-#[derive(Debug, PartialEq, Eq,Clone)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct TreeNode {
     pub val: i32,
     pub left: Option<Rc<RefCell<TreeNode>>>,

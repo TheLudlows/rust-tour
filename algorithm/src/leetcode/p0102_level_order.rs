@@ -1,7 +1,8 @@
-use std::rc::Rc;
 use std::cell::RefCell;
-use crate::leetcode::common::{Solution, TreeNode};
 use std::collections::VecDeque;
+use std::rc::Rc;
+
+use crate::leetcode::common::{Solution, TreeNode};
 
 impl Solution {
     pub fn level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {

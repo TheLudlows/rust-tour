@@ -1,7 +1,5 @@
 use std::str::Chars;
 
-use crate::leetcode::common::Solution;
-
 impl Solution {
     pub fn longest_common_prefix(strs: Vec<String>) -> String {
         let mut res = String::new();

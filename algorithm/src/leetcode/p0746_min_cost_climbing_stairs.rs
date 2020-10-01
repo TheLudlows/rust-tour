@@ -1,4 +1,3 @@
-use crate::leetcode::common::Solution;
 use std::cmp::min;
 
 impl Solution {
@@ -8,9 +7,9 @@ impl Solution {
         dp[0] = cost[0];
         dp[1] = cost[1];
         for i in 2..len {
-            dp[i] = cost[i] + min(dp[i-1],dp[i-2]);
+            dp[i] = cost[i] + min(dp[i - 1], dp[i - 2]);
         }
 
-        min(dp[len-1],dp[len-2])
+        min(dp[len - 1], dp[len - 2])
     }
 }

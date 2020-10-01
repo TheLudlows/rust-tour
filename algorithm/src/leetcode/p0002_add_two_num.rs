@@ -36,7 +36,6 @@ impl Solution {
 
 #[cfg(test)]
 mod test {
-    use crate::leetcode::common::Solution;
     use crate::leetcode::p0002_add_two_num::build_list;
 
     #[test]

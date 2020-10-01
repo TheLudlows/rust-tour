@@ -1,4 +1,4 @@
-use crate::leetcode::common::Solution;
+
 
 /// 线段树
 impl Solution {
@@ -10,7 +10,7 @@ impl Solution {
             let mut x = 0;
             for j in i..n {
                 if nums[i] > nums[j] {
-                    x+=1;
+                    x += 1;
                 }
             }
             result.push(x);

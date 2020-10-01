@@ -1,4 +1,4 @@
-use crate::leetcode::common::Solution;
+
 
 impl Solution {
     fn search(nums: Vec<i32>, target: i32) -> i32 {

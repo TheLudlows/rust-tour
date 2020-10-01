@@ -1,7 +1,5 @@
-use std::collections::VecDeque;
-
-use crate::leetcode::common::Solution;
 use std::cmp::max;
+use std::collections::VecDeque;
 
 impl Solution {
     pub fn longest_valid_parentheses(s: String) -> i32 {
@@ -19,14 +17,14 @@ impl Solution {
                     }
                 } else {
                     if i - dp[i - 1] > 0 && bytes[i - dp[i - 1] - 1] == '(' as u8 {
-                        if i - dp[i-1] >= 2 {
-                            dp[i] = dp[i-1] + dp[i-dp[i-1]-2] +2
-                        }else{
-                            dp[i] = dp[i-1] + 2;
+                        if i - dp[i - 1] >= 2 {
+                            dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2
+                        } else {
+                            dp[i] = dp[i - 1] + 2;
                         }
                     }
                 }
-                max_v = max(max_v,dp[i]);
+                max_v = max(max_v, dp[i]);
             }
         }
         max_v as i32

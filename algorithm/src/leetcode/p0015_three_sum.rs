@@ -1,7 +1,5 @@
 use std::collections::HashSet;
 
-use crate::leetcode::common::Solution;
-
 ///  [-3,-2,-1,2,3,5]
 ///  先进性排序， a指针从头向后遍历，b指针在a指针之后开始，c指针从结尾开始
 ///  bc指针指向值和a的值进行累加，如果大于0，则移动c指针，如果小于0，则移动b指针。直到找到或者b==c

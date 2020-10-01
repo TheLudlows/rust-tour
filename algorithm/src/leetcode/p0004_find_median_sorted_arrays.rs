@@ -1,6 +1,5 @@
 use std::cmp::min;
 
-use crate::leetcode::common::Solution;
 use crate::Solution;
 
 impl Solution {

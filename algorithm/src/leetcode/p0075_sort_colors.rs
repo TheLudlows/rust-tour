@@ -1,4 +1,4 @@
-use crate::leetcode::common::Solution;
+
 
 /// 荷兰国旗问题 三指针
 /// 若 nums[curr] = 0 ：交换第 curr个 和 第p0个 元素，并将指针都向右移。
@@ -9,12 +9,12 @@ impl Solution {
     pub fn sort_colors(nums: &mut Vec<i32>) {
         let mut p0 = 0;
         let mut cur = 0;
-        let mut p2 = nums.len()-1;
+        let mut p2 = nums.len() - 1;
 
         while cur <= p2 {
             // p2 为0时，直接返回
             if p2 == 0 {
-                return ;
+                return;
             }
             if nums[cur] == 0 {
                 exchange(nums, p0, cur);
@@ -35,9 +35,10 @@ fn exchange(nums: &mut Vec<i32>, i: usize, j: usize) {
     nums[i] = nums[j];
     nums[j] = temp;
 }
+
 #[test]
 fn test() {
-    let mut v = vec![0,1,2,2];
+    let mut v = vec![0, 1, 2, 2];
     Solution::sort_colors(&mut v);
-    println!("{:?}",v)
+    println!("{:?}", v)
 }

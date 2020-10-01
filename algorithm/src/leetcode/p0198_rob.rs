@@ -1,6 +1,5 @@
 use std::cmp::max;
 
-use crate::leetcode::common::Solution;
 /// dp[i] = max(dp[i-2]+nums[i],dp[i-1])
 impl Solution {
     pub fn rob(nums: Vec<i32>) -> i32 {

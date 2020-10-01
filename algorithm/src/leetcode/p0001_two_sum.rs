@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 
-use crate::leetcode::common::Solution;
 use crate::Solution;
 
 /// 遍历数组，将元素加入map，k-v分别是数组元素和下标，插入的时候判断target-x是否在map中，如果在返回结果。

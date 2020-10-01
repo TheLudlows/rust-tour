@@ -1,4 +1,4 @@
-use crate::leetcode::common::Solution;
+use crate::Solution;
 
 impl Solution {
     pub fn reverse(x: i32) -> i32 {

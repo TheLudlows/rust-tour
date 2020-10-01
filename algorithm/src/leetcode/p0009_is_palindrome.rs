@@ -1,4 +1,4 @@
-use crate::leetcode::common::Solution;
+
 
 /// 求余数 计算出逆序的x 然后比较
 impl Solution {

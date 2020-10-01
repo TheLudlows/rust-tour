@@ -1,7 +1,5 @@
 use std::cmp::min;
 
-use crate::leetcode::common::Solution;
-
 ///双指针，移动值较小的指针，因为较大的面积不可能会以这条为边
 impl Solution {
     pub fn max_area(height: Vec<i32>) -> i32 {
