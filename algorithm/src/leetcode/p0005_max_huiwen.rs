@@ -1,6 +1,6 @@
 use std::fs::read;
 
-use crate::leetcode::common::Solution;
+use crate::Solution;
 
 /// 1. 暴力枚举所有子字符串,逐个判断是不是回文 N^3
 /// 2. 动态规划,
