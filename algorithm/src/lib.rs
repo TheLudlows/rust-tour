@@ -4,10 +4,16 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 pub mod sort;
-pub mod leetcode;
+pub mod math;
 pub mod datastruct;
 mod array;
 mod dp;
+mod string;
+mod list;
+mod heap;
+mod search;
+mod backtracking;
+mod tree;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
