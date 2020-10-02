@@ -6,16 +6,12 @@ impl Solution {
         if nums.len() <= 1 {
             return nums.len() as i32;
         }
-        let mut last = nums[0];
-        let mut i = 1;
         let mut j = 1;
-        while i < nums.len() {
-            if nums[i] != last {
+        for i in 1..nums.len() {
+            if nums[i] != nums[j-1] {
                 nums[j] = nums[i];
-                last = nums[i];
                 j += 1;
             }
-            i += 1;
         }
         j as i32
     }

@@ -1,7 +1,6 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
-use crate::math::common::{ListNode, Solution, TreeNode};
 use crate::{Solution, ListNode, TreeNode};
 
 /// 链表从中间切开,那么这时候主体是一个相对平衡的二叉树

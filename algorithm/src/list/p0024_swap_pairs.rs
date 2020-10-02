@@ -1,4 +1,3 @@
-use crate::math::common::{ListNode, Solution};
 use crate::{Solution, ListNode};
 
 impl Solution {

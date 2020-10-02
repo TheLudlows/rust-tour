@@ -1,6 +1,5 @@
 use std::borrow::BorrowMut;
 
-use crate::math::common::{ListNode, Solution};
 use crate::{Solution, ListNode};
 
 impl Solution {
@@ -8,7 +7,7 @@ impl Solution {
         let mut len = 0;
         let mut cur = head.as_mut();
 
-        while let Some(ref node) = cur {
+        while let Some(_) = cur {
             cur = cur.unwrap().next.as_mut();
             len += 1;
         }

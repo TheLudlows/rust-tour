@@ -1,17 +1,8 @@
-mod p0058_length_of_last_word;
-mod p0004_find_median_sorted_arrays;
 mod p0008_str_int;
-mod common;
-mod p0622_ring_buf;
-mod p0308_set;
 mod p0007_reverse_int;
 mod p0009_is_palindrome;
 mod p0010_is_match;
 mod p0020_is_valid;
-mod p0028_str_str;
-mod p0029_divide;
-mod p0033_search;
-mod p0034_search_range;
+
 mod p0050_my_pow;
 mod p0069_my_sqrt;
-mod p0315_count_smaller;

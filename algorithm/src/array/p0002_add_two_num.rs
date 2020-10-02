@@ -36,6 +36,7 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use crate::array::p0002_add_two_num::build_list;
+    use crate::Solution;
 
     #[test]
     fn two_sum_test() {

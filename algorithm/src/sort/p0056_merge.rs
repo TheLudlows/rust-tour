@@ -3,7 +3,7 @@ use crate::Solution;
 /// 排序
 /// Vec last元素的获取
 impl Solution {
-    pub fn merge(intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+    pub fn merge_2(intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
         let mut slice = intervals;
         let mut merge: Vec<Vec<i32>> = Vec::new();
         slice.sort_by(|a, b| a[0].cmp(&b[0]));

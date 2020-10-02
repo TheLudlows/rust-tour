@@ -1,4 +1,3 @@
-use crate::math::common::{ListNode, Solution};
 use crate::{Solution, ListNode};
 
 /// 注意as_mut 返回 Option<&mut T>
