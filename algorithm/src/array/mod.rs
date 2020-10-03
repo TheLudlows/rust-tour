@@ -14,3 +14,4 @@ mod p0392_is_subsequence;
 mod p0867_transpose;
 mod p0080_remove_duplicates;
 mod p0088_merge;
+mod p0122_max_profit;
