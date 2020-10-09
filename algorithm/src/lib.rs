@@ -15,6 +15,7 @@ mod search;
 mod backtracking;
 mod tree;
 mod hash;
+mod stack;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
