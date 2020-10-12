@@ -1,0 +1,19 @@
+use crate::Solution;
+
+/// 只关注右边界
+impl Solution {
+    pub fn min_array(numbers: Vec<i32>) -> i32 {
+        let (mut l, mut r) = (0, numbers.len()-1);
+        while l < r {
+            let m = (l+r)/2;
+            if numbers[m] > numbers[r] {
+                l = m+1;
+            }else if  numbers[m] < numbers[r] {
+                r = m
+            }else {
+                r -= 1;
+            }
+        }
+        numbers[l]
+    }
+}

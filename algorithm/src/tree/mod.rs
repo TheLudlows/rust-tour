@@ -15,3 +15,4 @@ mod p0111_min_depth;
 mod p0112_has_path_sum;
 mod p0129_sum_numbers;
 mod p0199_right_side_view;
+mod p0530_get_minimum_difference;

@@ -1,3 +1,5 @@
+use algorithm::Solution;
+
 struct Foo;
 
 impl Drop for Foo {

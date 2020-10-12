@@ -45,6 +45,7 @@ impl Solution {
         }
         //println!("{:?}",dp);
         dp[half]
+    }
 }
 
 #[test]
