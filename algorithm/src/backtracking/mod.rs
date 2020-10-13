@@ -6,3 +6,4 @@ mod p0077_combine;
 mod p0078_subsets;
 mod p0090_subsets_with_dup;
 mod p0093_spilt_ip;
+mod p0060_get_permutation;

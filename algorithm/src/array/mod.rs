@@ -19,3 +19,5 @@ mod p134_can_complete_circuit;
 mod p0135_candy;
 mod p0994_oranges_rotting;
 mod p0189_rotate;
+mod Of_21_exchange;
+mod p0283_move_zeroes;
