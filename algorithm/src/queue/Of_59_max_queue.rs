@@ -28,13 +28,14 @@ impl MaxQueue {
                     break;
                 }
             } else {
+                self.max_queue.push_back(value);
                 break;
             }
         }
     }
 
     fn pop_front(&mut self) -> i32 {
-        let num = self.queue.pop_back().unwrap_or(-1);
+        let num = self.queue.pop_front().unwrap_or(-1);
         if let Some(max) = self.max_queue.front() {
             if *max == num {
                 self.max_queue.pop_front();
