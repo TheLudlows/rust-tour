@@ -1,45 +1,48 @@
 use std::collections::VecDeque;
-
 use crate::Solution;
 
 impl Solution {
     pub fn max_sliding_window(nums: Vec<i32>, k: i32) -> Vec<i32> {
+        if nums.is_empty() {
+            return vec![];
+        }
         let mut queue = VecDeque::new();
         let mut right: usize = k as usize;
-        let mut left:usize = 0;
+        let mut left: usize = 0;
         for i in 0..right {
-            push_to_max_queue(&mut queue,nums[i]);
+            push_to_max_queue(&mut queue, i, &nums);
         }
-        let mut result = vec![*queue.front().unwrap()];
-        while right<nums.len() {
-            if nums[left] == *queue.front().unwrap() {
+        let mut result = Vec::with_capacity((nums.len() - k as usize + 1));
+        result.push(nums[queue[0]]);
+        while right < nums.len() {
+            if left >= queue[0] {
                 queue.pop_front();
             }
-            push_to_max_queue(&mut queue,nums[right]);
-            result.push(*queue.front().unwrap());
-            right+=1;
-            left+=1;
+            push_to_max_queue(&mut queue, right, &nums);
+            result.push(nums[queue[0]]);
+            right += 1;
+            left += 1;
         }
         result
     }
 }
+
 #[inline]
-fn push_to_max_queue(queue:&mut VecDeque<i32>,n:i32) {
+fn push_to_max_queue(queue: &mut VecDeque<usize>, index: usize, nums: &Vec<i32>) {
     loop {
-        if let Some(max) = queue.back() {
-            if *max < n {
+        if let Some(&id) = queue.back() {
+            if nums[id] < nums[index] {
                 queue.pop_back();
-            }else {
-                queue.push_back(n);
+            } else {
+                queue.push_back(index);
                 return;
             }
-        }else {
-            queue.push_back(n);
+        } else {
+            queue.push_back(index);
             return;
         }
     }
 }
-#[test]
-fn test() {
 
-}
+#[test]
+fn test() {}

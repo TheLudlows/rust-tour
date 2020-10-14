@@ -1,16 +1,7 @@
 use algorithm::Solution;
 
-struct Foo;
-
-impl Drop for Foo {
-    fn drop(&mut self) {
-        println!("dropped")
-    }
-}
 
 fn main() {
-    let f = Foo;
-    if let Foo = f {
-        println!("Foo");
-    }
+   let n = 2^1;
+    println!("{}",n)
 }
