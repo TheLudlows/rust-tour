@@ -7,7 +7,7 @@ impl Solution {
         let mut cur_max = 0;
         let mut step = 0;
         for i in 0..nums.len() - 1 {
-            cur_max = max(cur_max,i + nums[i]);
+            cur_max = max(cur_max,i + nums[i] as usize);
             if i == end {// 刷新边界
                 step+=1;
                 end = cur_max as usize;

@@ -1,4 +1,5 @@
 use std::cmp::max;
+
 use crate::Solution;
 
 /// dp[i] = max(dp[i-2]+nums[i],dp[i-1])
@@ -8,19 +9,35 @@ impl Solution {
             return 0;
         }
         let mut dp = vec![0; nums.len()];
-        let mut max = 0;
         for i in 0..nums.len() {
             if i == 0 {
                 dp[0] = nums[0]
             } else if i == 1 {
-                dp[1] = std::cmp::max(nums[0], nums[1]);
+                dp[1] = max(nums[0], nums[1]);
             } else {
-                dp[i] = std::cmp::max(dp[i - 1], dp[i - 2] + nums[i]);
-            }
-            if dp[i] > max {
-                max = dp[i];
+                dp[i] = max(dp[i - 1], dp[i - 2] + nums[i]);
             }
         }
-        max
+        dp[nums.len() - 1]
+    }
+}
+
+impl Solution {
+    pub fn rob_1(nums: Vec<i32>) -> i32 {
+        let mut first = 0;
+        let mut second = 0;
+
+        for i in 0..nums.len() {
+            if i == 0 {
+                first = nums[0];
+            } else if i == 1 {
+                second = max(nums[0], nums[1]);
+            } else {
+                let temp = second;
+                second = max(first + nums[i], second);
+                first = temp;
+            }
+        }
+        max(first, second)
     }
 }
