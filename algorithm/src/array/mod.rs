@@ -21,3 +21,4 @@ mod p0994_oranges_rotting;
 mod p0189_rotate;
 mod Of_21_exchange;
 mod p0283_move_zeroes;
+mod p0977_sort_squares;
