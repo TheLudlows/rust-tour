@@ -7,7 +7,7 @@ impl Solution {
         let mut pos = j;
         let mut res = vec![-1;a.len()];
         for id in 0..a.len() {
-            a[id] = ad[id].pow(2);
+            a[id] = a[id].pow(2);
         }
         while i < j {
             if a[i] >  a[j]{

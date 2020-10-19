@@ -22,3 +22,7 @@ mod p0189_rotate;
 mod Of_21_exchange;
 mod p0283_move_zeroes;
 mod p0977_sort_squares;
+mod p0560_subarray_sum;
+mod p1624_max_length_between_equal_characters;
+mod p0219_contains_nearby_duplicate;
+mod p0220_contains_nearby_duplicate;
