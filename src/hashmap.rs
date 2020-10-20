@@ -6,7 +6,6 @@ fn main() {
     scores.insert(String::from("Blue"), 10);
     scores.insert(String::from("Yellow"), 50);
 
-
     let field_name = String::from("Favorite color");
     let mut map = HashMap::new();
     map.insert(field_name, "Blue");

@@ -23,15 +23,15 @@ impl Solution {
         let mut left = 0;
         let mut right = nums.len() - 1;
         while left < right {
-            let mid = (left + right) >> 1;
+            let mid = (left + right + 1) >> 1;
             if nums[mid] > target {
-                right = mid;
+                right = mid - 1;
             } else {
-                left = mid+1;
+                left = mid;
             }
         }
-        if nums[left-1] == target {
-            (left-1) as i32
+        if nums[left] == target {
+            (left) as i32
         } else {
             -1
         }
@@ -41,6 +41,6 @@ impl Solution {
 #[test]
 fn test() {
     let v = vec![1, 1, 2, 2, 3, 3, 4];
-    let r = Solution::search_right(v, 2);
+    let r = Solution::search_right(v, 3);
     println!("{}", r)
 }

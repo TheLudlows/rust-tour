@@ -1,6 +1,8 @@
 #[test]
 fn main() {
-    async fn func1() -> i32 { 12 }
+    async fn func1() -> i32 {
+        12
+    }
 
     let func2 = async || -> i32 {
         let t = 1;

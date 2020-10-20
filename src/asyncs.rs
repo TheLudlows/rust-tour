@@ -14,9 +14,7 @@ fn main() {
 }
 
 fn say() -> impl Future {
-    async {
-        println!("bbb")
-    }
+    async { println!("bbb") }
 }
 
 async fn see() {
@@ -42,7 +40,7 @@ async fn ready() {
 }
 
 async fn all() {
-    futures::join!(ready(),exam());
+    futures::join!(ready(), exam());
 }
 
 #[test]

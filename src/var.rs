@@ -66,6 +66,3 @@ fn test_var() {
     //println!("{:p}",p);
     println!("{:p}", v);
 }
-
-
-

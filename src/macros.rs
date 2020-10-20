@@ -1,5 +1,9 @@
 macro_rules! unless {
-    ($arg:expr, $branch:expr) => (if !$arg { $branch };);
+    ($arg:expr, $branch:expr) => {
+        if !$arg {
+            $branch
+        };
+    };
 }
 
 #[test]

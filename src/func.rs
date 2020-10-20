@@ -22,7 +22,9 @@ fn trans_p() {
 }
 
 #[derive(Debug)]
-struct Foo { i: i32 }
+struct Foo {
+    i: i32,
+}
 
 fn print(f: &Foo) {
     println!("{:p}", f);
@@ -34,7 +36,7 @@ fn add_test() {
     let r = square::<f32>(4.2, 5.0);
 }
 
-fn square<T: Mul<T, Output=T>>(x: T, y: T) -> T {
+fn square<T: Mul<T, Output = T>>(x: T, y: T) -> T {
     x * y
 }
 

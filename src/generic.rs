@@ -22,7 +22,7 @@ trait Double<T> {
 }
 
 struct S {
-    data: i32
+    data: i32,
 }
 
 impl Double<i32> for S {
@@ -30,7 +30,6 @@ impl Double<i32> for S {
         unimplemented!()
     }
 }
-
 
 fn main() {
     let p1 = Point { x: 5, y: 10 };

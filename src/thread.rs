@@ -1,5 +1,5 @@
 use std::cell::RefCell;
-use std::sync::{Arc, Barrier, mpsc, Mutex, RwLock};
+use std::sync::{mpsc, Arc, Barrier, Mutex, RwLock};
 use std::thread;
 use std::thread::{Builder, JoinHandle};
 use std::time::Duration;
@@ -121,7 +121,9 @@ fn test() {
             println!("Thread id :{:?}", i);
             println!("Data value :{:?}", data2[0]);
             println!("in")
-        }).join().unwrap();
+        })
+        .join()
+        .unwrap();
     }
     thread::sleep(Duration::from_millis(100));
     println!("data:{:?}", data.lock().unwrap())
@@ -152,7 +154,8 @@ fn test_build() {
     let t = thread::Builder::new()
         .name("four".to_string())
         .stack_size(1024)
-        .spawn(|| println!("hello")).unwrap();
+        .spawn(|| println!("hello"))
+        .unwrap();
 
     t.join();
     print!("rust")
@@ -170,15 +173,16 @@ fn thread_local() {
             println!("in sub thread {:?}", v.borrow());
             *v.borrow_mut() = 200;
         });
-    }).join();
+    })
+    .join();
 
     Local.with(|v| println!("{:?}", v.borrow()))
 }
 
 pub fn spawn_new<F, T>(f: F) -> JoinHandle<T>
-    where
-        F: (FnOnce() -> T) + Send + 'static,
-        T: Send + 'static,
+where
+    F: (FnOnce() -> T) + Send + 'static,
+    T: Send + 'static,
 {
     Builder::new().spawn(f).expect("failed to spawn thread")
 }
@@ -199,10 +203,11 @@ fn test_posion() {
         let mut s = rc_clone.lock().unwrap();
         s.push_str(" rust");
         panic!("oh no");
-    }).join();
+    })
+    .join();
     match rc.lock() {
         Ok(s) => println!("{}", s),
-        Err(e) => println!("err {}", e)
+        Err(e) => println!("err {}", e),
     };
 }
 
@@ -221,5 +226,5 @@ fn test_barrier() {
     }
     for join in joins {
         join.join().unwrap();
-    };
+    }
 }

@@ -35,7 +35,6 @@ fn my_box() {
     assert_eq!(5, x);
     assert_eq!(5, *y);
 
-
     let x = 5;
     let y = MyBox::new(x);
     assert_eq!(5, x);
@@ -48,12 +47,15 @@ fn print(name: &str) {
     println!("Hello, {}!", name);
 }
 
-
 #[test]
 fn drop_test() {
     // 注意a b drop的顺序
-    let a = CustomSmartPointer { data: String::from("aaa") };
-    let b = CustomSmartPointer { data: String::from("bbb") };
+    let a = CustomSmartPointer {
+        data: String::from("aaa"),
+    };
+    let b = CustomSmartPointer {
+        data: String::from("bbb"),
+    };
 }
 
 struct CustomSmartPointer {

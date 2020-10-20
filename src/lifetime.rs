@@ -3,11 +3,17 @@ use std::fmt::Debug;
 #[derive(Debug)]
 struct Ref<'a, T: 'a>(&'a T);
 
-fn print_ref<'a, T>(t: &'a T) where T: 'a + Debug {
+fn print_ref<'a, T>(t: &'a T)
+where
+    T: 'a + Debug,
+{
     println!("{:?}", t)
 }
 
-fn print<T>(t: T) where T: Debug {
+fn print<T>(t: T)
+where
+    T: Debug,
+{
     println!("{:?}", t)
 }
 
@@ -42,7 +48,9 @@ fn lt_test2() {
 struct Foo(i32);
 
 impl Foo {
-    fn mutate_and_share(&mut self) -> &mut Self { self }
+    fn mutate_and_share(&mut self) -> &mut Self {
+        self
+    }
     fn share(&self) -> &Self {
         self
     }

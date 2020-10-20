@@ -42,9 +42,7 @@ fn test() {
                         GeneratorState::Complete(s)
                     }
 
-                    __Generator::Done => {
-                        panic!("generator resumed after completion")
-                    }
+                    __Generator::Done => panic!("generator resumed after completion"),
                 }
             }
         }

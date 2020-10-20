@@ -26,9 +26,7 @@ fn main() {
 
     let user2 = build_user(String::from("abc.com"), String::from("four"));
 
-    let user3 = User {
-        ..user1
-    };
+    let user3 = User { ..user1 };
     println!("{}", user3.username);
 
     struct Person(String, String, usize);
@@ -49,5 +47,3 @@ fn build_user(email: String, username: String) -> User {
         sign_in_count: 1,
     }
 }
-
-

@@ -21,7 +21,6 @@ fn main() {
     let sum: i32 = v1.iter().filter(|e| e > &&i).sum();
     assert_eq!(sum, 3);
 
-
     struct Counter {
         count: u32,
     }

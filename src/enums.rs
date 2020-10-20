@@ -14,12 +14,12 @@ fn enums() {
     let num: Option<u32> = Some(10);
     match num {
         Some(t) => println!("T is {}", t),
-        None => println!("no")
+        None => println!("no"),
     };
     match e {
         enum_::a => println!("a"),
         enum_::b(str) => println!("{}", str),
-        enum_::s { num, name } => println!("s")
+        enum_::s { num, name } => println!("s"),
     }
 
     let n = Some(1);
@@ -27,4 +27,3 @@ fn enums() {
         println!("{}", x.unwrap())
     }
 }
-

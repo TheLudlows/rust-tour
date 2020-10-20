@@ -6,7 +6,7 @@ pub trait MessageQueue {
 }
 
 struct MyMQ {
-    queue: RefCell<Vec<String>>
+    queue: RefCell<Vec<String>>,
 }
 
 impl MessageQueue for MyMQ {
@@ -24,7 +24,7 @@ impl MessageQueue for MyMQ {
 impl MyMQ {
     fn new() -> MyMQ {
         MyMQ {
-            queue: RefCell::new(vec![])
+            queue: RefCell::new(vec![]),
         }
     }
 }

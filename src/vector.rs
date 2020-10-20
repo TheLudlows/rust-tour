@@ -4,7 +4,6 @@ fn main() {
     v.push(100);
     println!("{}", v.pop().unwrap());
 
-
     let v = vec![1, 2, 3, 4, 5];
     let third: &i32 = &v[2];
     println!("The third element is {}", third);
@@ -18,7 +17,6 @@ fn main() {
     let first = &v[0];
     // v.push(6);
     println!("The first element is: {}", first);
-
 
     let mut v = vec![100, 32, 57];
 

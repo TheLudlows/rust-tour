@@ -1,8 +1,6 @@
 fn main() {
     let mut x = vec!["a"];
-    let h = std::thread::spawn(||
-        x
-    );
+    let h = std::thread::spawn(|| x);
 
     let y = String::from("a");
     let h = std::thread::spawn(|| y);

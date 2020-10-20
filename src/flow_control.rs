@@ -2,11 +2,7 @@ use std::option::Option::Some;
 
 fn main() {
     let x = 10;
-    let n = if x > 5 {
-        100
-    } else {
-        200
-    };
+    let n = if x > 5 { 100 } else { 200 };
     println!("{}", x);
 
     for n in 1..10 {
@@ -18,7 +14,6 @@ fn main() {
         m @ 42 => println!("{}", m),
         _ => println!("other"),
     }
-
 
     let mut arr = vec![1, 2, 3, 4, 5];
     while let Some(x) = arr.pop() {

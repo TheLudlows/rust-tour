@@ -1,6 +1,6 @@
-use std::fmt::{Debug, Display, Formatter};
 use std::fmt;
 use std::fmt::Result;
+use std::fmt::{Debug, Display, Formatter};
 
 #[test]
 fn test() {
