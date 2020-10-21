@@ -26,3 +26,4 @@ mod p0560_subarray_sum;
 mod p1624_max_length_between_equal_characters;
 mod p0219_contains_nearby_duplicate;
 mod p0220_contains_nearby_duplicate;
+mod p0925_is_long_pressed_name;
