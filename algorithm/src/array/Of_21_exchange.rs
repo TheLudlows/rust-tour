@@ -1,6 +1,6 @@
 use crate::Solution;
 
-/// 双指针指向头尾，找到不符合的数据，交换
+/// 双指针指向头尾，不符合的数据 move，exchange
 impl Solution {
     pub fn exchange(mut nums: Vec<i32>) -> Vec<i32> {
         if nums.is_empty() {
