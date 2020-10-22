@@ -121,3 +121,27 @@ fn func3_test() {
     assert_eq!(fly_static(&pig), false);
     assert_eq!(fly_static(&duck), true);
 }
+
+
+trait star {
+    fn sing();
+    fn dance();
+    fn rap() {
+        println!("rap")
+    }
+    fn basketball() {
+        println!("🏀");
+    }
+}
+struct xck;
+
+/// 默认方法可以不实现
+impl star for cxk {
+    fn sing() {
+        unimplemented!()
+    }
+
+    fn dance() {
+        unimplemented!()
+    }
+}
