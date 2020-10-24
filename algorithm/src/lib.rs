@@ -1,8 +1,9 @@
 #![feature(type_name_of_val)]
 
-use std::cell::RefCell;
-use std::rc::Rc;
 use std::borrow::BorrowMut;
+use std::cell::RefCell;
+use std::mem::take;
+use std::rc::Rc;
 
 pub mod sort;
 pub mod math;
@@ -59,14 +60,22 @@ impl TreeNode {
     }
 }
 
-pub fn as_list(arr:&Vec<i32>) -> Option<Box<ListNode>> {
-    let mut head =Some(Box::new(ListNode::new(0)));
-    let mut curr = head.as_mut();
+pub fn as_list(arr: &Vec<i32>) -> Option<Box<ListNode>> {
+    let mut head = ListNode::new(0);
+    let mut curr = &mut head;
     for i in arr {
-        curr.unwrap().next = Some(Box::new(ListNode::new(*i)));
-        curr = curr.unwrap().next.as_mut();
+        curr.next = Some(Box::new(ListNode::new(*i)));
+        curr = curr.next.as_mut().unwrap();
     }
-    head.unwrap().next.take()
+    head.next
+}
+
+#[test]
+fn test() {
+    let v = vec![1, 2, 3];
+
+    let head = as_list(&v);
+    println!("{:?}", head);
 }
 
 pub struct Solution;
