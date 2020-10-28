@@ -1,6 +1,7 @@
 use std::borrow::BorrowMut;
 
 const VAR: u32 = 10;
+static mut str: &str = "aaa";
 
 fn main() {
     // const VAR:u32 = 20;

@@ -2,8 +2,8 @@ use std::cell::RefCell;
 use std::sync::{mpsc, Arc, Barrier, Mutex, RwLock};
 use std::thread;
 use std::thread::{Builder, JoinHandle};
-use std::time::Duration;
-
+use std::time::Instant;
+use std::time::{self, Duration};
 #[test]
 fn new_thread() {
     let h = thread::spawn(|| {
@@ -227,4 +227,11 @@ fn test_barrier() {
     for join in joins {
         join.join().unwrap();
     }
+}
+
+#[test]
+fn test_sleep() {
+    println!("{:?}", time::SystemTime::now());
+    thread::sleep(Duration::from_secs(1));
+    println!("{:?}", time::SystemTime::now());
 }

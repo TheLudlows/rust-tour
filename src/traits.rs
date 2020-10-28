@@ -122,7 +122,6 @@ fn func3_test() {
     assert_eq!(fly_static(&duck), true);
 }
 
-
 trait star {
     fn sing();
     fn dance();
@@ -133,7 +132,7 @@ trait star {
         println!("🏀");
     }
 }
-struct xck;
+struct cxk;
 
 /// 默认方法可以不实现
 impl star for cxk {
