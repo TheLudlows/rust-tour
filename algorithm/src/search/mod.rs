@@ -4,5 +4,3 @@ mod p0033_search;
 mod p0035_search_insert;
 mod p0074_search_matrix;
 mod p0704_bin_search;
-mod Of_04_find_number_in2_d_array;
-mod Of_11_min_array;

@@ -86,3 +86,23 @@ fn mut_test() {
     let x: &i32 = a.borrow();
     let y = a.as_ref();
 }
+
+
+// `T` 的泛型 trait。
+trait DoubleDrop<T> {
+    // 定义一个调用者的方法，接受一个额外的参数 `T`，但不对它做任何事。
+    fn double_drop(self, _: T);
+}
+
+// 对泛型的调用者类型 `U` 和任何泛型类型 `T` 实现 `DoubleDrop<T>` 。
+impl<T, U> DoubleDrop<T> for U {
+    // 此方法获得两个传入参数的所有权，并释放它们。
+    fn double_drop(self, _: T) {}
+}
+struct structFoo;
+#[test]
+fn test_trait() {
+    let a = structFoo;
+    let b = structFoo;
+    a.double_drop(b);
+}

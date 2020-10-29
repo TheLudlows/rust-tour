@@ -1,0 +1,13 @@
+mod p03_find_repeat_number;
+mod p40_get_least_numbers;
+mod p22_get_kth_from_end;
+mod p04_find_number_in2_d_array;
+mod p13_moving_count;
+mod p06_reverse_print;
+mod p58_reverse_left_words;
+mod p11_min_array;
+mod p29_spiral_order;
+mod p09_heap_to_queue;
+mod p59_max_queue;
+mod p21_exchange;
+mod p053_missing_number;
