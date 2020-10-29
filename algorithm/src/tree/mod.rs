@@ -17,3 +17,4 @@ mod p0129_sum_numbers;
 mod p0199_right_side_view;
 mod p0530_get_minimum_difference;
 mod p0230_kth_smallest;
+mod p0226_invert_tree;

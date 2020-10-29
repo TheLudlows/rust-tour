@@ -38,3 +38,18 @@ fn main() {
     *(x.borrow_mut()) = 20;
     println!("{:?}", x)
 }
+
+#[test]
+fn test_borrow() {
+    let cell = RefCell::new(5);
+    let a = cell.borrow_mut();
+    let b = cell.borrow();
+    cell.get_mut()
+}
+
+#[test]
+fn test() {
+    let mut s = String::new();
+    let a = &s;
+    let b = &mut s;
+}

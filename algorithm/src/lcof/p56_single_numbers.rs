@@ -38,7 +38,7 @@ impl Solution {
                 b ^= i;
             }
         }
-        vec![a, b];
+        vec![a, b]
     }
 }
 
