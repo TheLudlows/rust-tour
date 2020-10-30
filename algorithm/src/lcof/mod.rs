@@ -24,3 +24,4 @@ mod p30_min_stack;
 mod p55_is_balanced;
 mod p31_validate_stack_sequences;
 mod p61_is_straight;
+mod p38_permutation;
