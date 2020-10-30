@@ -17,3 +17,5 @@ mod p56_single_numbers;
 mod p34_search;
 mod p054_kth_largest;
 mod p62_last_remaining;
+mod p39_majority_element;
+mod p58_reverse_words;
