@@ -1,4 +1,4 @@
-use crate::{Solution, ListNode};
+use crate::{ListNode, Solution};
 
 impl Solution {
     pub fn is_palindrome(head: Option<Box<ListNode>>) -> bool {

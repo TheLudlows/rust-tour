@@ -1,5 +1,3 @@
-use std::cmp::max;
-
 use crate::Solution;
 /// @todo
 impl Solution {
@@ -20,7 +18,6 @@ impl Solution {
 
 #[test]
 fn test() {
-     let v = vec![1,2,5];
-    let r = Solution::change(5,v);
-
+    let v = vec![1, 2, 5];
+    Solution::change(5, v);
 }

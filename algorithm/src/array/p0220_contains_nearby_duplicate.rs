@@ -24,7 +24,11 @@ impl Solution {
             if i > k {
                 bts.remove(&(nums[i - 1 - k] as i64));
             }
-            if bts.range(nums[i] as i64 - t..=nums[i] as i64 + t).next().is_some() {
+            if bts
+                .range(nums[i] as i64 - t..=nums[i] as i64 + t)
+                .next()
+                .is_some()
+            {
                 return true;
             }
             bts.insert(nums[i] as i64);

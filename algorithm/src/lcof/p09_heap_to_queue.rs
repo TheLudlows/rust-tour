@@ -1,4 +1,3 @@
-
 /// 第一次取时，第一个栈中的数据放入第二个栈
 struct MyQueue {
     s1: Vec<i32>,
@@ -38,4 +37,3 @@ impl MyQueue {
         self.s1.is_empty() && self.s2.is_empty()
     }
 }
-

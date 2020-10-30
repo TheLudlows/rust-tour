@@ -1,4 +1,3 @@
-use std::collections::VecDeque;
 use crate::Solution;
 
 /// 回溯 + 减枝
@@ -13,11 +12,19 @@ impl Solution {
     }
 }
 
-fn combination2(candidates: &[i32], begin: usize, target: i32, result: &mut Vec<Vec<i32>>, path: &mut Vec<i32>) {
-    if target < 0 {// 当前分支不符合
+fn combination2(
+    candidates: &[i32],
+    begin: usize,
+    target: i32,
+    result: &mut Vec<Vec<i32>>,
+    path: &mut Vec<i32>,
+) {
+    if target < 0 {
+        // 当前分支不符合
         return;
     }
-    if target == 0 {//当前分支符合，加入结果集并返回。
+    if target == 0 {
+        //当前分支符合，加入结果集并返回。
         result.push(Vec::from(path.clone()));
         return;
     }
@@ -25,7 +32,8 @@ fn combination2(candidates: &[i32], begin: usize, target: i32, result: &mut Vec<
         return;
     }
     for i in begin..candidates.len() {
-        if i > begin && candidates[i] == candidates[i - 1] { // 去重
+        if i > begin && candidates[i] == candidates[i - 1] {
+            // 去重
             continue;
         }
         // 如果新的target已经小于0，没必要继续当前分支了

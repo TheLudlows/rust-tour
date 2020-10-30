@@ -1,6 +1,5 @@
-use std::cmp::max;
-use std::collections::VecDeque;
 use crate::Solution;
+use std::cmp::max;
 
 impl Solution {
     pub fn longest_valid_parentheses(s: String) -> i32 {
@@ -34,5 +33,8 @@ impl Solution {
 
 #[test]
 fn test() {
-    println!("{}", Solution::longest_valid_parentheses("()()()(())".to_string()));
+    println!(
+        "{}",
+        Solution::longest_valid_parentheses("()()()(())".to_string())
+    );
 }

@@ -1,5 +1,5 @@
-use std::collections::VecDeque;
 use crate::Solution;
+use std::collections::VecDeque;
 
 impl Solution {
     pub fn max_sliding_window(nums: Vec<i32>, k: i32) -> Vec<i32> {
@@ -12,7 +12,7 @@ impl Solution {
         for i in 0..right {
             push_to_max_queue(&mut queue, i, &nums);
         }
-        let mut result = Vec::with_capacity((nums.len() - k as usize + 1));
+        let mut result = Vec::with_capacity(nums.len() - k as usize + 1);
         result.push(nums[queue[0]]);
         while right < nums.len() {
             if left >= queue[0] {

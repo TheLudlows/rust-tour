@@ -28,6 +28,4 @@ fn mid_traversal(node: Option<&Rc<RefCell<TreeNode>>>, vec: &mut Vec<i32>) {
 }
 
 #[test]
-fn test() {
-
-}
+fn test() {}

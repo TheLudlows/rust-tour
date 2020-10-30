@@ -1,25 +1,23 @@
 #![feature(type_name_of_val)]
 
-use std::borrow::BorrowMut;
 use std::cell::RefCell;
-use std::mem::take;
 use std::rc::Rc;
 
-pub mod sort;
-pub mod math;
-pub mod datastruct;
 mod array;
-mod dp;
-mod string;
-mod list;
-mod heap;
-mod search;
 mod backtracking;
-mod tree;
+pub mod datastruct;
+mod dp;
 mod hash;
-mod stack;
-mod queue;
+mod heap;
 mod lcof;
+mod list;
+pub mod math;
+mod queue;
+mod search;
+pub mod sort;
+mod stack;
+mod string;
+mod tree;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -30,16 +28,10 @@ pub struct ListNode {
 impl ListNode {
     #[inline]
     pub(crate) fn new(val: i32) -> Self {
-        ListNode {
-            next: None,
-            val,
-        }
+        ListNode { next: None, val }
     }
     pub(crate) fn new_withNext(val: i32, next: Option<Box<ListNode>>) -> Self {
-        ListNode {
-            next,
-            val,
-        }
+        ListNode { next, val }
     }
 }
 

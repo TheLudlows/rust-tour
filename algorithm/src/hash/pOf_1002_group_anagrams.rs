@@ -7,7 +7,7 @@ impl Solution {
         let mut res = vec![];
         let mut map = HashMap::new();
         for s in strs {
-            let mut  key = s.clone().into_bytes();
+            let mut key = s.clone().into_bytes();
             key.sort();
             let v = map.entry(key).or_insert(vec![]);
             v.push(s);
@@ -19,6 +19,4 @@ impl Solution {
     }
 }
 #[test]
-fn test() {
-
-}
+fn test() {}

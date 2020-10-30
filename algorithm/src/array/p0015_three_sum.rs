@@ -1,5 +1,5 @@
-use std::collections::HashSet;
 use crate::Solution;
+use std::collections::HashSet;
 
 ///  [-3,-2,-1,2,3,5]
 ///  先进性排序， a指针从头向后遍历，b指针在a指针之后开始，c指针从结尾开始
@@ -9,7 +9,9 @@ use crate::Solution;
 
 impl Solution {
     pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
-        if nums.len() < 3 { return vec![]; }
+        if nums.len() < 3 {
+            return vec![];
+        }
         nums.sort();
         let mut res = vec![];
         for a in 0..nums.len() - 2 {
@@ -32,7 +34,8 @@ impl Solution {
                 } else if sum > 0 {
                     c -= 1;
                 } else if sum == 0 {
-                    if tag1 == Some(nums[b]) { // 去重
+                    if tag1 == Some(nums[b]) {
+                        // 去重
                         b += 1;
                         c -= 1;
                         continue;

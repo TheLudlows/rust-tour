@@ -1,12 +1,13 @@
-use std::any::type_name_of_val;
 use std::cell::RefCell;
 use std::rc::Rc;
-
 
 use crate::{Solution, TreeNode};
 
 impl Solution {
-    pub fn merge_trees(t1: Option<Rc<RefCell<TreeNode>>>, t2: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn merge_trees(
+        t1: Option<Rc<RefCell<TreeNode>>>,
+        t2: Option<Rc<RefCell<TreeNode>>>,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
         let mut t1 = t1;
         mt(&mut t1, &t2);
         t1

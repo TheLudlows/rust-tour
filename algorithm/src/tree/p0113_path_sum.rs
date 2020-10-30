@@ -1,7 +1,5 @@
 use std::cell::RefCell;
-use std::collections::VecDeque;
 use std::rc::Rc;
-
 
 use crate::{Solution, TreeNode};
 
@@ -16,7 +14,12 @@ impl Solution {
     }
 }
 
-pub fn addNode(node: &Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<Vec<i32>>, cur: &mut Vec<i32>, sum: i32) {
+pub fn addNode(
+    node: &Option<Rc<RefCell<TreeNode>>>,
+    result: &mut Vec<Vec<i32>>,
+    cur: &mut Vec<i32>,
+    sum: i32,
+) {
     match node {
         Some(n) => {
             cur.push(n.borrow().val);
@@ -30,9 +33,7 @@ pub fn addNode(node: &Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<Vec<i32>>,
             addNode(&n.borrow().right, result, cur, sum);
             cur.pop();
         }
-        None => {
-            cur.push(0)
-        }
+        None => cur.push(0),
     }
 }
 

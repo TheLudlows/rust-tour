@@ -6,8 +6,8 @@ impl Solution {
             return nums.len() as i32;
         }
         let mut j = 2;
-        for i in 2..nums.len(){
-            if  nums[i] != nums[j-2]{
+        for i in 2..nums.len() {
+            if nums[i] != nums[j - 2] {
                 nums[j] = nums[i];
                 j += 1;
             }
@@ -17,7 +17,7 @@ impl Solution {
 }
 #[test]
 fn test() {
-    let mut v = vec![1,1,1,2,2,3];
+    let mut v = vec![1, 1, 1, 2, 2, 3];
     Solution::remove_duplicates_2(&mut v);
-    println!("{:?}",v);
+    println!("{:?}", v);
 }

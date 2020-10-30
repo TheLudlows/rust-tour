@@ -6,7 +6,9 @@ use crate::Solution;
 impl Solution {
     pub fn longest_consecutive(nums: Vec<i32>) -> i32 {
         let mut set = HashSet::new();
-        nums.iter().for_each(|e| { set.insert(e); });
+        nums.iter().for_each(|e| {
+            set.insert(e);
+        });
         let mut longest = 0;
         for i in set.iter() {
             if !set.contains(&(*i - 1)) {

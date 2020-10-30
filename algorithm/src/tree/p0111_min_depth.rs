@@ -8,7 +8,7 @@ impl Solution {
     pub fn min_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         if root.is_none() {
             0
-        }else {
+        } else {
             dep(root.as_ref())
         }
     }

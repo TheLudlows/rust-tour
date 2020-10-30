@@ -1,12 +1,12 @@
-use std::rc::Rc;
-use std::cell::RefCell;
 use crate::{Solution, TreeNode};
+use std::cell::RefCell;
+use std::rc::Rc;
 
 impl Solution {
     pub fn kth_largest(root: Option<Rc<RefCell<TreeNode>>>, k: i32) -> i32 {
         let mut v = Vec::new();
         traversal(root.as_ref(), &mut v);
-        v[(k -1) as usize]
+        v[(k - 1) as usize]
     }
 }
 fn traversal(node: Option<&Rc<RefCell<TreeNode>>>, vec: &mut Vec<i32>) {

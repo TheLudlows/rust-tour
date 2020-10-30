@@ -10,19 +10,13 @@ pub struct Node<T> {
 
 impl<T> Node<T> {
     pub fn new(v: T, next: Option<Box<Node<T>>>) -> Node<T> {
-        Node {
-            val: v,
-            next,
-        }
+        Node { val: v, next }
     }
 }
 
 impl<T> SimpleLinkedList<T> {
     pub fn new() -> SimpleLinkedList<T> {
-        SimpleLinkedList {
-            head: None,
-            len: 0,
-        }
+        SimpleLinkedList { head: None, len: 0 }
     }
     pub fn add(&mut self, e: T) {
         self.head = Some(Box::new(Node::new(e, self.head.take())));

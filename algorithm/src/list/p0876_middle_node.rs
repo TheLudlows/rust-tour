@@ -1,4 +1,4 @@
-use crate::{Solution, ListNode};
+use crate::{ListNode, Solution};
 
 impl Solution {
     pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -13,6 +13,4 @@ impl Solution {
 }
 
 #[test]
-fn test() {
-
-}
+fn test() {}

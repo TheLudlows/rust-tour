@@ -1,9 +1,12 @@
-use crate::{Solution, ListNode};
+use crate::{ListNode, Solution};
 
 ///
 /// take的用法
 impl Solution {
-    pub fn merge_two_lists(mut l1: Option<Box<ListNode>>, mut l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    pub fn merge_two_lists(
+        mut l1: Option<Box<ListNode>>,
+        mut l2: Option<Box<ListNode>>,
+    ) -> Option<Box<ListNode>> {
         let mut l3 = ListNode::new(0);
         // cur 指向list3的最新的节点
         let mut cur = &mut l3;

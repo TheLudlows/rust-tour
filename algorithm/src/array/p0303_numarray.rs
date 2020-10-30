@@ -1,5 +1,5 @@
 struct NumArray {
-    sum: Vec<i32>
+    sum: Vec<i32>,
 }
 
 /// 缓存0-i的和
@@ -9,9 +9,7 @@ impl NumArray {
         for i in nums {
             sum.push(i + sum.last().unwrap());
         }
-        Self {
-            sum
-        }
+        Self { sum }
     }
 
     fn sum_range(&self, i: i32, j: i32) -> i32 {

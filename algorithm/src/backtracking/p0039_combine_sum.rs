@@ -12,11 +12,19 @@ impl Solution {
     }
 }
 
-fn combination(candidates: &[i32], begin: usize, target: i32, result: &mut Vec<Vec<i32>>, path: &mut Vec<i32>) {
-    if target < 0 {// 当前分支不符合
+fn combination(
+    candidates: &[i32],
+    begin: usize,
+    target: i32,
+    result: &mut Vec<Vec<i32>>,
+    path: &mut Vec<i32>,
+) {
+    if target < 0 {
+        // 当前分支不符合
         return;
     }
-    if target == 0 {//当前分支符合，加入结果集并返回。
+    if target == 0 {
+        //当前分支符合，加入结果集并返回。
         result.push(Vec::from(path.clone()));
         return;
     }

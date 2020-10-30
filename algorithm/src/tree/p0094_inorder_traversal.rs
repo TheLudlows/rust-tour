@@ -1,7 +1,5 @@
 use std::cell::RefCell;
-use std::collections::VecDeque;
 use std::rc::Rc;
-
 
 use crate::{Solution, TreeNode};
 
@@ -67,7 +65,6 @@ fn traversal(node: Option<&Rc<RefCell<TreeNode>>>, vec: &mut Vec<i32>) {
         traversal(n.borrow().right.as_ref(), vec);
     }
 }
-
 
 #[test]
 fn test() {}

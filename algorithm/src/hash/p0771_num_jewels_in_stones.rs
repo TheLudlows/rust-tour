@@ -1,6 +1,5 @@
 use crate::Solution;
 use std::collections::HashSet;
-use std::iter::FromIterator;
 
 impl Solution {
     pub fn num_jewels_in_stones(j: String, s: String) -> i32 {
@@ -9,4 +8,4 @@ impl Solution {
     }
 }
 #[test]
-fn  test(){}
+fn test() {}

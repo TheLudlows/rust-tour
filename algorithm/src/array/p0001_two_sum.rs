@@ -11,8 +11,12 @@ impl Solution {
         for (index, num) in nums.iter().enumerate() {
             let v = map.get(&(target - *num));
             match v {
-                None => { map.insert(num, index); }
-                Some(i) => { return vec![*i as i32, (index) as i32]; }
+                None => {
+                    map.insert(num, index);
+                }
+                Some(i) => {
+                    return vec![*i as i32, (index) as i32];
+                }
             }
         }
         vec![]
@@ -29,5 +33,3 @@ mod tests {
         assert_eq!(vec![1, 2], Solution::two_sum(vec![3, 2, 4], 6));
     }
 }
-
-

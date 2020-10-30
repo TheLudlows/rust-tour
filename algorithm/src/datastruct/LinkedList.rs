@@ -63,7 +63,10 @@ impl<T> LinkedList<T> {
     }
 }
 
-impl<T> Display for LinkedList<T> where T: Display, {
+impl<T> Display for LinkedList<T>
+where
+    T: Display,
+{
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         unsafe {
             match self.start {
@@ -74,7 +77,10 @@ impl<T> Display for LinkedList<T> where T: Display, {
     }
 }
 
-impl<T> Display for Node<T> where T: Display, {
+impl<T> Display for Node<T>
+where
+    T: Display,
+{
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         unsafe {
             match self.next {

@@ -1,5 +1,5 @@
-use std::i32::MAX;
 use crate::Solution;
+use std::i32::MAX;
 
 /// 记录历史最低价格，逐个遍历价格数组，当差价大于最大利润是更新最大利润
 impl Solution {

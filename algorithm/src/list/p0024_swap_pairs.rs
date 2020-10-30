@@ -1,4 +1,4 @@
-use crate::{Solution, ListNode};
+use crate::{ListNode, Solution};
 
 impl Solution {
     pub fn swap_pairs(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -11,7 +11,7 @@ impl Solution {
                 remain = n2.next.take(); // take()将n2打断，n2只有一个值，返回值是除n2节点外的剩余节点
                 n2.next = Some(n1);
                 tail.next = Some(n2);
-                tail = tail.next.as_mut().unwrap().next.as_mut().unwrap();//更新tail指针
+                tail = tail.next.as_mut().unwrap().next.as_mut().unwrap(); //更新tail指针
             } else {
                 tail.next = Some(n1);
                 tail = tail.next.as_mut().unwrap();

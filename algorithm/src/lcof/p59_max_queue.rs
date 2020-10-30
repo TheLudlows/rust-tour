@@ -48,6 +48,4 @@ impl MaxQueue {
 }
 
 #[test]
-fn test() {
-
-}
+fn test() {}

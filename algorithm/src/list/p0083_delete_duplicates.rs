@@ -1,4 +1,4 @@
-use crate::{Solution, ListNode};
+use crate::{ListNode, Solution};
 
 impl Solution {
     pub fn delete_duplicates(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -7,7 +7,7 @@ impl Solution {
             if node.next.is_some() && node.next.as_ref().unwrap().val == node.val {
                 node.next = node.next.as_mut().unwrap().next.take();
                 point = Some(node);
-            }else {
+            } else {
                 point = node.next.as_mut();
             }
         }

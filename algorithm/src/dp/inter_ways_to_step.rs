@@ -2,9 +2,15 @@ use crate::Solution;
 
 impl Solution {
     pub fn ways_to_step(n: i32) -> i32 {
-        if n == 1 { return 1; };
-        if n == 2 { return 2; };
-        if n == 3 { return 4; };
+        if n == 1 {
+            return 1;
+        };
+        if n == 2 {
+            return 2;
+        };
+        if n == 3 {
+            return 4;
+        };
 
         let mut dp: Vec<usize> = vec![0; (n + 1) as usize];
         dp[1] = 1;

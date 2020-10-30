@@ -15,6 +15,4 @@ impl Solution {
     }
 }
 #[test]
-fn test() {
-
-}
+fn test() {}

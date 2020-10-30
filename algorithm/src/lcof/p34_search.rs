@@ -3,14 +3,14 @@ use crate::Solution;
 impl Solution {
     pub fn search_range2(a: Vec<i32>, tgt: i32) -> Vec<i32> {
         if a.is_empty() {
-            return vec![-1,-1];
+            return vec![-1, -1];
         }
-        let l = search_left(&a,tgt);
+        let l = search_left(&a, tgt);
         if l < 0 {
-            return vec![-1,-1];
+            return vec![-1, -1];
         }
-        let r = search_right(&a,tgt);
-        return vec![l,r]
+        let r = search_right(&a, tgt);
+        return vec![l, r];
     }
 }
 fn search_left(nums: &Vec<i32>, target: i32) -> i32 {

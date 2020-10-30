@@ -1,4 +1,4 @@
-use crate::{Solution, ListNode};
+use crate::{ListNode, Solution};
 
 impl Solution {
     pub fn reverse_print(mut head: Option<Box<ListNode>>) -> Vec<i32> {

@@ -1,4 +1,3 @@
-use std::fs::read;
 use crate::Solution;
 
 impl Solution {
@@ -36,7 +35,8 @@ impl Solution {
                     } else if sum > target {
                         d -= 1;
                     } else if sum == target {
-                        if tag1 == Some(nums[c]) { // 去重
+                        if tag1 == Some(nums[c]) {
+                            // 去重
                             c += 1;
                             d -= 1;
                             continue;

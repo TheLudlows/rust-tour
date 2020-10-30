@@ -21,7 +21,6 @@ fn bubble_sort(arr: &mut [i32]) {
     }
 }
 
-
 #[cfg(test)]
 mod test {
     use crate::sort::easy_sort::{bubble_sort, exchange_sort};

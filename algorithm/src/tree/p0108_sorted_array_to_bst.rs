@@ -14,11 +14,9 @@ fn slice_to_bst(nums: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
         return None;
     }
     let mid = nums.len() / 2;
-    Some(Rc::new(RefCell::new(
-        TreeNode {
-            val: nums[mid],
-            left: slice_to_bst(&nums[0..mid]),
-            right: slice_to_bst(&nums[mid + 1..]),
-        }
-    )))
+    Some(Rc::new(RefCell::new(TreeNode {
+        val: nums[mid],
+        left: slice_to_bst(&nums[0..mid]),
+        right: slice_to_bst(&nums[mid + 1..]),
+    })))
 }

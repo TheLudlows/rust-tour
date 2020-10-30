@@ -4,7 +4,10 @@ use std::rc::Rc;
 use crate::{Solution, TreeNode};
 
 impl Solution {
-    pub fn insert_into_bst(mut root: Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn insert_into_bst(
+        mut root: Option<Rc<RefCell<TreeNode>>>,
+        val: i32,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
         if let None = root {
             return Some(Rc::new(RefCell::new(TreeNode::new(val))));
         }

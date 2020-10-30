@@ -33,7 +33,7 @@ impl Solution {
                 if nums[i] == nums[j] {
                     return nums[i];
                 }
-                nums.swap(i,j);
+                nums.swap(i, j);
                 j = nums[i] as usize;
             }
         }

@@ -15,7 +15,7 @@ fn trace(start: usize, result: &mut Vec<Vec<i32>>, nums: &Vec<i32>, cur: &mut Ve
 
     for i in start..nums.len() {
         if i > start && nums[i] == nums[i + 1] {
-            continue
+            continue;
         }
         cur.push(nums[i]);
         trace(i + 1, result, nums, cur);

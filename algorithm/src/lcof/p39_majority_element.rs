@@ -4,9 +4,9 @@ use crate::Solution;
 
 impl Solution {
     pub fn majority_element(nums: Vec<i32>) -> i32 {
-        let (mut count, len, mumost) = (0, nums.len(), nums[0]);
+        let (mut count, len, mut most) = (0, nums.len(), nums[0]);
         for i in 0..len {
-            count += if res == nums[i] { 1 } else { -1 };
+            count += if most == nums[i] { 1 } else { -1 };
             if count < 0 {
                 most = nums[i];
                 count = 0;

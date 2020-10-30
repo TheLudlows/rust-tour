@@ -6,19 +6,17 @@ impl Solution {
         let mut map = HashMap::new();
         for i in arr {
             let mut count = map.entry(i).or_insert(0);
-            *count+=1;
+            *count += 1;
         }
 
         let mut set = HashSet::new();
-        for (_,count) in map {
-           if !set.insert(count) {
-               return false
-           }
+        for (_, count) in map {
+            if !set.insert(count) {
+                return false;
+            }
         }
         true
     }
 }
 #[test]
-fn test() {
-
-}
+fn test() {}

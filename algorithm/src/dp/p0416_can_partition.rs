@@ -4,7 +4,7 @@ impl Solution {
     pub fn can_partition(nums: Vec<i32>) -> bool {
         let sum = nums.iter().sum::<i32>() as usize;
         if sum & 1 == 1 {
-            return false
+            return false;
         }
         let half = sum >> 1;
         let len = nums.len();
@@ -29,7 +29,7 @@ impl Solution {
     pub fn can_partition_2(nums: Vec<i32>) -> bool {
         let sum = nums.iter().sum::<i32>() as usize;
         if sum & 1 == 1 {
-            return false
+            return false;
         }
         let half = sum >> 1;
         let len = nums.len();

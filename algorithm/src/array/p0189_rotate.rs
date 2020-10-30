@@ -6,11 +6,11 @@ impl Solution {
         let len = nums.len();
         let k = k as usize % len;
         let mut count = 0;
-        for start in 0..k{
+        for start in 0..k {
             let mut index = start;
             let mut prev = nums[index];
             loop {
-                index = (index+k)%len;
+                index = (index + k) % len;
                 let temp = nums[index];
                 nums[index] = prev;
                 prev = temp;
@@ -24,7 +24,6 @@ impl Solution {
                 break;
             }
         }
-
     }
 }
 

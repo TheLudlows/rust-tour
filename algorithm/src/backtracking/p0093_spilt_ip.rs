@@ -15,17 +15,17 @@ fn trace(s: &str, cur: &mut Vec<String>, pos: usize, result: &mut Vec<String>) {
         if pos == s.len() {
             result.push(cur.join("."));
         }
-        return
+        return;
     }
 
     for i in 1..4 {
         if pos + i > s.len() {
-            break
+            break;
         }
         let seg = &s[pos..pos + i];
         let val = seg.parse::<i32>().unwrap();
         if seg.starts_with("0") && seg.len() > 1 || val > 255 {
-            continue
+            continue;
         }
         cur.push(seg.to_string());
         trace(s, cur, pos + i, result);
@@ -34,6 +34,4 @@ fn trace(s: &str, cur: &mut Vec<String>, pos: usize, result: &mut Vec<String>) {
 }
 
 #[test]
-fn test() {
-
-}
+fn test() {}

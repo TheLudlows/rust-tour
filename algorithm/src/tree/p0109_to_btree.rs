@@ -1,12 +1,11 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
-use crate::{Solution, ListNode, TreeNode};
+use crate::{ListNode, Solution, TreeNode};
 
 /// 链表从中间切开,那么这时候主体是一个相对平衡的二叉树
 /// 左边,右边分别像第一步一样递归求解即可.
 /// Cell和RefCell的区别
-
 
 impl Solution {
     pub fn sorted_list_to_bst(head: Option<Box<ListNode>>) -> Option<Rc<RefCell<TreeNode>>> {

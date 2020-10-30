@@ -1,7 +1,6 @@
+use crate::{ListNode, Solution};
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
-use crate::{ListNode, Solution};
-
 
 impl PartialOrd<ListNode> for ListNode {
     fn partial_cmp(&self, other: &ListNode) -> Option<Ordering> {

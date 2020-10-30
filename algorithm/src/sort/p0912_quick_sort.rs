@@ -1,5 +1,3 @@
 use crate::Solution;
 
-impl Solution {
-
-}
+impl Solution {}

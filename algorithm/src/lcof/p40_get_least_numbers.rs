@@ -6,7 +6,7 @@ use crate::Solution;
 impl Solution {
     pub fn get_least_numbers(arr: Vec<i32>, k: i32) -> Vec<i32> {
         if k == 0 {
-            return vec![]
+            return vec![];
         }
         let k = k as usize;
         let mut maxHeap = BinaryHeap::with_capacity(k);

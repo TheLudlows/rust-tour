@@ -1,5 +1,5 @@
-use std::cmp::min;
 use crate::Solution;
+use std::cmp::min;
 
 ///双指针，移动值较小的指针，因为较大的面积不可能会以这条为边
 impl Solution {
@@ -8,7 +8,10 @@ impl Solution {
         let mut right = height.len() - 1;
         let mut max = min(height[left] * right as i32, height[right] * right as i32);
         while left < right {
-            let temp = min(height[left] * (right - left) as i32, height[right] * (right - left) as i32);
+            let temp = min(
+                height[left] * (right - left) as i32,
+                height[right] * (right - left) as i32,
+            );
             if temp > max {
                 max = temp;
             }

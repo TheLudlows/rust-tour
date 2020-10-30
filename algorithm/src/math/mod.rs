@@ -1,5 +1,5 @@
-mod p0008_str_int;
 mod p0007_reverse_int;
+mod p0008_str_int;
 mod p0009_is_palindrome;
 mod p0010_is_match;
 mod p0020_is_valid;

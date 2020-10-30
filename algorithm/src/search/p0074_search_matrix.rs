@@ -19,7 +19,8 @@ impl Solution {
                 r = mid;
             } else if matrix[mid][y - 1] < target {
                 l = mid + 1;
-            } else {// in this vec
+            } else {
+                // in this vec
                 let v = &matrix[mid];
                 l = 0;
                 r = y;

@@ -12,7 +12,12 @@ impl Solution {
     }
 }
 
-fn backtrace_2(nums: &Vec<i32>, arr: &mut Vec<i32>, result: &mut Vec<Vec<i32>>, vis: &mut Vec<bool>) {
+fn backtrace_2(
+    nums: &Vec<i32>,
+    arr: &mut Vec<i32>,
+    result: &mut Vec<Vec<i32>>,
+    vis: &mut Vec<bool>,
+) {
     if arr.len() == nums.len() {
         result.push(arr.clone());
     } else {

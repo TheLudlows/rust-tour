@@ -1,5 +1,3 @@
-use std::fs::read;
-
 impl Solution {
     pub fn my_atoi(str: String) -> i32 {
         let s = str.trim();
