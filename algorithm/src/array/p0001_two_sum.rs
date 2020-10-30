@@ -10,13 +10,10 @@ impl Solution {
         let mut map = HashMap::new();
         for (index, num) in nums.iter().enumerate() {
             let v = map.get(&(target - *num));
-            match v {
-                None => {
-                    map.insert(num, index);
-                }
-                Some(i) => {
-                    return vec![*i as i32, (index) as i32];
-                }
+            if let Some(i) = v {
+                return vec![*i as i32, index as i32];
+            } else {
+                map.insert(num, index);
             }
         }
         vec![]
