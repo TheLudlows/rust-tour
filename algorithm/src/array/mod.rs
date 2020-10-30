@@ -1,6 +1,5 @@
 mod p0001_two_sum;
 mod p0002_add_two_num;
-mod p0003_longest_sub_string;
 mod p0011_max_area;
 mod p0015_three_sum;
 mod p0016_three_sum_closest;

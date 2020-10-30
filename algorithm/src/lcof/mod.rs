@@ -20,3 +20,4 @@ mod p58_reverse_left_words;
 mod p58_reverse_words;
 mod p59_max_queue;
 mod p62_last_remaining;
+mod p30_min_stack;
