@@ -1,2 +1,3 @@
+use std::ptr::hash;
+
 pub mod LinkedList;
-pub mod SimpleLinkedList;

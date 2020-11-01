@@ -3,27 +3,22 @@ use crate::Solution;
 impl Solution {
     pub fn longest_common_prefix(strs: Vec<String>) -> String {
         let mut res = String::new();
-        if strs.len() == 0 {
-            return res;
+        let chars = strs.iter().map(|s| s.chars().collect()).collect::<Vec<Vec<char>>>();
+        if chars.len() == 0 || chars[0].len() == 0 {
+            return res
         }
-        let bytes = strs.iter().map(|s| s.as_bytes()).collect::<Vec<&[u8]>>();
-        //println!("{}", bytes.len());
         let mut i = 0;
 
         loop {
             let mut same = true;
-            for j in 1..bytes.len() {
-                if bytes[0].len() == 0 || bytes[j].len() == 0 {
-                    same = false;
-                    break;
-                }
-                if i >= bytes[0].len() || i >= bytes[j].len() || bytes[j][i] != bytes[0][i] {
+            for j in 1..chars.len() {
+                if i >= chars[0].len() || i >= chars[j].len() || chars[j][i] != chars[0][i] {
                     same = false;
                     break;
                 }
             }
-            if same && bytes[0].len() > i {
-                res.push(bytes[0][i] as char)
+            if same && i < chars[0].len(){
+                res.push(chars[0][i] as char)
             } else {
                 break;
             }
