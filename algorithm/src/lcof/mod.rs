@@ -27,3 +27,6 @@ mod p61_is_straight;
 mod p38_permutation;
 mod p31_level_order;
 mod p32_level_order;
+mod p41_MedianFinder;
+mod p47_max_value;
+mod p57_find_continuous_sequence;
