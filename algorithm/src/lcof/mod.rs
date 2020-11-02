@@ -26,3 +26,4 @@ mod p31_validate_stack_sequences;
 mod p61_is_straight;
 mod p38_permutation;
 mod p31_level_order;
+mod p32_level_order;
