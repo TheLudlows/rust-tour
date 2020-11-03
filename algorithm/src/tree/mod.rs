@@ -21,3 +21,4 @@ mod p0701_insert_into_bst;
 mod p0297_Codec;
 mod p0235_lowest_common_ancestor;
 mod p0236_lowest_common_ancestor;
+mod p0105_build_tree;
