@@ -30,3 +30,5 @@ mod p32_level_order;
 mod p41_MedianFinder;
 mod p47_max_value;
 mod p57_find_continuous_sequence;
+mod p49_nth_ugly_number;
+mod p45_min_number;
