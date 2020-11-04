@@ -32,3 +32,5 @@ mod p47_max_value;
 mod p57_find_continuous_sequence;
 mod p49_nth_ugly_number;
 mod p45_min_number;
+mod p66_construct_arr;
+mod p26_is_sub_structure;
