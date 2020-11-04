@@ -1,4 +1,5 @@
 use crate::Solution;
+use std::cmp::max;
 
 /// 上一题目相同思路
 impl Solution {
@@ -13,7 +14,7 @@ impl Solution {
             if merge.is_empty() || merge.last().unwrap()[1] < l {
                 merge.push(v);
             } else {
-                merge.last_mut().unwrap()[1] = std::cmp::max(merge.last().unwrap()[1], r);
+                merge.last_mut().unwrap()[1] = max(merge.last().unwrap()[1], r);
             }
         }
         merge
