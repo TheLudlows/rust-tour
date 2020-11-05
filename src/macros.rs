@@ -1,5 +1,4 @@
 use std::vec::Vec;
-use proc
 macro_rules! unless {
     ($arg:expr, $branch:expr) => {
         if !$arg {
