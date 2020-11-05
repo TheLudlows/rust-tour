@@ -44,7 +44,6 @@ fn test_borrow() {
     let cell = RefCell::new(5);
     let a = cell.borrow_mut();
     let b = cell.borrow();
-    cell.get_mut()
 }
 
 #[test]
