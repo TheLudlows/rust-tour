@@ -16,3 +16,4 @@ mod p0322_coin_change;
 mod p0416_can_partition;
 mod p0518_change;
 mod p0746_min_cost_climbing_stairs;
+mod p1218_longest_subsequence;

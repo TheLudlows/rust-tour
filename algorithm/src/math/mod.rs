@@ -11,3 +11,4 @@ mod p202_is_happy;
 mod p0263_is_ugly;
 mod p0264_nth_ugly_number;
 mod p1356_sort_by_one;
+mod p0504_base7;

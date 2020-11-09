@@ -25,3 +25,4 @@ mod p0925_is_long_pressed_name;
 mod p0977_sort_squares;
 mod p0994_oranges_rotting;
 mod p1624_max_length_between_equal_characters;
+mod p1014_max_score_sightseeing_pair;
