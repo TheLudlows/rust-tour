@@ -1,8 +1,8 @@
 use std::cmp::min;
 use crate::Solution;
 
-/// ouble pointer
-impl Solution {aaaaaaaaaaaaaa
+/// double pointer
+impl Solution {
     pub fn min_sub_array_len(s: i32, nums: Vec<i32>) -> i32 {
         if nums.is_empty() {
             return 0;
