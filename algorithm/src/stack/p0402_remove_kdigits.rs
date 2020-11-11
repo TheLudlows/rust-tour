@@ -34,8 +34,6 @@ impl Solution {
 fn test() {
     let mut a = String::from("a");
     let mut b = &mut a;
-
-    println!("{}",a);
     println!("{}",b);
     Solution::remove_kdigits("12345".to_string(),3);
 }
