@@ -123,24 +123,51 @@ fn func3_test() {
 }
 
 trait star {
-    fn sing();
-    fn dance();
-    fn rap() {
+    fn sing(&self);
+    fn dance(&self);
+    fn rap(&self) {
         println!("rap")
     }
-    fn basketball() {
+    fn basketball(&self) {
         println!("🏀");
     }
 }
+
+#[derive(Clone)]
 struct cxk;
 
 /// 默认方法可以不实现
 impl star for cxk {
-    fn sing() {
-        unimplemented!()
+    fn sing(&self) {
+        println!("cxk sing")
     }
 
-    fn dance() {
+    fn dance(&self) {
         unimplemented!()
     }
+}
+
+fn to_sing1<S>(s: S) where S: star {
+    s.sing();
+}
+
+fn to_sing2(s: &dyn star) {
+    s.sing();
+}
+
+fn to_sing3(s: impl star) {
+    s.sing();
+}
+
+fn to_sing4(s: &impl star) {
+    s.sing();
+}
+
+#[test]
+fn test() {
+    let cxk = cxk;
+    to_sing1(cxk.clone());
+    to_sing2(&cxk.clone());
+    to_sing3(cxk.clone());
+    to_sing4(&cxk.clone());
 }

@@ -17,3 +17,4 @@ mod p0416_can_partition;
 mod p0518_change;
 mod p0746_min_cost_climbing_stairs;
 mod p1218_longest_subsequence;
+mod p0139_word_break;

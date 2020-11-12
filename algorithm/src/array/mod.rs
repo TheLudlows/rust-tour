@@ -29,3 +29,4 @@ mod p0327_count_range_sum;
 mod p1014_max_score_sightseeing_pair;
 mod p0209_min_sub_array_len;
 mod p0031_next_permutation;
+mod p0922_sort_by_parity;
