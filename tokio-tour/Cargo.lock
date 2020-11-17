@@ -897,6 +897,7 @@ dependencies = [
 name = "tokio-tour"
 version = "0.1.0"
 dependencies = [
+ "bytes",
  "failure",
  "futures",
  "mini-redis",
