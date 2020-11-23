@@ -12,7 +12,7 @@ impl Future for Delay {
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<&'static str> {
         if Instant::now() >= self.when {
-            println!("Hello world");
+            println!("time is up");
             Poll::Ready("done")
         } else {
             // 现在忽略这一行
@@ -26,7 +26,6 @@ impl Future for Delay {
 async fn main() {
     let when = Instant::now() + Duration::from_millis(10);
     let future = Delay { when };
-
     let out = future.await;
     assert_eq!(out, "done");
 }
