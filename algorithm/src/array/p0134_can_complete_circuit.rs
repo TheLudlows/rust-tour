@@ -8,7 +8,7 @@ impl Solution {
             let mut remain = gas[i];
 
             while remain - cost[j] >= 0 {
-                remain = remain - cost[j] + gas[(j + 1) % n];
+                remain = remain - cost[j] + gas[(j + 1) % len];
                 j = (j + 1) % len;
                 if j == i {
                     return i as i32;
