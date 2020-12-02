@@ -5,7 +5,6 @@ impl Solution {
         let mut k = k as usize;
         let mut res = String::new();
         for n in num.chars() {
-            // `res.pop()` to make sure digits in `res` are in ascending order
             while k > 0 && !res.is_empty() && n < res.chars().last().unwrap() {
                 k -= 1;
                 res.pop();
@@ -32,8 +31,6 @@ impl Solution {
 
 #[test]
 fn test() {
-    let mut a = String::from("a");
-    let mut b = &mut a;
-    println!("{}",b);
-    Solution::remove_kdigits("12345".to_string(),3);
+    let r = Solution::remove_kdigits("012345".to_string(),3);
+    println!("{}",r)
 }
