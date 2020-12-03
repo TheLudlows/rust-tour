@@ -3,7 +3,7 @@ use std::future::Future;
 use std::pin::Pin;
 use std::task::{Context, Poll};
 
-struct Delay {
+pub struct Delay {
     when: Instant,
 }
 

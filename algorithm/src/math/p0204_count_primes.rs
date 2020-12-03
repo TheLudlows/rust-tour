@@ -36,7 +36,7 @@ pub fn count_primes(n: i32) -> i32 {
     for i in 2..n {
         if d[i] {
             count += 1;
-            let mut j = i*i;
+            let mut j = i * i;
             while j < n {
                 d[j] = false;
                 j += i;
