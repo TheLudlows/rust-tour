@@ -33,3 +33,4 @@ mod p0922_sort_by_parity;
 mod p0485_find_max_consecutive_ones;
 mod p1030_all_cells_dist_order;
 mod p0134_can_complete_circuit;
+mod p0118_generate;
