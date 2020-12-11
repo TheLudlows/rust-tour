@@ -104,7 +104,7 @@ impl Fly for Duck {
     }
 }
 
-fn fly_static<T: Fly>(t: &T) -> bool {
+fn fly_static<T: Fly>(t: T) -> bool {
     t.fly()
 }
 
@@ -118,8 +118,8 @@ fn func3_test() {
     let duck = Duck;
     assert_eq!(fly_dyn(&pig), false);
     assert_eq!(fly_dyn(&duck), true);
-    assert_eq!(fly_static(&pig), false);
-    assert_eq!(fly_static(&duck), true);
+    assert_eq!(fly_static(pig), false);
+    assert_eq!(fly_static(duck), true);
 }
 
 trait star {
