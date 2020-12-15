@@ -5,6 +5,7 @@
 #![feature(generator_trait)]
 #![feature(type_name_of_val)]
 #![allow(unused_variables)]
+#![feature(test)]
 
 mod any;
 pub mod array;
@@ -52,5 +53,6 @@ pub mod var;
 pub mod vector;
 pub mod weakref;
 mod file;
+mod bench;
 
 fn main() {}
