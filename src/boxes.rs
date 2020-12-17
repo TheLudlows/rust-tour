@@ -106,3 +106,14 @@ fn test_trait() {
     let b = structFoo;
     a.double_drop(b);
 }
+
+#[test]
+fn test_ref() {
+    let b = Box::new(10);
+    assert_eq!(10,*b.deref());
+    assert_eq!(10,*b);
+    //assert_eq!(&10,b);
+    assert_eq!(&10,b.deref());
+    assert_eq!(&10,&*b)
+
+}
