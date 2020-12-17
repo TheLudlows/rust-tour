@@ -18,3 +18,5 @@ mod p0518_change;
 mod p0746_min_cost_climbing_stairs;
 mod p1218_longest_subsequence;
 mod p0139_word_break;
+mod p0122_max_profit;
+mod p0714_max_profit;

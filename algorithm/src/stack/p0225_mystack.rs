@@ -3,7 +3,7 @@ use std::collections::VecDeque;
 pub struct MyStack {
     queue: VecDeque<i32>,
 }
-/// 每加入一个都都出队之前所有的元素，加入到队尾
+/// 每加入一个都出队之前所有的元素，加入到队尾
 impl MyStack {
     pub fn new() -> Self {
         Default::default()
