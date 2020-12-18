@@ -54,5 +54,6 @@ pub mod vector;
 pub mod weakref;
 mod file;
 mod bench;
+mod ownership;
 
 fn main() {}

@@ -110,5 +110,19 @@ fn dangle() -> String {
     s
 }
 
+#[test]
+fn test() {
+    let mut foo = Foo;
+    let mut loan = foo.mutate_and_share();
+    foo.share();
+    loan.share();
+}
 
+
+struct Foo;
+
+impl Foo {
+    fn mutate_and_share(&mut self) -> &Self { &*self }
+    fn share(&self) {}
+}
 
