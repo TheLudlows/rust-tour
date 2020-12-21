@@ -55,5 +55,6 @@ pub mod weakref;
 mod file;
 mod bench;
 mod ownership;
+mod static_;
 
 fn main() {}

@@ -115,5 +115,4 @@ fn test_ref() {
     //assert_eq!(&10,b);
     assert_eq!(&10,b.deref());
     assert_eq!(&10,&*b)
-
 }
