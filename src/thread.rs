@@ -198,22 +198,6 @@ fn test_new() {
 }
 
 #[test]
-fn test_posion() {
-    let rc = Arc::new(Mutex::new(String::from("hello")));
-    let rc_clone = rc.clone();
-    let join = thread::spawn(move || {
-        let mut s = rc_clone.lock().unwrap();
-        s.push_str(" rust");
-        panic!("oh no");
-    })
-    .join();
-    match rc.lock() {
-        Ok(s) => println!("{}", s),
-        Err(e) => println!("err {}", e),
-    };
-}
-
-#[test]
 fn test_barrier() {
     let barrier = Arc::new(Barrier::new(5));
     let mut joins = vec![];
@@ -259,7 +243,55 @@ fn test_arc_modify () {
     for _ in 0..3 {
         let mut c = arc.clone();
         thread::spawn(move || {
-            c.push_str("word");
+            //c.push_str("word");
         });
     }
+}
+
+#[test]
+fn test_mux () {
+    let lock = Arc::new(Mutex::new(String::from("hello")));
+    let mut v = vec![];
+    for _ in 0..3 {
+        let mut lock = lock.clone();
+        let t = thread::spawn(move || {
+            let mut strs = lock.lock().unwrap();
+            strs.push_str(" world")
+        });
+        v.push(t);
+    }
+
+    for t in v {
+        t.join().unwrap();
+    }
+    println!("{:?}", lock)
+}
+
+#[test]
+fn test_mux_panic () {
+    let lock = Arc::new(Mutex::new(String::from("hello ")));
+    let mut v = vec![];
+    for i in 0..3 {
+        let mut lock = lock.clone();
+        let t = thread::spawn(move || {
+            if i == 0 {
+                panic!("0 panic");
+            }
+            let mut strs = lock.lock().unwrap();
+            strs.push_str(i.to_string().as_str())
+        });
+        v.push(t);
+    }
+
+    for t in v {
+        match t.join() {
+            Err(e) => {
+
+            }
+            Ok(()) => {
+
+            }
+        }
+    }
+    println!("{:?}", lock)
 }
