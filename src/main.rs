@@ -7,6 +7,8 @@
 #![allow(unused_variables)]
 #![feature(test)]
 
+use std::sync::Arc;
+
 mod any;
 pub mod array;
 mod asyncs;
@@ -56,5 +58,7 @@ mod file;
 mod bench;
 mod ownership;
 mod static_;
+mod byteiter;
 
-fn main() {}
+fn main() {
+}

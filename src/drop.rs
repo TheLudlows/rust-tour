@@ -1,3 +1,5 @@
+use std::option::Iter;
+
 struct Inspector<'a>(&'a u8);
 
 impl<'a> Drop for Inspector<'a> {
@@ -11,6 +13,7 @@ fn test() {
     let (b, inspector);
     b = Box::new(1);
     inspector = Inspector(&b);
-    inspector;
-    println!("last")
+    //inspector;
+    //println!("last")
+
 }

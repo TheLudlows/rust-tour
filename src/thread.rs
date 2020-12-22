@@ -1,11 +1,13 @@
 use std::cell::RefCell;
 use std::sync::{mpsc, Arc, Barrier, Mutex, RwLock};
 use std::thread;
-use std::thread::{Builder, JoinHandle};
+use std::thread::{Builder, JoinHandle, LocalKey};
 use std::time::Instant;
 use std::time::{self, Duration};
+
 #[test]
 fn new_thread() {
+    let b = Box::new(1);
     let h = thread::spawn(|| {
         println!("thread running");
         thread::sleep(Duration::from_secs(1));
@@ -18,7 +20,8 @@ fn new_thread() {
 #[test]
 fn move_test() {
     let v = vec![1, 2, 3];
-    let handle = thread::spawn(move || {
+    let handle = thread::spawn( move|| {
+        thread::sleep(Duration::from_secs(1));
         println!("Here's a vector: {:?}", v);
     });
     //println!("{:?}",vv);
@@ -175,7 +178,6 @@ fn thread_local() {
         });
     })
     .join();
-
     Local.with(|v| println!("{:?}", v.borrow()))
 }
 
@@ -234,4 +236,30 @@ fn test_sleep() {
     println!("{:?}", time::SystemTime::now());
     thread::sleep(Duration::from_secs(1));
     println!("{:?}", time::SystemTime::now());
+}
+
+#[test]
+fn test_park() {
+    let t = thread::Builder::new()
+        .spawn(|| {
+            println!("thread park");
+            thread::park();
+            println!("thread finish");
+            thread::yield_now()
+        }).unwrap();
+    thread::sleep(Duration::from_secs(1));
+    println!("un park");
+    t.thread().unpark();
+    t.join().unwrap();
+}
+
+#[test]
+fn test_arc_modify () {
+    let arc = Arc::new(String::from("hello"));
+    for _ in 0..3 {
+        let mut c = arc.clone();
+        thread::spawn(move || {
+            c.push_str("word");
+        });
+    }
 }
