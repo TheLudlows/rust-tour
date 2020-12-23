@@ -8,7 +8,7 @@ fn closure_test() {
     assert!(equal_to_x(y));
 }
 
-fn returns_closure0() -> Box<Fn(i32) -> i32> {
+fn returns_closure0() -> Box<dyn Fn(i32) -> i32> {
     Box::new(|x| x + 1)
 }
 

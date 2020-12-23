@@ -15,7 +15,7 @@ fn main() {
     Pin::new(&mut generator).resume(());
     println!("5");
 }
-
+#[test]
 fn test() {
     let ret = "foo";
     let mut generator = {

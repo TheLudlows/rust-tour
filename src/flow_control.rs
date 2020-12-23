@@ -1,5 +1,5 @@
 use std::option::Option::Some;
-
+#[test]
 fn main() {
     let x = 10;
     let n = if x > 5 { 100 } else { 200 };
@@ -10,7 +10,7 @@ fn main() {
     }
     let n = 42;
     match n {
-        1...3 => println!("1...3"),
+        1..=3 => println!("1...3"),
         m @ 42 => println!("{}", m),
         _ => println!("other"),
     }

@@ -1,14 +1,12 @@
-use std::borrow::BorrowMut;
-
 const VAR: u32 = 10;
-static mut str: &str = "aaa";
+static mut STR: &str = "aaa";
 
 fn main() {
     // const VAR:u32 = 20;
 
-    let mut x = 5;
+    let x = 5;
     println!("The value of x is: {}", x);
-    let mut x = "a";
+    let x = "a";
     println!("The value of x is: {}", x);
     println!("The const is:{}", VAR);
 
@@ -35,7 +33,6 @@ fn first_word(s: &String) -> usize {
             return i;
         }
     }
-
     s.len()
 }
 
@@ -53,7 +50,7 @@ fn first_words(s: &String) -> usize {
 #[test]
 fn test() {
     let mut a = "a".to_string();
-    //let b = &mut a;
+    let b = &mut a;
     //let c = *b;
     //let c = &a;
     //let d = *c;

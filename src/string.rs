@@ -1,5 +1,5 @@
 #![allow(unused_variables)]
-
+#[test]
 fn main() {
     let data = "initial contents";
     let s = "initial contents".to_string();

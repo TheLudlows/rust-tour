@@ -1,15 +1,15 @@
 #[test]
 fn enums() {
     #[derive(Debug)]
-    enum enum_ {
-        a,
-        b(String),
-        s { num: u32, name: String },
+    enum Enum {
+        A,
+        B(String),
+        S { num: u32, name: String },
     }
-    println!("{:?}", enum_::a);
-    println!("{:?}", enum_::b(String::from("b")));
+    println!("{:?}", Enum::A);
+    println!("{:?}", Enum::B(String::from("b")));
 
-    let e = enum_::b(String::from("four"));
+    let e = Enum::B(String::from("four"));
 
     let num: Option<u32> = Some(10);
     match num {
@@ -17,13 +17,8 @@ fn enums() {
         None => println!("no"),
     };
     match e {
-        enum_::a => println!("a"),
-        enum_::b(str) => println!("{}", str),
-        enum_::s { num, name } => println!("s"),
-    }
-
-    let n = Some(1);
-    if let x = n {
-        println!("{}", x.unwrap())
+        Enum::A => println!("a"),
+        Enum::B(str) => println!("{}", str),
+        Enum::S { num, name } => println!("s"),
     }
 }

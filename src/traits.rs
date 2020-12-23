@@ -122,7 +122,7 @@ fn func3_test() {
     assert_eq!(fly_static(duck), true);
 }
 
-trait star {
+trait Star {
     fn sing(&self);
     fn dance(&self);
     fn rap(&self) {
@@ -134,10 +134,10 @@ trait star {
 }
 
 #[derive(Clone)]
-struct cxk;
+struct Cxk;
 
 /// 默认方法可以不实现
-impl star for cxk {
+impl Star for Cxk {
     fn sing(&self) {
         println!("cxk sing")
     }
@@ -147,25 +147,25 @@ impl star for cxk {
     }
 }
 
-fn to_sing1<S>(s: S) where S: star {
+fn to_sing1<S>(s: S) where S: Star {
     s.sing();
 }
 
-fn to_sing2(s: &dyn star) {
+fn to_sing2(s: &dyn Star) {
     s.sing();
 }
 
-fn to_sing3(s: impl star) {
+fn to_sing3(s: impl Star) {
     s.sing();
 }
 
-fn to_sing4(s: &impl star) {
+fn to_sing4(s: &impl Star) {
     s.sing();
 }
 
 #[test]
 fn test() {
-    let cxk = cxk;
+    let cxk = Cxk;
     to_sing1(cxk.clone());
     to_sing2(&cxk.clone());
     to_sing3(cxk.clone());

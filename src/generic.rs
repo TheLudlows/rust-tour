@@ -1,4 +1,3 @@
-use std::cell::{Ref, RefCell};
 
 struct Point<T> {
     x: T,
@@ -19,16 +18,6 @@ impl Point<f32> {
 
 trait Double<T> {
     fn double(&self) -> Option<T>;
-}
-
-struct SS {
-    data: i32,
-}
-
-impl Double<i32> for SS {
-    fn double(&self) -> Option<i32> {
-        unimplemented!()
-    }
 }
 
 fn main() {

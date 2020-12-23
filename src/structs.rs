@@ -7,12 +7,12 @@ struct User {
     active: bool,
 }
 
-struct empty;
+struct Empty;
 
 #[test]
 fn main() {
     type Int = i32;
-    let mut a = "a";
+    let a = "a";
     let a: Int = 10;
 
     let user1 = User {
@@ -32,8 +32,8 @@ fn main() {
     struct Person(String, String, usize);
     let p1 = Person(String::from("four"), String::from("ai"), 12);
 
-    let e1 = empty;
-    let e2 = empty;
+    let e1 = Empty;
+    let e2 = Empty;
 
     println!("{:p}", &e1);
     println!("{:p}", &e2);

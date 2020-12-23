@@ -1,12 +1,5 @@
-use std::borrow::{Borrow, BorrowMut};
-use std::ops::{Deref, DerefMut};
-
-use crate::boxes::List::{Nil, Node};
-
-pub enum List {
-    Node(i32, Box<List>),
-    Nil,
-}
+use std::borrow::Borrow;
+use std::ops::Deref;
 
 struct MyBox<T>(T);
 
@@ -82,7 +75,7 @@ fn owner_test() {
 
 #[test]
 fn mut_test() {
-    let mut a: Box<i32> = Box::new(1);
+    let a: Box<i32> = Box::new(1);
     let x: &i32 = a.borrow();
     let y = a.as_ref();
 }
@@ -99,11 +92,11 @@ impl<T, U> DoubleDrop<T> for U {
     // 此方法获得两个传入参数的所有权，并释放它们。
     fn double_drop(self, _: T) {}
 }
-struct structFoo;
+struct StructFoo;
 #[test]
 fn test_trait() {
-    let a = structFoo;
-    let b = structFoo;
+    let a = StructFoo;
+    let b = StructFoo;
     a.double_drop(b);
 }
 

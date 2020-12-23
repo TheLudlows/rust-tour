@@ -1,16 +1,13 @@
-use std::borrow::BorrowMut;
 use std::cell::Cell;
 
 #[test]
 fn cell_test() {
     struct Foo {
-        a: i32,
         b: Cell<i32>,
         c: Cell<String>,
     }
 
-    let mut f = Foo {
-        a: 10,
+    let f = Foo {
         b: Cell::new(20),
         c: Cell::new("c".to_string()),
     };

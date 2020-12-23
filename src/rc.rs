@@ -1,6 +1,5 @@
-use std::borrow::{Borrow, BorrowMut};
+use std::borrow::BorrowMut;
 use std::cell::RefCell;
-use std::ops::Deref;
 use std::rc::Rc;
 
 #[derive(Debug)]

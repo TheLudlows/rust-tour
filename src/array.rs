@@ -36,7 +36,7 @@ fn change_str_arr(arr: &mut [String; 3]) {
 #[test]
 fn test() {
     let a = [1, 2, 3];
-    let mut s: &[i32] = &a[1..2];
+    let s: &[i32] = &a[1..2];
     println!("{}", s.len());
     let v = vec![1, 2, 3, 4];
     let vs = &v[0..2];

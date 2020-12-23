@@ -1,3 +1,4 @@
+#[test]
 fn main() {
     use std::collections::HashMap;
 

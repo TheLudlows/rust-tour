@@ -1,6 +1,4 @@
 use std::fs::File;
-use std::path::PathBuf;
-
 #[test]
 fn match_error() {
     let f = File::open("hello.txt");

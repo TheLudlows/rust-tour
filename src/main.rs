@@ -6,8 +6,7 @@
 #![feature(type_name_of_val)]
 #![allow(unused_variables)]
 #![feature(test)]
-
-use std::sync::Arc;
+#[allow(dead_code)]
 
 mod any;
 pub mod array;
@@ -28,7 +27,6 @@ pub mod func;
 mod generator;
 pub mod generic;
 pub mod hashmap;
-pub mod heap;
 pub mod iter;
 pub mod lifetime;
 mod macros;
@@ -59,6 +57,7 @@ mod bench;
 mod ownership;
 mod static_;
 mod byteiter;
+mod atomic;
 
 fn main() {
 }
