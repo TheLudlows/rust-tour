@@ -67,3 +67,22 @@ fn test() {
 fn do_nothing<'a, 'b: 'a>(x: &'a u32, y: &'b u32) -> &'a u32 {
     x
 }
+
+
+trait DoSomething<T> {
+    fn do_sth(&self, value: T);
+}
+impl<'a, T: Debug> DoSomething<T> for &'a usize {
+    fn do_sth(&self, value: T) {
+        println!("{:?}", value);
+    }
+}
+fn foo<'a>(b: Box<for <'f> DoSomething <&'f usize>>) {
+    let s: usize = 10;
+    b.do_sth(&s); // error[E0597]: `s` does not live long enough
+}
+#[test]
+fn test_n(){
+    let x  = Box::new(&2usize);
+    foo(x);
+}
