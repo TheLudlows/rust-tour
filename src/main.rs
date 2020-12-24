@@ -6,7 +6,8 @@
 #![feature(type_name_of_val)]
 #![allow(unused_variables)]
 #![feature(test)]
-#[allow(dead_code)]
+#![allow(dead_code)]
+#![feature(impl_trait_in_bindings)]
 
 mod any;
 pub mod array;
@@ -24,7 +25,7 @@ pub mod error;
 pub mod flow_control;
 mod from_into;
 pub mod func;
-mod generator;
+pub mod generator;
 pub mod generic;
 pub mod hashmap;
 pub mod iter;
@@ -58,6 +59,7 @@ mod ownership;
 mod static_;
 mod byteiter;
 mod atomic;
+mod fatpointer;
 
 fn main() {
 }

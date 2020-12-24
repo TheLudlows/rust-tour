@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 #[test]
 fn main() {
     use std::collections::HashMap;
@@ -24,4 +26,18 @@ fn main() {
     let v = scores.entry(String::from("Yellow")).or_insert(50);
     *v += 100;
     println!("{}", scores.get(&String::from("Yellow")).unwrap());
+}
+
+#[test]
+fn test_mut() {
+    let mut map = HashMap::new();
+    let key = "key";
+    match map.get(key) {
+        Some(v) => {
+            println!("{}",v);
+        }
+        None => {
+            map.insert(key,"v");
+        }
+    }
 }

@@ -17,7 +17,6 @@ fn test_type_id() {
     let f = Foo { x: 0, y: 10 };
     let num = 200;
     let str: &str = "abc";
-
     println!("{:?}", (&f).type_id());
     println!("{:?}", f.type_id());
     println!("{:?}", str.type_id());

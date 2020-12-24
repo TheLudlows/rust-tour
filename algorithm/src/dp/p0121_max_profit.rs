@@ -3,7 +3,7 @@ use std::i32::MAX;
 
 /// 记录历史最低价格，逐个遍历价格数组，当差价大于最大利润是更新最大利润
 impl Solution {
-    pub fn max_profit(prices: Vec<i32>) -> i32 {
+    pub fn max_profit1(prices: Vec<i32>) -> i32 {
         let mut min = MAX;
         let mut max_profit = 0;
         for i in prices {
