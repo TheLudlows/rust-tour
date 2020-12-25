@@ -1,4 +1,9 @@
-mod p01_is_unique;
-mod p02_check;
-mod p03_replace_spaces;
-mod p04_can_permute_palindrome;
+mod p101_is_unique;
+mod p102_check;
+mod p103_replace_spaces;
+mod p104_can_permute_palindrome;
+mod p09_is_fliped_string;
+mod p201_remove_duplicate_nodes;
+mod p202_kth_to_last;
+mod p305_sorted_stack;
+mod p1704_missing_number;

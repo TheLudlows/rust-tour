@@ -6,7 +6,7 @@ impl Solution {
         let n = matrix.len();
         for i in 0..n {
             for j in 0..i {
-                swap(&mut matrix[i][j],  &mut matrix[j][i])
+                //swap(&mut matrix[i][j],  &mut matrix[j][i])
             }
         }
         for i in 0..n {

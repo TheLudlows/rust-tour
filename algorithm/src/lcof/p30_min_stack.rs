@@ -20,7 +20,7 @@ impl MinStack {
 
     fn pop(&mut self) {
         if let Some(v) = self.stack.pop() {
-            if v == self.min() {
+            if v <= self.min() {
                 self.min_stack.pop();
             }
         }

@@ -2,7 +2,7 @@ use crate::Solution;
 
 /// 循环替换 O(n)复杂度
 impl Solution {
-    pub fn rotate(nums: &mut Vec<i32>, k: i32) {
+    pub fn rotate_(nums: &mut Vec<i32>, k: i32) {
         let len = nums.len();
         let k = k as usize % len;
         let mut count = 0;
@@ -30,5 +30,5 @@ impl Solution {
 #[test]
 fn test() {
     let mut v = vec![1, 2, 3, 4, 5, 6, 7];
-    Solution::rotate(&mut v, 3);
+    Solution::rotate_(&mut v, 3);
 }
