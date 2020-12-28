@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    pub fn missing_number(nums: Vec<i32>) -> i32 {
+    pub fn missing_number1(nums: Vec<i32>) -> i32 {
         let (mut i, mut j) = (0, nums.len());
         while i < j {
             let mid = (i + j)/2;
