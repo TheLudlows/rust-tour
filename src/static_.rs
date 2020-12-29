@@ -14,6 +14,10 @@ fn main() {
 
 use rand;
 use std::fmt::Debug;
+use std::fs::File;
+use std::thread;
+use std::io::Read;
+use std::cmp::min;
 
 // 在运行时生成随机 &'static str
 fn rand_str_generator() -> &'static str {
@@ -63,4 +67,33 @@ fn test2() {
 
     // 满足 'static 约束的字符串变量可以转换为 'a 约束
     t_bound(string); // 编译通过
+}
+#[test]
+fn test3() {
+    pub fn read_in_background(f: &'static mut File) {
+        thread::spawn(move || {
+            let mut buf = Vec::<u8>::new();
+            if let Ok(count) = f.read_to_end(&mut buf) {
+                println!("read {} bytes from file.", count);
+            }
+        });
+    }
+
+    let mut f = File::open("/tmp/1.log").unwrap();
+    //read_in_background(&mut f);
+}
+
+#[test]
+fn test4() {
+    struct MyCursor<'a> {
+        data: &'a [u8],
+    }
+
+    impl<'a> Read for MyCursor<'a> {
+        fn read(&mut self, buf: &mut [u8]) -> std::result::Result<usize, std::io::Error> {
+            let size = min(buf.len(), self.data.len());
+            buf[..size].copy_from_slice(&self.data[..size]);
+            Ok(size)
+        }
+    }
 }

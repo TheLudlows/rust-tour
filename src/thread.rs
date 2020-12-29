@@ -309,3 +309,32 @@ fn test_convar() {
         println!("{}", start);
     }
 }
+
+#[test]
+fn tes_borrow() {
+    let s = String::from("aaa");
+    thread::spawn(move || println!("{}",&s)).join();
+
+}
+/*
+#[test]
+fn test_b() {
+     let people = vec![
+         "Alice".to_string(),
+         "Bob".to_string(),
+         "Carol".to_string(),
+     ];
+
+     let mut threads = Vec::new();
+
+     for person in &people {
+         threads.push(thread::spawn(move || {
+             println!("Hello, {}!", person);
+         }));
+     }
+
+     for thread in threads {
+         thread.join().unwrap();
+     }
+}
+*/

@@ -1,5 +1,4 @@
 use std::cell::Cell;
-use std::borrow::Borrow;
 
 #[test]
 fn cell_test() {
