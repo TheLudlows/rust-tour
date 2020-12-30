@@ -36,3 +36,4 @@ mod p0118_generate;
 mod p0455_find_content_children;
 mod p0048_rotate;
 mod p0073_set_zeroes;
+mod p1046_last_stone_weight;

@@ -61,6 +61,7 @@ mod byteiter;
 mod atomic;
 mod fatpointer;
 mod epoch;
+mod thread_local;
 
 fn main() {
 }
