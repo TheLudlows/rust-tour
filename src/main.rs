@@ -36,7 +36,6 @@ pub mod option;
 mod pin;
 pub mod range;
 pub mod rc;
-pub mod rcrefcell;
 mod ref_test;
 pub mod refcell;
 mod reflect;

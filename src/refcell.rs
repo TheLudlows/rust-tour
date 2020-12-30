@@ -1,4 +1,5 @@
 use std::cell::RefCell;
+use std::collections::HashMap;
 
 pub trait MessageQueue {
     fn send(&self, msg: &str);
@@ -51,4 +52,14 @@ fn test() {
     let mut s = String::new();
     let a = &s;
     let b = &mut s;
+}
+#[test]
+fn test_refcll() {
+    let rc = RefCell::new(HashMap::new());
+    rc.borrow_mut().insert("a","b");
+
+    let rc2 = rc.clone();
+    println!("{:?}", rc2);
+    rc.borrow_mut().insert("1","2");
+    println!("{:?}", rc2);
 }
