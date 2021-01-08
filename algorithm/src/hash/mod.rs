@@ -9,3 +9,4 @@ mod p0767_reorganize_string;
 mod p0049_group_anagrams;
 mod p0290_word_pattern;
 mod p0205_is_isomorphic;
+mod p1436_dest_city;

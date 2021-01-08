@@ -27,6 +27,6 @@ fn dfs(left: i32, right: i32, cur: &mut String, n: i32, v: &mut Vec<String>) {
 }
 #[test]
 fn test() {
-    let r = Solution::generate_parenthesis(3);
+    let r = Solution::generate_parenthesis(2);
     println!("{:?}",r)
 }

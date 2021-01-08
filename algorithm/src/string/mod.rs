@@ -6,3 +6,6 @@ mod p01160_count_characters;
 mod p1576_modify_string;
 mod p1684_count_consistent_strings;
 mod p1678_interpret;
+mod p1221_balanced_string_split;
+mod p0657_judge_circle;
+mod p1309_freq_alphabets;
