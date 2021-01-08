@@ -9,3 +9,6 @@ mod p1678_interpret;
 mod p1221_balanced_string_split;
 mod p0657_judge_circle;
 mod p1309_freq_alphabets;
+mod p0557_reverse_words;
+mod p1347_min_steps;
+mod p0443_compress;

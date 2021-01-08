@@ -18,7 +18,7 @@ impl Solution {
                 return false;
             }
             let v = map2.entry(t[i]).or_insert( s[i]);
-            if *v != t[i] {
+            if *v != s[i] {
                 return false;
             }
         }

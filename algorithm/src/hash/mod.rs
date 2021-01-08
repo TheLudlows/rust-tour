@@ -10,3 +10,4 @@ mod p0049_group_anagrams;
 mod p0290_word_pattern;
 mod p0205_is_isomorphic;
 mod p1436_dest_city;
+mod p0890_find_and_replace_pattern;
