@@ -12,3 +12,4 @@ mod p1309_freq_alphabets;
 mod p0557_reverse_words;
 mod p1347_min_steps;
 mod p0443_compress;
+mod p1446_max_power;
