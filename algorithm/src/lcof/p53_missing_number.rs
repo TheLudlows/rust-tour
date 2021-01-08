@@ -18,5 +18,5 @@ impl Solution {
 #[test]
 fn test() {
     let v = vec![0, 1];
-    Solution::missing_number(v);
+    Solution::missing_number1(v);
 }
