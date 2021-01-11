@@ -1,4 +1,6 @@
 use std::ops::Add;
+use std::collections::HashSet;
+use std::hash::Hash;
 
 #[derive(Debug, PartialEq)]
 struct Point {
@@ -170,4 +172,31 @@ fn test() {
     to_sing2(&cxk.clone());
     to_sing3(cxk.clone());
     to_sing4(&cxk.clone());
+}
+trait MyTrait: Eq + Hash {
+    fn method(&self);
+}
+
+#[derive(Debug, Eq, PartialEq, Hash)]
+struct MyTraitImpl;
+
+impl MyTrait for MyTraitImpl {
+    fn method(&self) {
+        println!("hello trait");
+    }
+}
+
+fn func(hss: HashSet<Box<dyn MyTrait>>) {
+    let mut hs = HashSet::new();
+    hs.union(&hss);
+}
+
+fn test_t() {
+    let mut hs = HashSet::new();
+    hs.insert(Box::new(MyTraitImpl));
+    hs.insert(Box::new(MyTraitImpl));
+    hs.insert(Box::new(MyTraitImpl));
+    hs.insert(Box::new(MyTraitImpl));
+    println!("{:?}", hs);
+    func(hs);
 }
