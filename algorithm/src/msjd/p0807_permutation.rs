@@ -3,7 +3,7 @@ use crate::Solution;
 impl Solution {
     pub fn permutation(s: String) -> Vec<String> {
         let mut res = vec![];
-        backtrace(&s.chars().collect(), &m vec![false;s.len()], &mut String::new(),&mut res);
+        backtrace(&s.chars().collect(), &mut vec![false;s.len()], &mut String::new(),&mut res);
         res
     }
 }
