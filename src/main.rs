@@ -61,6 +61,7 @@ mod atomic;
 mod fatpointer;
 mod epoch;
 mod thread_local;
+mod trait_object;
 
 fn main() {
 }
