@@ -313,8 +313,7 @@ fn test_convar() {
 #[test]
 fn tes_borrow() {
     let s = String::from("aaa");
-    thread::spawn(move || println!("{}",&s)).join();
-
+    thread::spawn(move || println!("{}",&s)).join().unwrap();
 }
 /*
 #[test]
