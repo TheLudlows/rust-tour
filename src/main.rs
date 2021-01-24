@@ -63,5 +63,22 @@ mod epoch;
 mod thread_local;
 mod trait_object;
 
+
+
+macro_rules! vec1 {
+    () => (
+        $crate::vec::Vec::new()
+    );
+    ($elem:expr; $n:expr) => (
+        $crate::vec::from_elem($elem, $n)
+    );
+    ($($x:expr),*) => (
+        $crate::slice::into_vec(box [$($x),*])
+    );
+    ($($x:expr,)*) => (vec![$($x),*])
+}
 fn main() {
+
+    println!("{}",1 + 1);
+    vec![1,2,3,];
 }
