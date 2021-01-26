@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    pub fn permutation(s: String) -> Vec<String> {
+    pub fn permutation1(s: String) -> Vec<String> {
         let mut res = vec![];
         backtrace(&s.chars().collect(), &mut vec![false;s.len()], &mut String::new(),&mut res);
         res

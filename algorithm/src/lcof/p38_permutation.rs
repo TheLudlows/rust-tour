@@ -3,7 +3,7 @@ use std::iter::Enumerate;
 use std::str::Chars;
 
 impl Solution {
-    pub fn permutation(s: String) -> Vec<String> {
+    pub fn permutation_(s: String) -> Vec<String> {
         let mut result = vec![];
         let mut vis = vec![false;s.len()];
         let mut chars = s.chars().collect::<Vec<char>>();
