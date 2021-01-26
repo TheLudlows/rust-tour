@@ -34,3 +34,5 @@ mod p49_nth_ugly_number;
 mod p45_min_number;
 mod p66_construct_arr;
 mod p26_is_sub_structure;
+mod p27_mirr_tree;
+mod p025_merge_two_lists;

@@ -5,11 +5,7 @@ use std::rc::Rc;
 
 impl Solution {
     pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        if root.is_none() {
-            0
-        } else {
-            dep(root.as_ref())
-        }
+        dep(root.as_ref())
     }
 }
 
