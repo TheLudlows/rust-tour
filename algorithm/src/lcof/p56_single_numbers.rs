@@ -9,7 +9,7 @@ impl Solution {
         for i in nums {
             let mut n = map.entry(i).or_insert(3);
             *n -= 1;
-            if n == 0 {
+            if *n == 0 {
                 map.remove(&i);
             }
         }
