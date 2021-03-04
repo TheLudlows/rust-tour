@@ -1,0 +1,27 @@
+ public static ListNode rev(ListNode head, ListNode tail) {
+        ListNode pre = null;
+        while (pre != tail) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return tail;
+    }
+
+    ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null) {
+            return null;
+        }
+        ListNode a = head, b = head;
+        for (int i = 1; i < k; i++) {
+            if (b.next == null) {
+                return a;
+            }
+            b  = b.next;
+        }
+        ListNode next = b.next;
+        ListNode newHead = rev(a,b);
+        a.next = reverseKGroup(next, k);
+        return newHead;
+    }
