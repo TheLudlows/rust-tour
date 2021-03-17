@@ -22,6 +22,22 @@ struct Point{
 #[test]
 fn test_need_drop() {
     assert_eq!(needs_drop::<Point>(),false);
-    assert_eq!(needs_drop::<Box<Point>>(),false);
+    assert_eq!(needs_drop::<Box<Point>>(),true);
 
+}
+
+struct MyBox(String);
+
+impl Drop for MyBox {
+    fn drop(&mut self) {
+        println!("dropped");
+    }
+}
+
+#[test]
+fn test_drop() {
+    let mut b1 = MyBox(String::from("1"));
+    b1 = MyBox(String::from("2"));
+    println!("line~");
+    println!("{}",b1.0);
 }
