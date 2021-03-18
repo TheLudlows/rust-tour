@@ -8,8 +8,10 @@ impl Solution {
             let m = (l + r) / 2;
             if numbers[m] > numbers[r] {
                 l = m + 1;
-            } else {
-                r = m
+            } else if  numbers[m] < numbers[r]{
+                r = m;
+            } else{
+                r -=1;
             }
         }
         numbers[l]
