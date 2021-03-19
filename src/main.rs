@@ -7,11 +7,9 @@
 #![allow(unused_variables)]
 #![feature(test)]
 #![allow(dead_code)]
-#![feature(impl_trait_in_bindings)]
 
 mod any;
 pub mod array;
-mod asyncs;
 pub mod boxes;
 pub mod cell;
 pub mod clone;
@@ -59,27 +57,9 @@ mod static_;
 mod byteiter;
 mod atomic;
 mod fatpointer;
-mod epoch;
 mod thread_local;
 mod trait_object;
 mod drop_t;
 
-
-
-macro_rules! vec1 {
-    () => (
-        $crate::vec::Vec::new()
-    );
-    ($elem:expr; $n:expr) => (
-        $crate::vec::from_elem($elem, $n)
-    );
-    ($($x:expr),*) => (
-        $crate::slice::into_vec(box [$($x),*])
-    );
-    ($($x:expr,)*) => (vec![$($x),*])
-}
 fn main() {
-
-    println!("{}",1 + 1);
-    vec![1,2,3,];
 }

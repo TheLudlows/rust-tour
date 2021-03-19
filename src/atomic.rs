@@ -23,5 +23,10 @@ fn test() {
     t1.join().unwrap();
     t2.join().unwrap();
     println!("{}",atomic.load(Relaxed));
+}
 
+#[test]
+fn test_fetch_add() {
+    let mut a:AtomicUsize = AtomicUsize::new(1);
+    a.fetch_add(1,Relaxed);
 }
