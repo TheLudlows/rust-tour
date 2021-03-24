@@ -4,7 +4,7 @@ impl Solution {
     fn search_left(nums: Vec<i32>, target: i32) -> i32 {
         let mut left = 0;
         let mut right = nums.len() - 1;
-        while left < right {
+        while left <= right {
             let mid = (left + right) >> 1;
             if nums[mid] < target {
                 left = mid + 1;
