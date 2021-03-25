@@ -43,3 +43,19 @@ fn test_pre_thread() {
         });
     }
 }
+
+mod test {
+    pub struct test_struct {
+        pub a : i32
+    }
+}
+
+mod test_mod {
+    use crate::thread_local::test::test_struct;
+
+    #[test]
+    fn test() {
+        let s = test_struct{a:1};
+        s.a;
+    }
+}

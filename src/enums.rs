@@ -22,3 +22,14 @@ fn enums() {
         Enum::S { num, name } => println!("s"),
     }
 }
+
+mod E {
+
+}
+
+#[test]
+fn test_enum() {
+    println!("{:?}", E::Types::A);
+    println!("{:?}", E::Types::A as usize);
+}
+
