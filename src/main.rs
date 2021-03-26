@@ -60,6 +60,7 @@ mod fatpointer;
 mod thread_local;
 mod trait_object;
 mod drop_t;
+mod mem;
 
 fn main() {
 }

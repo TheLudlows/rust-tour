@@ -1,3 +1,5 @@
+use std::collections::LinkedList;
+
 #[test]
 fn new_test() {
     // 类型和长度可以省略
