@@ -4,15 +4,15 @@ use std::fmt::Debug;
 struct Ref<'a, T: 'a>(&'a T);
 
 fn print_ref<'a, T>(t: &'a T)
-where
-    T: 'a + Debug,
+    where
+        T: 'a + Debug,
 {
     println!("{:?}", t)
 }
 
 fn print<T>(t: T)
-where
-    T: Debug,
+    where
+        T: Debug,
 {
     println!("{:?}", t)
 }
@@ -72,17 +72,70 @@ fn do_nothing<'a, 'b: 'a>(x: &'a u32, y: &'b u32) -> &'a u32 {
 trait DoSomething<T> {
     fn do_sth(&self, value: T);
 }
+
 impl<'a, T: Debug> DoSomething<T> for &'a usize {
     fn do_sth(&self, value: T) {
         println!("{:?}", value);
     }
 }
-fn foo<'a>(b: Box<for <'f> DoSomething <&'f usize>>) {
+
+fn foo<'a>(b: Box<for<'f> DoSomething<&'f usize>>) {
     let s: usize = 10;
     b.do_sth(&s); // error[E0597]: `s` does not live long enough
 }
+
 #[test]
-fn test_n(){
-    let x  = Box::new(&2usize);
+fn test_n() {
+    let x = Box::new(&2usize);
     foo(x);
 }
+
+#[test]
+fn test_lf() {
+    let mut data = vec![1, 2, 3];
+    let x = &data[0];
+    //data.push(1);
+    println!("{:?}", x);
+}
+
+struct Closure<F> {
+    data: (u8, u16),
+    func: F,
+}
+
+impl<F> Closure<F>
+    where for<'a> F: Fn(&'a (u8, u16)) -> &'a u8,
+{
+    fn call<'a>(&'a self) -> &'a u8 {
+        (self.func)(&self.data)
+    }
+}
+
+fn do_it<'a>(data: &'a (u8, u16)) -> &'a u8 { &data.0 }
+
+#[test]
+fn test_clos() {
+    let clo = Closure { data: (0, 1), func: do_it };
+    println!("{}", clo.call());
+}
+
+struct Foo1<'a> {
+    a: u32,
+    b: Option<&'a u32>,
+}
+
+/*impl <'a> Drop for Foo1<'a> {
+    fn drop(&mut self) {
+        //todo!()
+    }
+}*/
+
+#[test]
+fn test_foo1() {
+    let mut f = Foo1 {
+        a: 10,
+        b: None,
+    };
+    f.b = Some(&f.a);
+}
+

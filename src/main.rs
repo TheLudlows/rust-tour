@@ -6,6 +6,7 @@
 #![feature(type_name_of_val)]
 #![allow(unused_variables)]
 #![feature(test)]
+#![feature(in_band_lifetimes)]
 #![allow(dead_code)]
 
 mod any;
@@ -61,6 +62,7 @@ mod thread_local;
 mod trait_object;
 mod drop_t;
 mod mem;
+mod conv;
 
 fn main() {
 }
