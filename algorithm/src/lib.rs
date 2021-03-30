@@ -1,4 +1,5 @@
 #![feature(type_name_of_val)]
+#![feature(ptr_internals)]
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -19,6 +20,7 @@ mod stack;
 mod string;
 mod tree;
 mod msjd;
+mod vec;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {

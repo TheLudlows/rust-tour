@@ -41,5 +41,4 @@ fn test_uninit() {
     }
 
     println!("{:?}", x);
-    std::sync::sync
 }

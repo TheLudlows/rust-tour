@@ -63,6 +63,7 @@ mod trait_object;
 mod drop_t;
 mod mem;
 mod conv;
+mod ptr;
 
 fn main() {
 }

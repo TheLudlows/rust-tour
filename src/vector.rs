@@ -1,3 +1,5 @@
+
+#[test]
 fn main() {
     let mut v = Vec::new();
     //let v = vec![1, 2, 3];
@@ -30,5 +32,6 @@ fn main() {
     let i = v[0];
     v.push(200);
 
+    v[1] = 2;
     //let x = v[0..1];
 }
