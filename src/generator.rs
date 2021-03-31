@@ -1,6 +1,5 @@
 use std::ops::{Generator, GeneratorState};
 use std::pin::Pin;
-use std::mem;
 
 #[test]
 fn main() {

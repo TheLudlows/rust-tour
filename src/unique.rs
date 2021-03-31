@@ -11,8 +11,8 @@ use std::ptr::Unique;
         let u: Unique<i32> = Unique::dangling();
         let u: Unique<i32> = Unique::dangling();
 
-        println!("{:?}", u)
-        //println!("{:?}", *u.as_ref())
+        println!("{:?}", u);
+        println!("{:?}", *u.as_ref())
     }
 }
 

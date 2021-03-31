@@ -1,7 +1,4 @@
 use std::env::current_dir;
-use std::fs::File;
-use std::thread;
-use std::io::Read;
 
 #[test]
 fn test_dir() {

@@ -1,7 +1,7 @@
-use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::atomic::{AtomicUsize};
 use std::sync::Arc;
 use std::thread;
-use std::sync::atomic::Ordering::{Release, Acquire, Relaxed, SeqCst, AcqRel};
+use std::sync::atomic::Ordering::{Relaxed, SeqCst, AcqRel};
 
 #[test]
 fn test() {
@@ -27,6 +27,6 @@ fn test() {
 
 #[test]
 fn test_fetch_add() {
-    let mut a:AtomicUsize = AtomicUsize::new(1);
+    let a:AtomicUsize = AtomicUsize::new(1);
     a.fetch_add(1,Relaxed);
 }

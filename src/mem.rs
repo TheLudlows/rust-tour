@@ -52,7 +52,7 @@ enum Void {}
 
 struct Bar;
 
-trait t {}
+trait T {}
 
 #[test]
 fn test_mem() {
@@ -75,7 +75,7 @@ fn test_mem() {
     println!("{}", mem::size_of::<Bar>());
     println!("{}", mem::size_of::<Empty>());
     println!("{}", mem::size_of::<Void>());
-    println!("{}", mem::size_of::<Box<dyn t>>());
+    println!("{}", mem::size_of::<Box<dyn T>>());
     println!("{}", mem::size_of::<J>());
     println!("{}", mem::align_of::<J>());
     println!("{}", mem::align_of::<&i32>());

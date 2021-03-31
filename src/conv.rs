@@ -22,7 +22,6 @@ fn  test() {
     }
     // println!("{}", x); 未初始化
 }
-use std::mem;
 use std::ptr;
 use std::mem::MaybeUninit;
 

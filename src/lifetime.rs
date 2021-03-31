@@ -79,7 +79,7 @@ impl<'a, T: Debug> DoSomething<T> for &'a usize {
     }
 }
 
-fn foo<'a>(b: Box<for<'f> DoSomething<&'f usize>>) {
+fn foo<'a>(b: Box<dyn for<'f> DoSomething<&'f usize>>) {
     let s: usize = 10;
     b.do_sth(&s); // error[E0597]: `s` does not live long enough
 }
@@ -88,14 +88,6 @@ fn foo<'a>(b: Box<for<'f> DoSomething<&'f usize>>) {
 fn test_n() {
     let x = Box::new(&2usize);
     foo(x);
-}
-
-#[test]
-fn test_lf() {
-    let mut data = vec![1, 2, 3];
-    let x = &data[0];
-    //data.push(1);
-    println!("{:?}", x);
 }
 
 struct Closure<F> {

@@ -1,6 +1,6 @@
 use std::cell::Cell;
-use std::sync::atomic::{AtomicU32, AtomicUsize};
-use std::sync::atomic::Ordering::{Relaxed, Release};
+use std::sync::atomic::{AtomicU32};
+use std::sync::atomic::Ordering::{Relaxed};
 use std::thread;
 use std::time::Instant;
 
@@ -26,7 +26,7 @@ fn main() {
     eprintln!("Rust:{} {}ms", r, t.elapsed().as_millis());
 }
 
-static n: AtomicU32 = AtomicU32::new(0);
+static N: AtomicU32 = AtomicU32::new(0);
 
 #[test]
 fn test_pre_thread() {
@@ -34,8 +34,8 @@ fn test_pre_thread() {
         thread::spawn(|| {
            let x=  COUNTER.with(|it| {
                 if it.get() == 0 {
-                    n.fetch_add(1, Relaxed);
-                    it.set(n.load(Relaxed));
+                    N.fetch_add(1, Relaxed);
+                    it.set(N.load(Relaxed));
                 }
                 it.get()
             });
@@ -45,17 +45,17 @@ fn test_pre_thread() {
 }
 
 mod test {
-    pub struct test_struct {
+    pub struct TestStruct {
         pub a : i32
     }
 }
 
 mod test_mod {
-    use crate::thread_local::test::test_struct;
+    use crate::thread_local::test::TestStruct;
 
     #[test]
     fn test() {
-        let s = test_struct{a:1};
+        let s = TestStruct{a:1};
         s.a;
     }
 }

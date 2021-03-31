@@ -1,6 +1,4 @@
 use std::ops::Add;
-use std::collections::HashSet;
-use std::hash::Hash;
 
 #[derive(Debug, PartialEq)]
 struct Point {

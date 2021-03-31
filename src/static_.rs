@@ -79,7 +79,7 @@ fn test3() {
         });
     }
 
-    let mut f = File::open("/tmp/1.log").unwrap();
+    let mut _f = File::open("/tmp/1.log").unwrap();
     //read_in_background(&mut f);
 }
 

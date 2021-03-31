@@ -10,9 +10,9 @@ impl<'a> Drop for Inspector<'a> {
 
 #[test]
 fn test() {
-    let (b, inspector);
+    let (b, _inspector);
     b = Box::new(1);
-    inspector = Inspector(&b);
+    _inspector = Inspector(&b);
 }
 struct Point{
     x: i32,
@@ -36,8 +36,8 @@ impl Drop for MyBox {
 
 #[test]
 fn test_drop() {
-    let mut b1 = MyBox(String::from("1"));
-    b1 = MyBox(String::from("2"));
+    let mut _b1 = MyBox(String::from("1"));
+    _b1 = MyBox(String::from("2"));
     println!("line~");
-    println!("{}",b1.0);
+    println!("{}",_b1.0);
 }

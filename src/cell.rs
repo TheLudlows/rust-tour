@@ -28,7 +28,7 @@ fn test_sync() {
         let x = cc.lock().unwrap();
         let mut xx = x.borrow_mut();
         *xx +=1;
-    }).join();
+    }).join().unwrap();
 
     println!("{:?}",c);
 }
