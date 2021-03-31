@@ -2,6 +2,7 @@ use std::{mem, ptr};
 use std::alloc::{dealloc, handle_alloc_error, Layout};
 use std::alloc::alloc;
 use std::alloc::realloc;
+use std::fmt::Debug;
 use std::ops::{Deref, DerefMut};
 use std::ptr::Unique;
 
@@ -59,7 +60,7 @@ impl<T> Drop for RawVec<T> {
         if self.cap != 0 {
             unsafe {
                 let layout = Layout::from_size_align_unchecked(self.cap, mem::align_of::<T>());
-                dealloc(self.ptr.as_ptr() as *mut _, layout);
+                //dealloc(self.ptr.as_ptr() as *mut _, layout);
             }
         }
         println!("drop Raw vec");
@@ -131,15 +132,10 @@ impl<T> MyVec<T> {
     fn into_iter(self) -> IntoIter<T> {
         unsafe {
             let row_vec = ptr::read(&self.vec);
-            let len = self.len;
+            let iter = RawIter::new(&self);
             mem::forget(self);
             IntoIter {
-                start: row_vec.ptr.as_ptr(),
-                end: if len == 0 {
-                    row_vec.ptr.as_ptr()
-                } else {
-                    row_vec.ptr.as_ptr().offset(len as isize)
-                },
+                raw_iter: iter,
                 raw_vec: row_vec,
             }
         }
@@ -175,13 +171,31 @@ impl<T> DerefMut for MyVec<T> {
 
 struct IntoIter<T> {
     raw_vec: RawVec<T>,
+    raw_iter: RawIter<T>,
+}
+
+struct RawIter<T> {
     start: *const T,
     end: *const T,
 }
 
-impl<T> Iterator for IntoIter<T> {
-    type Item = T;
+impl<T> RawIter<T> {
+    fn new(slice :  &[T]) -> Self {
+        unsafe {
+            RawIter {
+                start: slice.as_ptr(),
+                end: if slice.len() == 0 {
+                    slice.as_ptr()
+                } else {
+                    slice.as_ptr().offset(slice.len() as isize)
+                },
+            }
+        }
+    }
+}
 
+impl<T> Iterator for RawIter<T> {
+    type Item = T;
     fn next(&mut self) -> Option<Self::Item> {
         if self.start == self.end {
             None
@@ -195,7 +209,7 @@ impl<T> Iterator for IntoIter<T> {
     }
 }
 
-impl<T> DoubleEndedIterator for IntoIter<T> {
+impl<T> DoubleEndedIterator for RawIter<T> {
     fn next_back(&mut self) -> Option<Self::Item> {
         if self.start == self.end {
             None
@@ -208,6 +222,19 @@ impl<T> DoubleEndedIterator for IntoIter<T> {
     }
 }
 
+impl<T> Iterator for IntoIter<T> {
+    type Item = T;
+    fn next(&mut self) -> Option<Self::Item> {
+        self.raw_iter.next()
+    }
+}
+
+impl<T> DoubleEndedIterator for IntoIter<T> {
+    fn next_back(&mut self) -> Option<Self::Item> {
+        self.raw_iter.next_back()
+    }
+}
+
 impl<T> Drop for IntoIter<T> {
     fn drop(&mut self) {
         if self.raw_vec.cap != 0 {
@@ -216,6 +243,7 @@ impl<T> Drop for IntoIter<T> {
         println!("drop into iter")
     }
 }
+
 
 #[test]
 fn test() {
@@ -250,4 +278,17 @@ fn test() {
     for i in v.into_iter() {
         println!("{}", i)
     }
+
+
+    let mut v:MyVec<i32> = MyVec::new();
+    //v.push(1);
+    //v.push(3);
+    //v.push(10);
+
+    let mut it = v.into_iter();
+    while let Some(i) = it.next_back() {
+        println!("{:?}", i);
+    }
+
+    // Phantom data
 }
