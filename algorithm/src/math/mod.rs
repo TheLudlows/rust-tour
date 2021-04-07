@@ -13,3 +13,4 @@ mod p0264_nth_ugly_number;
 mod p1356_sort_by_one;
 mod p0504_base7;
 mod p0204_count_primes;
+mod p0066_plus_one;
