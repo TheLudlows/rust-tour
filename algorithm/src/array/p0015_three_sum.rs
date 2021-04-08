@@ -2,7 +2,7 @@ use crate::Solution;
 use std::collections::HashSet;
 
 ///  [-3,-2,-1,2,3,5]
-///  先进性排序， a指针从头向后遍历，b指针在a指针之后开始，c指针从结尾开始
+///  先排序， a指针从头向后遍历，b指针在a指针之后开始，c指针从结尾开始
 ///  bc指针指向值和a的值进行累加，如果大于0，则移动c指针，如果小于0，则移动b指针。直到找到或者b==c
 ///  若找到了bc指针，各减一继续遍历。
 ///
@@ -15,7 +15,6 @@ impl Solution {
         nums.sort();
         let mut res = vec![];
         for a in 0..nums.len() - 2 {
-            let mut tag1 = None;
             if a > 0 && nums[a] == nums[a - 1] {
                 continue;
             }
@@ -34,16 +33,15 @@ impl Solution {
                 } else if sum > 0 {
                     c -= 1;
                 } else if sum == 0 {
-                    if tag1 == Some(nums[b]) {
-                        // 去重
-                        b += 1;
-                        c -= 1;
-                        continue;
-                    }
-                    tag1 = Some(nums[b]);
                     res.push(vec![nums[a], nums[b], nums[c]]);
                     b += 1;
                     c -= 1;
+                    while b < c && nums[b] == nums[b-1] {
+                        b +=1;
+                    }
+                    while b < c && nums[c] == nums[c+1] {
+                        c -=1;
+                    }
                 }
             }
         }
