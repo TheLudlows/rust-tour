@@ -60,20 +60,20 @@ impl Solution2 {
         for i in 0..s.len() {
             dp[i][i] = true
         }
-        for i in 1..s.len() {
-            for j in 0..i {
+        for j in 1..s.len() {
+            for i in 0..i {
                 if &s[i] != &s[j] {
-                    dp[j][i] = false;
+                    dp[i][j] = false;
                 } else {
-                    if i - j < 3 {
-                        dp[j][i] = true;
+                    if j - i < 3 {
+                        dp[i][j] = true;
                     } else {
-                        dp[j][i] = dp[j + 1][i - 1]
+                        dp[i][j] = dp[i + 1][j - 1]
                     }
                 }
-                if dp[j][i] && i - j + 1 > max {
-                    max = i - j + 1;
-                    start = j;
+                if s[i][j] && j - i + 1 > max {
+                    max = j - i + 1;
+                    start = i;
                 }
             }
         }
