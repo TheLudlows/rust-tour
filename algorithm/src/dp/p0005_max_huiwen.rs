@@ -2,7 +2,6 @@ use crate::Solution;
 
 /// 1. 暴力枚举所有子字符串,逐个判断是不是回文 N^3
 /// 2. 动态规划,
-///
 
 impl Solution {
     // 暴力
@@ -61,8 +60,8 @@ impl Solution2 {
             dp[i][i] = true
         }
         for j in 1..s.len() {
-            for i in 0..i {
-                if &s[i] != &s[j] {
+            for i in 0..j {
+                if s[i] != s[j] {
                     dp[i][j] = false;
                 } else {
                     if j - i < 3 {
@@ -71,7 +70,7 @@ impl Solution2 {
                         dp[i][j] = dp[i + 1][j - 1]
                     }
                 }
-                if s[i][j] && j - i + 1 > max {
+                if dp[i][j] && j - i + 1 > max {
                     max = j - i + 1;
                     start = i;
                 }
