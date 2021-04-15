@@ -21,6 +21,7 @@ mod string;
 mod tree;
 mod msjd;
 mod vec;
+mod dfs;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {

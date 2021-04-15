@@ -39,7 +39,7 @@ fn is_huiwen(str: &[u8], mut left: usize, mut right: usize) -> bool {
 
 #[test]
 fn test() {
-    let str = "abccdcc".to_string();
+    let str = "ccb".to_string();
     println!("{}", Solution::longest_palindrome(str.clone()));
     println!("{}", Solution2::longest_palindrome(str));
 }
@@ -55,27 +55,28 @@ impl Solution2 {
         let mut start = 0;
         let mut max = 1;
 
-        let mut dp = vec![vec![false; s.len()]; s.len()];
+        let mut dp = vec![vec![0; s.len()]; s.len()];
         for i in 0..s.len() {
-            dp[i][i] = true
+            dp[i][i] = 1
         }
         for j in 1..s.len() {
             for i in 0..j {
                 if s[i] != s[j] {
-                    dp[i][j] = false;
+                    dp[i][j] = 0;
                 } else {
-                    if j - i < 3 {
-                        dp[i][j] = true;
+                    if dp[i + 1][j - 1] > 0 || j-i ==1  {
+                        dp[i][j] = dp[i + 1][j - 1] + 2;
                     } else {
-                        dp[i][j] = dp[i + 1][j - 1]
+                        dp[i][j] = 0;
                     }
                 }
-                if dp[i][j] && j - i + 1 > max {
+                if dp[i][j] > max {
                     max = j - i + 1;
                     start = i;
                 }
             }
         }
+        println!("{:?}",dp);
         unsafe { String::from_utf8_unchecked(Vec::from(&s[start..start + max])) }
     }
 }

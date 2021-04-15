@@ -10,8 +10,8 @@ impl Solution {
             dp[i][i] = 1;
         }
         let mut longest = 1;
-        for j in 1..bytes.len() {
-            for i in 0..j {
+        for i in (1..bytes.len()).rev() {
+            for j in i+1..bytes.len() {
                 if bytes[i] == bytes[j] {
                     dp[i][j] = 2 + dp[i+1][j-1];
                 } else {
