@@ -23,6 +23,7 @@ mod msjd;
 mod vec;
 mod dfs;
 mod slidewindow;
+mod doublePointer;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
