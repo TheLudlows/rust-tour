@@ -37,3 +37,4 @@ mod p26_is_sub_structure;
 mod p27_mirr_tree;
 mod p025_merge_two_lists;
 mod p1606_smallest;
+mod p0051_reverse_pairs;
