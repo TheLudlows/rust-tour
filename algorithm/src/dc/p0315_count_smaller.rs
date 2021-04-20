@@ -1,5 +1,6 @@
 use crate::Solution;
 
+// 归并排序思想
 impl Solution {
     pub fn count_smaller(mut nums: Vec<i32>) -> Vec<i32> {
         let mut count = vec![0; nums.len()];
