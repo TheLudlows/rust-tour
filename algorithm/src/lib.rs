@@ -23,6 +23,7 @@ mod dfs;
 mod slidewindow;
 mod doublePointer;
 mod dc;
+mod datastruct;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
