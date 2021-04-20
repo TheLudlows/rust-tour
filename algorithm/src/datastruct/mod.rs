@@ -1,5 +1,3 @@
-use std::ptr::hash;
-
-pub mod LinkedList;
-mod SkipList;
-mod SimpleLinkedList;
+mod my_vec;
+mod segtree;
+mod p0307_numarr;

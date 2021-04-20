@@ -6,7 +6,6 @@ use std::rc::Rc;
 
 mod array;
 mod backtracking;
-pub mod datastruct;
 mod dp;
 mod hash;
 mod heap;
@@ -20,10 +19,11 @@ mod stack;
 mod string;
 mod tree;
 mod msjd;
-mod vec;
 mod dfs;
 mod slidewindow;
 mod doublePointer;
+mod dc;
+mod datastruct;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {

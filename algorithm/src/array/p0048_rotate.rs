@@ -1,12 +1,13 @@
 use crate::Solution;
-use std::mem::{swap, replace};
 
 impl Solution {
     pub fn rotate(matrix: &mut Vec<Vec<i32>>) {
         let n = matrix.len();
         for i in 0..n {
             for j in 0..i {
-                //swap(&mut matrix[i][j],  &mut matrix[j][i])
+                let tmp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = tmp;
             }
         }
         for i in 0..n {
