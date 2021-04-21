@@ -8,7 +8,7 @@ impl Solution {
         }
         let mut i = 0;
         let mut j = matrix[0].len() - 1;
-        while i < matrix.len() && j >= 0 && j < matrix[0].len() {
+        while i < matrix.len() && j < matrix[0].len() {
             if matrix[i][j] > target {
                 j -= 1;
             } else if matrix[i][j] < target {
