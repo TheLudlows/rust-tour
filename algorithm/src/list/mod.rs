@@ -6,3 +6,5 @@ mod p0083_delete_duplicates;
 mod p0206_reverse_list;
 mod p0234_is_palindrome;
 mod p0876_middle_node;
+mod of18_delete_node;
+mod of22_get_kth_from_end;

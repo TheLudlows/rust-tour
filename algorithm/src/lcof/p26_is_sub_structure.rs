@@ -3,7 +3,7 @@ use std::rc::Rc;
 
 use crate::{Solution, TreeNode};
 
-/// 不能直接用eq方法
+/// 先找到根节点相同，再去递归子节点判断是否相同
 impl Solution {
     pub fn is_sub_structure(a: Option<Rc<RefCell<TreeNode>>>, b: Option<Rc<RefCell<TreeNode>>>) -> bool {
         if a.is_none() || b.is_none() {

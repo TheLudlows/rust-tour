@@ -34,8 +34,6 @@ mod tree;
 #[allow(dead_code)]
 mod msjd;
 #[allow(dead_code)]
-mod dfs;
-#[allow(dead_code)]
 mod slide_window;
 #[allow(dead_code)]
 mod double_pointer;
@@ -88,7 +86,6 @@ pub fn as_list(arr: &Vec<i32>) -> Option<Box<ListNode>> {
 #[test]
 fn test() {
     let v = vec![1, 2, 3];
-
     let head = as_list(&v);
     println!("{:?}", head);
 }
