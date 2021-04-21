@@ -25,12 +25,12 @@ impl Solution {
             res
         } else {
             "0".to_string()
-        }
+        };
     }
 }
 
 #[test]
 fn test() {
-    let r = Solution::remove_kdigits("012345".to_string(),3);
-    println!("{}",r)
+    let r = Solution::remove_kdigits("012345".to_string(), 3);
+    println!("{}", r)
 }

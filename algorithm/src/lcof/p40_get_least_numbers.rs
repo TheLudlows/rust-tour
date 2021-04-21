@@ -9,21 +9,21 @@ impl Solution {
             return vec![];
         }
         let k = k as usize;
-        let mut maxHeap = BinaryHeap::with_capacity(k);
+        let mut max_heap = BinaryHeap::with_capacity(k);
 
         for i in arr {
-            if maxHeap.len() < k {
-                maxHeap.push(i);
+            if max_heap.len() < k {
+                max_heap.push(i);
             } else {
-                if i < *maxHeap.peek().unwrap() {
-                    maxHeap.pop();
-                    maxHeap.push(i);
+                if i < *max_heap.peek().unwrap() {
+                    max_heap.pop();
+                    max_heap.push(i);
                 }
             }
         }
         let mut result = vec![];
         for _ in 0..k {
-            result.push(maxHeap.pop().unwrap())
+            result.push(max_heap.pop().unwrap())
         }
         result
     }

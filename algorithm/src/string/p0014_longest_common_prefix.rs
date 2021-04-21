@@ -5,7 +5,7 @@ impl Solution {
         let mut res = String::new();
         let chars = strs.iter().map(|s| s.chars().collect()).collect::<Vec<Vec<char>>>();
         if chars.len() == 0 || chars[0].len() == 0 {
-            return res
+            return res;
         }
         let mut i = 0;
 
@@ -17,7 +17,7 @@ impl Solution {
                     break;
                 }
             }
-            if same && i < chars[0].len(){
+            if same && i < chars[0].len() {
                 res.push(chars[0][i] as char)
             } else {
                 break;

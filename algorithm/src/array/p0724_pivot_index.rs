@@ -6,12 +6,11 @@ impl Solution {
         let mut sum = 0;
 
         for i in 0..nums.len() {
-            if sum*2 == total-nums[i] {
+            if sum * 2 == total - nums[i] {
                 return i as i32;
             }
-            sum +=nums[i];
-
+            sum += nums[i];
         }
-        return -1
+        return -1;
     }
 }

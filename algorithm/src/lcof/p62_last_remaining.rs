@@ -10,7 +10,7 @@ impl Solution {
         let mut v = (0..n).into_iter().collect::<Vec<i32>>();
         let mut i = 0;
         while v.len() > 1 {
-            i = (i + m -1) % v.len();
+            i = (i + m - 1) % v.len();
             v.remove(i);
         }
         v[0]

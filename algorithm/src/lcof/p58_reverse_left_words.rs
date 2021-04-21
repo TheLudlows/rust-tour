@@ -6,10 +6,11 @@ impl Solution {
         let n = n as usize % s.len();
         let s1 = &s[..n];
         let s2 = &s[n..];
-        let mut res =  String::from(s2);
-            res.push_str(s1);
+        let mut res = String::from(s2);
+        res.push_str(s1);
         res
     }
 }
+
 #[test]
 fn test() {}

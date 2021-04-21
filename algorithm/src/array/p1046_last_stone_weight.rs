@@ -1,9 +1,9 @@
-use crate::Solution;
 use std::collections::BinaryHeap;
 
-impl Solution {
-    pub fn last_stone_weight(mut stones: Vec<i32>) -> i32 {
+use crate::Solution;
 
+impl Solution {
+    pub fn last_stone_weight(stones: Vec<i32>) -> i32 {
         let mut heap = BinaryHeap::from(stones);
         loop {
             let large = heap.pop();

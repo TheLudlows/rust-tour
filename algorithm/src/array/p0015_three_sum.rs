@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::collections::HashSet;
+
+use crate::Solution;
 
 ///  [-3,-2,-1,2,3,5]
 ///  先排序， a指针从头向后遍历，b指针在a指针之后开始，c指针从结尾开始
@@ -36,11 +37,11 @@ impl Solution {
                     res.push(vec![nums[a], nums[b], nums[c]]);
                     b += 1;
                     c -= 1;
-                    while b < c && nums[b] == nums[b-1] {
-                        b +=1;
+                    while b < c && nums[b] == nums[b - 1] {
+                        b += 1;
                     }
-                    while b < c && nums[c] == nums[c+1] {
-                        c -=1;
+                    while b < c && nums[c] == nums[c + 1] {
+                        c -= 1;
                     }
                 }
             }

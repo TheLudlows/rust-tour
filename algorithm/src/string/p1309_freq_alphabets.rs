@@ -19,7 +19,8 @@ impl Solution {
         result
     }
 }
+
 #[test]
 fn test() {
-    println!("{}",'1' as u8)
+    println!("{}", '1' as u8)
 }

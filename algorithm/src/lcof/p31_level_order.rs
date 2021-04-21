@@ -10,7 +10,6 @@ impl Solution {
         queue.push_back(root.clone());
         let mut result = vec![];
         while !queue.is_empty() {
-            let n = queue.len();
             if let Some(Some(node)) = queue.pop_front() {
                 result.push(node.borrow().val);
                 queue.push_back(node.borrow().left.clone());

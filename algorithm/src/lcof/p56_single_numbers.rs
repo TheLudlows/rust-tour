@@ -7,7 +7,7 @@ impl Solution {
     pub fn single_numbers(nums: Vec<i32>) -> i32 {
         let mut map = HashMap::new();
         for i in nums {
-            let mut n = map.entry(i).or_insert(3);
+            let n = map.entry(i).or_insert(3);
             *n -= 1;
             if *n == 0 {
                 map.remove(&i);
@@ -15,16 +15,16 @@ impl Solution {
         }
 
         for (i, _) in map {
-           return i
+            return i;
         }
-        return 0
+        return 0;
     }
     /// 位运算 分组
     pub fn single_numbers2(nums: Vec<i32>) -> Vec<i32> {
         let mut map = HashMap::new();
         let mut res = vec![];
         for i in nums {
-            let mut n = map.entry(i).or_insert(0);
+            let n = map.entry(i).or_insert(0);
             *n += 1;
         }
 

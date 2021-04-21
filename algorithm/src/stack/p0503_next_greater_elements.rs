@@ -5,9 +5,9 @@ impl Solution {
         let mut ret = vec![-1; nums.len()];
         let mut stack = vec![];
 
-        for i in 0..(2*nums.len()-1) {
-            let idx = i%nums.len();
-            while !stack.is_empty() && nums[*stack.last().unwrap()] < nums[idx]{
+        for i in 0..(2 * nums.len() - 1) {
+            let idx = i % nums.len();
+            while !stack.is_empty() && nums[*stack.last().unwrap()] < nums[idx] {
                 let little_idx = stack.pop().unwrap();
                 ret[little_idx] = nums[idx];
             }
@@ -16,7 +16,8 @@ impl Solution {
         ret
     }
 }
+
 #[test]
 fn test() {
-    Solution::next_greater_elements(vec![1,2,1]);
+    Solution::next_greater_elements(vec![1, 2, 1]);
 }

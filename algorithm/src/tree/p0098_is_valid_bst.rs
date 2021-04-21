@@ -23,10 +23,3 @@ pub fn check(mid: Option<Rc<RefCell<TreeNode>>>, min: Option<i32>, max: Option<i
         None => true,
     }
 }
-
-#[test]
-fn test() {
-    let mut x = 1;
-    --x;
-    println!("{}",--x);
-}

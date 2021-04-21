@@ -5,7 +5,7 @@ impl Solution {
     pub fn count_primes(n: i32) -> i32 {
         let mut count = 0;
         for i in 2..n {
-            if isPrime(i) {
+            if is_rpime(i) {
                 count += 1;
             }
         }
@@ -13,11 +13,11 @@ impl Solution {
     }
 }
 
-fn isPrime(n: i32) -> bool {
+fn is_rpime(n: i32) -> bool {
     let x = (n as f32).sqrt() as i32;
     for i in 2..=x {
         if n % i == 0 {
-            return false
+            return false;
         }
     }
     true

@@ -1,6 +1,7 @@
-use crate::{ListNode, Solution};
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
+
+use crate::{ListNode, Solution};
 
 impl PartialOrd<ListNode> for ListNode {
     fn partial_cmp(&self, other: &ListNode) -> Option<Ordering> {
@@ -21,18 +22,18 @@ impl Solution {
         if lists.len() == 0 {
             return None;
         }
-        let mut minHeap = BinaryHeap::new();
+        let mut min_heap = BinaryHeap::new();
         for mut list in lists {
             if list.is_some() {
-                minHeap.push(list.take()?); // Storing as Option<Box<ListNode>>
+                min_heap.push(list.take()?); // Storing as Option<Box<ListNode>>
             }
         }
         let mut cur = &mut res;
-        while !minHeap.is_empty() {
-            cur.next = minHeap.pop(); // Return as Option<Box<ListNode>>
+        while !min_heap.is_empty() {
+            cur.next = min_heap.pop(); // Return as Option<Box<ListNode>>
             cur = cur.next.as_mut()?;
             if cur.next.is_some() {
-                minHeap.push(cur.next.take()?);
+                min_heap.push(cur.next.take()?);
             }
         }
         res.next

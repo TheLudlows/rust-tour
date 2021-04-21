@@ -19,8 +19,8 @@ impl Solution {
         }
 
         for i in n..t.len() {
-            window_cnt[t[i] as usize] +=1;
-            window_cnt[t[i-n] as usize] -=1;
+            window_cnt[t[i] as usize] += 1;
+            window_cnt[t[i - n] as usize] -= 1;
             if window_cnt == cnt {
                 return true;
             }
@@ -28,8 +28,9 @@ impl Solution {
         false
     }
 }
+
 #[test]
 fn test() {
     let r = Solution::check_inclusion("hello".to_owned(), "ooolleoooleh".to_owned());
-    println!("{}",r)
+    println!("{}", r)
 }

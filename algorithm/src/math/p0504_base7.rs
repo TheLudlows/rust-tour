@@ -7,17 +7,17 @@ impl Solution {
         }
         let mut v = Vec::new();
         let mut r = String::new();
-        if  num < 0 {
+        if num < 0 {
             r.push('-');
         }
         num = num.abs();
         while num > 0 {
             let i = num % 7;
-            num /=7;
+            num /= 7;
             v.push(i.to_string());
         }
         v.reverse();
-        v.iter().for_each(|s|r.push_str(s));
+        v.iter().for_each(|s| r.push_str(s));
         r
     }
 }

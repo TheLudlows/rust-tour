@@ -18,7 +18,7 @@ mod p0230_kth_smallest;
 mod p0530_get_minimum_difference;
 mod p0617_merge_trees;
 mod p0701_insert_into_bst;
-mod p0297_Codec;
+mod p0297_codec;
 mod p0235_lowest_common_ancestor;
 mod p0236_lowest_common_ancestor;
 mod p0105_build_tree;

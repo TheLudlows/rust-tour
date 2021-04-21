@@ -23,12 +23,3 @@ impl Solution {
         dummy.next
     }
 }
-
-#[test]
-fn test() {
-    let mut tail = Some(Box::new(ListNode::new(3)));
-    let mut mid = Some(Box::new(ListNode::new_withNext(2, tail)));
-
-    let mut head = Some(Box::new(ListNode::new_withNext(1, mid)));
-    Solution::remove_nth_from_end(head, 1);
-}

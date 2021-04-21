@@ -8,7 +8,7 @@ impl Solution {
         let mut map = HashMap::new();
         let mut max_len = 1;
         for i in 0..arr.len() {
-            let mut n = *map.get(&(arr[i] - dif)).unwrap_or(&0) + 1;
+            let n = *map.get(&(arr[i] - dif)).unwrap_or(&0) + 1;
             max_len = max(max_len, n);
             map.insert(arr[i], n);
         }
@@ -20,11 +20,4 @@ impl Solution {
 fn test() {
     let v = vec![1, 2, 3, 4];
     Solution::longest_subsequence(v, 1);
-}
-#[test]
-fn map_test() {
-    let mut map:HashMap<i32,i32> = HashMap::new();
-    if let Some(n) = map.get(&1){
-        map.insert(2,*n);
-    }
 }

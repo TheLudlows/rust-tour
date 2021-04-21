@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::collections::HashMap;
+
+use crate::Solution;
 
 impl Solution {
     pub fn is_isomorphic(s: String, t: String) -> bool {
@@ -17,7 +18,7 @@ impl Solution {
             if *v != t[i] {
                 return false;
             }
-            let v = map2.entry(t[i]).or_insert( s[i]);
+            let v = map2.entry(t[i]).or_insert(s[i]);
             if *v != s[i] {
                 return false;
             }
@@ -28,5 +29,5 @@ impl Solution {
 
 #[test]
 fn test() {
-    Solution::is_isomorphic("aa".to_string(),"ab".to_string());
+    Solution::is_isomorphic("aa".to_string(), "ab".to_string());
 }

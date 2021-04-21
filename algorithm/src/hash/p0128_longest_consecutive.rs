@@ -2,6 +2,7 @@ use std::cmp::max;
 use std::collections::HashSet;
 
 use crate::Solution;
+
 /// set i-1不存在 说明是某个序列最小值，然后一直递增直到找不到
 impl Solution {
     pub fn longest_consecutive(nums: Vec<i32>) -> i32 {

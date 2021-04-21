@@ -1,17 +1,17 @@
 struct SortedStack {
-    stack: Vec<i32>
+    stack: Vec<i32>,
 }
-impl SortedStack {
 
+impl SortedStack {
     fn new() -> Self {
-        Self{
-            stack:Vec::new()
+        Self {
+            stack: Vec::new()
         }
     }
 
     fn push(&mut self, val: i32) {
         self.stack.push(val);
-        self.stack.sort_by(|e1,e2|e1.cmp(&e2))
+        self.stack.sort_by(|e1, e2| e1.cmp(&e2))
     }
 
     fn pop(&mut self) {
@@ -26,7 +26,6 @@ impl SortedStack {
         self.stack.is_empty()
     }
 }
-#[test]
-fn test() {
 
-}
+#[test]
+fn test() {}

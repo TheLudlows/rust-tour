@@ -8,20 +8,20 @@ impl Solution {
             if s[i] == b'?' {
                 let left = if i == 0 {
                     None
-                } else{
-                    Some(s[i-1])
+                } else {
+                    Some(s[i - 1])
                 };
-                let right = if i == s.len()-1 {
+                let right = if i == s.len() - 1 {
                     None
-                } else{
-                    Some(s[i+1])
+                } else {
+                    Some(s[i + 1])
                 };
                 s[i] = dir.clone().into_iter().find(|&x| Some(x) != left && Some(x) != right).unwrap();
             }
         }
         String::from_utf8(s).unwrap()
-
     }
 }
+
 #[test]
 fn test_() {}

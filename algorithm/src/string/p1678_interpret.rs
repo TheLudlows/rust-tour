@@ -8,10 +8,10 @@ impl Solution {
             let b = command[i];
             if b == b'G' {
                 vec.push(b'G');
-            }else if b == b')' {
-                if i > 0 && command[i-1] == b'(' {
+            } else if b == b')' {
+                if i > 0 && command[i - 1] == b'(' {
                     vec.push(b'o');
-                } else if i > 2 && command[i-1] == b'l' && command[i-2] == b'a' && command[i-3] == b'(' {
+                } else if i > 2 && command[i - 1] == b'l' && command[i - 2] == b'a' && command[i - 3] == b'(' {
                     vec.push(b'a');
                     vec.push(b'l');
                 }

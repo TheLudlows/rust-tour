@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::cmp::max;
+
+use crate::Solution;
 
 impl Solution {
     pub fn jump(nums: Vec<i32>) -> i32 {

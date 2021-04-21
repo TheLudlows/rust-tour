@@ -15,7 +15,7 @@ impl Solution {
     }
 }
 
-fn build(mid_map: &HashMap<i32, i32>, pre: &mut Iterator<Item=i32>, l: i32, r: i32) -> Option<Rc<RefCell<TreeNode>>> {
+fn build(mid_map: &HashMap<i32, i32>, pre: &mut dyn Iterator<Item=i32>, l: i32, r: i32) -> Option<Rc<RefCell<TreeNode>>> {
     if l > r {
         None
     } else {

@@ -1,4 +1,5 @@
 use std::cmp::min;
+
 use crate::Solution;
 
 impl Solution {
@@ -8,7 +9,7 @@ impl Solution {
                 triangle[i][j] += min(triangle[i - 1][j], triangle[i - 1][j - 1])
             }
             triangle[i][0] += triangle[i - 1][0];
-            triangle[i][i] += triangle[i - 1][i-1];
+            triangle[i][i] += triangle[i - 1][i - 1];
         }
         *triangle.last().unwrap().iter().min().unwrap()
     }

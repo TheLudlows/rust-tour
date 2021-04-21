@@ -4,7 +4,7 @@ use crate::Solution;
 
 /// hash 计数
 impl Solution {
-    pub fn intersect(mut nums1: Vec<i32>, mut nums2: Vec<i32>) -> Vec<i32> {
+    pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
         let mut count_map = HashMap::new();
         let mut res = vec![];
         for i in nums1 {

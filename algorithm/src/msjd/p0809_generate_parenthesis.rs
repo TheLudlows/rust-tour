@@ -9,10 +9,10 @@ impl Solution {
 }
 
 fn dfs(left: i32, right: i32, cur: &mut String, n: i32, v: &mut Vec<String>) {
-    println!("{}",cur);
+    println!("{}", cur);
     if left == right && left == n {
         v.push(cur.clone());
-        return
+        return;
     }
     if left < n {
         cur.push('(');
@@ -25,8 +25,9 @@ fn dfs(left: i32, right: i32, cur: &mut String, n: i32, v: &mut Vec<String>) {
         cur.pop();
     }
 }
+
 #[test]
 fn test() {
     let r = Solution::generate_parenthesis(2);
-    println!("{:?}",r)
+    println!("{:?}", r)
 }

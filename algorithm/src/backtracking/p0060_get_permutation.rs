@@ -9,6 +9,7 @@ impl Solution {
         result[k as usize].iter().map(|&n| n.to_string()).collect()
     }
 }
+
 fn backtrace(n: usize, arr: &mut Vec<usize>, result: &mut Vec<Vec<usize>>, vis: &mut Vec<bool>) {
     if arr.len() == n {
         result.push(arr.clone());
@@ -24,5 +25,6 @@ fn backtrace(n: usize, arr: &mut Vec<usize>, result: &mut Vec<Vec<usize>>, vis: 
         }
     }
 }
+
 #[test]
 fn test() {}

@@ -1,11 +1,12 @@
-use crate::Solution;
 use std::collections::{HashMap, HashSet};
+
+use crate::Solution;
 
 impl Solution {
     pub fn unique_occurrences(arr: Vec<i32>) -> bool {
         let mut map = HashMap::new();
         for i in arr {
-            let mut count = map.entry(i).or_insert(0);
+            let count = map.entry(i).or_insert(0);
             *count += 1;
         }
 
@@ -18,5 +19,6 @@ impl Solution {
         true
     }
 }
+
 #[test]
 fn test() {}

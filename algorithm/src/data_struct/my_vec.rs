@@ -1,5 +1,5 @@
 use std::{mem, ptr};
-use std::alloc::{dealloc, handle_alloc_error, Layout};
+use std::alloc::{handle_alloc_error, Layout, dealloc};
 use std::alloc::alloc;
 use std::alloc::realloc;
 use std::fmt::Debug;
@@ -60,7 +60,7 @@ impl<T> Drop for RawVec<T> {
         if self.cap != 0 {
             unsafe {
                 let layout = Layout::from_size_align_unchecked(self.cap, mem::align_of::<T>());
-                //dealloc(self.ptr.as_ptr() as *mut _, layout);
+                dealloc(self.ptr.as_ptr() as *mut _, layout);
             }
         }
         println!("drop Raw vec");
@@ -180,7 +180,7 @@ struct RawIter<T> {
 }
 
 impl<T> RawIter<T> {
-    fn new(slice :  &[T]) -> Self {
+    fn new(slice: &[T]) -> Self {
         unsafe {
             RawIter {
                 start: slice.as_ptr(),
@@ -280,7 +280,7 @@ fn test() {
     }
 
 
-    let mut v:MyVec<i32> = MyVec::new();
+    let v: MyVec<i32> = MyVec::new();
     //v.push(1);
     //v.push(3);
     //v.push(10);

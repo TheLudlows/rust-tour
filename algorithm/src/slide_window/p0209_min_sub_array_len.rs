@@ -1,4 +1,5 @@
 use std::cmp::min;
+
 use crate::Solution;
 
 /// double pointer slide window
@@ -17,13 +18,13 @@ impl Solution {
                 sum -= nums[i];
                 i += 1;
             }
-            j+=1;
+            j += 1;
         }
-        return if min_len == i32::MAX{
+        return if min_len == i32::MAX {
             0
         } else {
             min_len
-        }
+        };
     }
 }
 
@@ -31,6 +32,6 @@ impl Solution {
 fn test() {
     let v = vec![1, 4, 4];
     let i = v.binary_search(&2);
-    println!("{:?}",i);
+    println!("{:?}", i);
     Solution::min_sub_array_len(4, v);
 }

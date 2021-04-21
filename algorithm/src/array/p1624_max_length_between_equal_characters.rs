@@ -1,6 +1,7 @@
-use crate::Solution;
 use std::cmp::max;
 use std::collections::HashMap;
+
+use crate::Solution;
 
 impl Solution {
     pub fn max_length_between_equal_characters(s: String) -> i32 {
@@ -17,5 +18,6 @@ impl Solution {
         max_len
     }
 }
+
 #[test]
 fn test() {}

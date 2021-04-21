@@ -9,7 +9,7 @@ impl Solution {
         for i in &g {
             while let Some(n) = s.next() {
                 if n >= i {
-                    res+=1;
+                    res += 1;
                     break;
                 }
             }

@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::collections::VecDeque;
+
+use crate::Solution;
 
 impl Solution {
     pub fn oranges_rotting(mut grid: Vec<Vec<i32>>) -> i32 {
@@ -58,6 +59,6 @@ impl Solution {
 
 #[test]
 fn test() {
-    let mut v = vec![vec![2, 1, 1], vec![1, 1, 0], vec![0, 1, 1]];
+    let v = vec![vec![2, 1, 1], vec![1, 1, 0], vec![0, 1, 1]];
     Solution::oranges_rotting(v);
 }

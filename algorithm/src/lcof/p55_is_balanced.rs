@@ -1,7 +1,8 @@
-use std::rc::Rc;
 use std::cell::RefCell;
-use crate::{Solution, TreeNode};
 use std::cmp::max;
+use std::rc::Rc;
+
+use crate::{Solution, TreeNode};
 
 impl Solution {
     pub fn is_balanced(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
@@ -14,7 +15,7 @@ fn balanced(node: Option<&Rc<RefCell<TreeNode>>>) -> i32 {
     if let Some(n) = node {
         let left = balanced(n.borrow().left.as_ref());
         let right = balanced(n.borrow().right.as_ref());
-        if left == -1 ||right == -1 {
+        if left == -1 || right == -1 {
             return -1;
         }
         let gap = (left - right).abs();
@@ -22,7 +23,7 @@ fn balanced(node: Option<&Rc<RefCell<TreeNode>>>) -> i32 {
             max(left, right) + 1
         } else {
             -1
-        }
+        };
     } else {
         0
     }

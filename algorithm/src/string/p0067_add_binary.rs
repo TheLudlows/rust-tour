@@ -14,14 +14,14 @@ impl Solution {
                 pre += x.to_digit(2).unwrap();
             }
             if let Some(x) = n2 {
-                pre +=x.to_digit(2).unwrap();
+                pre += x.to_digit(2).unwrap();
             }
             if pre == 0 {
                 ret.push_str("0");
-            } else if pre  == 1 {
+            } else if pre == 1 {
                 pre = 0;
                 ret.push_str("1");
-            } else if pre == 2{
+            } else if pre == 2 {
                 pre = 1;
                 ret.push_str("0");
             } else {
@@ -33,15 +33,5 @@ impl Solution {
             ret.push_str("1");
         }
         ret.chars().into_iter().rev().collect()
-    }
-}
-
-#[test]
-fn test() {
-    let mut s = "abc".to_string();
-    let chars = s.chars();
-    //s.push_str("d");
-    for i in chars {
-
     }
 }

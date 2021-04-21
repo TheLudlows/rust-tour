@@ -1,5 +1,7 @@
-use crate::Solution;
 use std::cmp::min;
+
+use crate::Solution;
+
 /// dp[i]表示i最小需要的硬币数，dp[i] = min(dp[i],dp[i-coin] + 1);
 impl Solution {
     pub fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
@@ -22,5 +24,6 @@ impl Solution {
         }
     }
 }
+
 #[test]
 fn test() {}

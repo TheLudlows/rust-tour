@@ -3,6 +3,7 @@ use std::i32::MAX;
 use std::rc::Rc;
 
 use crate::{Solution, TreeNode};
+
 /// 排序，即中序遍历。逐个比较
 impl Solution {
     pub fn get_minimum_difference(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {

@@ -1,9 +1,9 @@
-
 // 线段树
 struct NumArray {
     nums: Vec<i32>,
     tree: Vec<i32>,
 }
+#[allow(dead_code)]
 
 impl NumArray {
     fn new(nums: Vec<i32>) -> Self {
@@ -75,7 +75,7 @@ fn right_child(parent: usize) -> usize {
 
 #[test]
 fn test() {
-    let mut arr = NumArray::new(vec![0, 1, 2, 3]);
+    let arr = NumArray::new(vec![0, 1, 2, 3]);
     let r = arr.sum_range(1, 3);
     println!("{}", r);
 }

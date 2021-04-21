@@ -7,7 +7,7 @@ use crate::{Solution, TreeNode};
 ///
 impl Solution {
     pub fn lowest_common_ancestor1(root: Option<Rc<RefCell<TreeNode>>>, p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
-        lowest(&root,p.unwrap().borrow().val,q.unwrap().borrow().val)
+        lowest(&root, p.unwrap().borrow().val, q.unwrap().borrow().val)
     }
 }
 
@@ -26,5 +26,5 @@ fn lowest(root: &Option<Rc<RefCell<TreeNode>>>, left: i32, right: i32) -> Option
         None => {
             None
         }
-    }
+    };
 }

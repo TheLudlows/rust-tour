@@ -3,6 +3,7 @@ use std::cmp::min;
 use std::rc::Rc;
 
 use crate::{Solution, TreeNode};
+
 /// 叶子节点的定义
 impl Solution {
     pub fn min_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {

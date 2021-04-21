@@ -8,18 +8,18 @@ impl Solution {
         }
         let mut res = 0;
         let len = nums.len();
-        mergeSort(&mut nums, 0, len-1, &mut res);
+        merge_sort(&mut nums, 0, len - 1, &mut res);
         res
     }
 }
 
-fn mergeSort(nums: &mut Vec<i32>, start: usize, end: usize, res: &mut i32) {
+fn merge_sort(nums: &mut Vec<i32>, start: usize, end: usize, res: &mut i32) {
     if start >= end {
         return;
     }
     let mid = (start + end) / 2;
-    mergeSort(nums, start, mid, res);
-    mergeSort(nums, mid + 1, end, res);
+    merge_sort(nums, start, mid, res);
+    merge_sort(nums, mid + 1, end, res);
     merge(nums, start, end, res);
 }
 
@@ -51,9 +51,9 @@ fn merge(nums: &mut Vec<i32>, left: usize, right: usize, res: &mut i32) {
     for i in 0..nums_copy.len() {
         nums[left + i] = nums_copy[i];
     }
-
 }
+
 #[test]
 fn test() {
-    Solution::reverse_pairs(vec![7,5,6,4]);
+    Solution::reverse_pairs(vec![7, 5, 6, 4]);
 }

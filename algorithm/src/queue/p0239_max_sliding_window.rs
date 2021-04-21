@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::collections::VecDeque;
+
+use crate::Solution;
 
 impl Solution {
     pub fn max_sliding_window(nums: Vec<i32>, k: i32) -> Vec<i32> {

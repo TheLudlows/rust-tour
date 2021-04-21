@@ -27,8 +27,8 @@ impl Solution {
         for i in nums {
             cur += i;
             count += map.get(&(cur - k)).unwrap_or(&0);
-            let mut n = map.entry(cur).or_insert(0);
-            *n +=1;
+            let n = map.entry(cur).or_insert(0);
+            *n += 1;
         }
         count as i32
     }

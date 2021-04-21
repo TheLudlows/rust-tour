@@ -4,7 +4,7 @@ use crate::Solution;
 
 /// 双指针
 impl Solution {
-    pub fn find_median_sorted_arrays(mut nums1: Vec<i32>, mut nums2: Vec<i32>) -> f64 {
+    pub fn find_median_sorted_arrays(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
         let min_left = (nums1.len() + nums2.len() + 1) / 2;
         let min_right = (nums1.len() + nums2.len() + 2) / 2;
         let mut res: f64 = 0f64;
@@ -31,15 +31,15 @@ impl Solution {
         }
         res / 2.0
     }
-    pub fn find_median_sorted_arrays_2(mut nums1: Vec<i32>, mut nums2: Vec<i32>) -> f64 {
+    pub fn find_median_sorted_arrays_2( nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
         let min_left = (nums1.len() + nums2.len() + 1) / 2;
         let min_right = (nums1.len() + nums2.len() + 2) / 2;
-        (findK(&nums1, 0, &nums2, 0, min_left) + findK(&nums1, 0, &nums2, 0, min_right)) as f64
+        (find_k(&nums1, 0, &nums2, 0, min_left) + find_k(&nums1, 0, &nums2, 0, min_right)) as f64
             / 2.0
     }
 }
 
-fn findK(v1: &Vec<i32>, i: usize, v2: &Vec<i32>, j: usize, k: usize) -> i32 {
+fn find_k(v1: &Vec<i32>, i: usize, v2: &Vec<i32>, j: usize, k: usize) -> i32 {
     // 当nums1 删除完，则直接返回j+k-1位置的数字，nums2删完同理
     if i >= v1.len() {
         return v2[j + k - 1];
@@ -62,9 +62,9 @@ fn findK(v1: &Vec<i32>, i: usize, v2: &Vec<i32>, j: usize, k: usize) -> i32 {
         i32::MAX
     };
     return if max1 > max2 {
-        findK(v1, i, v2, j + k / 2, k - k / 2)
+        find_k(v1, i, v2, j + k / 2, k - k / 2)
     } else {
-        findK(v1, i + k / 2, v2, j, k - k / 2)
+        find_k(v1, i + k / 2, v2, j, k - k / 2)
     };
 }
 

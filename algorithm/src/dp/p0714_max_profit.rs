@@ -19,13 +19,13 @@ impl Solution {
     pub fn max_profit2(prices: Vec<i32>, fee: i32) -> i32 {
         let len = prices.len();
         let mut has = -prices[0];
-        let mut nHas = 0;
+        let mut max_has = 0;
 
         for i in 1..len {
             let old = has;
-            has = max(has, nHas - prices[i]);
-            nHas = max(nHas, old + prices[i] - fee);
+            has = max(has, max_has - prices[i]);
+            max_has = max(max_has, old + prices[i] - fee);
         }
-        nHas
+        max_has
     }
 }

@@ -12,7 +12,7 @@ impl Solution {
         println!("{:?}", b);
 
         while i < a.len() && j < b.len() {
-            min_dif = min(min_dif, (a[i] as i64 - b[j] as i64 ).abs());
+            min_dif = min(min_dif, (a[i] as i64 - b[j] as i64).abs());
             if a[i] > b[j] {
                 j += 1
             } else if a[i] < b[j] {
@@ -24,9 +24,8 @@ impl Solution {
 
         min_dif as i32
     }
-
-
 }
+
 #[test]
 fn test_abs() {
     //-2147483648, 1]
@@ -34,6 +33,6 @@ fn test_abs() {
     println!("{}", i32::MIN);
     let v1 = vec![-2147483648, 1];
     let v2 = vec![0, 2147483647];
-    Solution::smallest_difference(v1,v2);
-    println!("{}",(-1i32).abs())
+    Solution::smallest_difference(v1, v2);
+    println!("{}", (-1i32).abs())
 }

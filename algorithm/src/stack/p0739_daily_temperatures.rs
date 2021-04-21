@@ -1,4 +1,5 @@
 use crate::Solution;
+
 impl Solution {
     pub fn daily_temperatures(t: Vec<i32>) -> Vec<i32> {
         let mut stack = vec![];

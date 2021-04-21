@@ -1,5 +1,6 @@
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
+
 use crate::{Solution, TreeNode};
 
 impl Solution {
@@ -8,7 +9,8 @@ impl Solution {
         root
     }
 }
-pub fn trace(node:Option<&mut Rc<RefCell<TreeNode>>>) {
+
+pub fn trace(node: Option<&mut Rc<RefCell<TreeNode>>>) {
     if let Some(node) = node {
         let mut node = node.borrow_mut();
         let temp = node.left.take();

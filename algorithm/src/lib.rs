@@ -3,27 +3,46 @@
 
 use std::cell::RefCell;
 use std::rc::Rc;
-
+#[allow(dead_code)]
 mod array;
+#[allow(dead_code)]
 mod backtracking;
+#[allow(dead_code)]
 mod dp;
+#[allow(dead_code)]
 mod hash;
+#[allow(dead_code)]
 mod heap;
+#[allow(dead_code)]
 mod lcof;
+#[allow(dead_code)]
 mod list;
-pub mod math;
+#[allow(dead_code)]
+mod math;
+#[allow(dead_code)]
 mod queue;
+#[allow(dead_code)]
 mod search;
-pub mod sort;
+#[allow(dead_code)]
+mod sort;
+#[allow(dead_code)]
 mod stack;
+#[allow(dead_code)]
 mod string;
+#[allow(dead_code)]
 mod tree;
+#[allow(dead_code)]
 mod msjd;
+#[allow(dead_code)]
 mod dfs;
-mod slidewindow;
-mod doublePointer;
+#[allow(dead_code)]
+mod slide_window;
+#[allow(dead_code)]
+mod double_pointer;
+#[allow(dead_code)]
 mod dc;
-mod datastruct;
+#[allow(dead_code)]
+mod data_struct;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -35,9 +54,6 @@ impl ListNode {
     #[inline]
     pub(crate) fn new(val: i32) -> Self {
         ListNode { next: None, val }
-    }
-    pub(crate) fn new_withNext(val: i32, next: Option<Box<ListNode>>) -> Self {
-        ListNode { next, val }
     }
 }
 

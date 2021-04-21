@@ -29,7 +29,7 @@ impl Solution {
                     start = left;
                     min_window = windows
                 }
-                if let Some(mut n) = map.get_mut(&s[left]) {
+                if let Some(n) = map.get_mut(&s[left]) {
                     *n -= 1;
                     if *n < *cnt.get(&s[left]).unwrap() {
                         matches -= 1;
@@ -40,7 +40,7 @@ impl Solution {
             right += 1;
         }
         if start + min_window as usize > s.len() {
-            return String::new()
+            return String::new();
         }
         String::from_utf8(s[start..start + min_window as usize].to_owned()).unwrap()
     }
@@ -93,7 +93,7 @@ pub fn min_window(s: String, t: String) -> String {
         right += 1;
     }
     if start + min_window as usize > s.len() {
-        return String::new()
+        return String::new();
     }
     String::from_utf8(s[start..start + min_window as usize].to_owned()).unwrap()
 }

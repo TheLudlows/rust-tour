@@ -9,13 +9,13 @@ use crate::Solution;
 
 impl Solution {
     pub fn validate_stack_sequences(pushed: Vec<i32>, popped: Vec<i32>) -> bool {
-        let mut  stack = vec![];
+        let mut stack = vec![];
         let mut j = 0;
         for i in pushed {
             stack.push(i);
             while !stack.is_empty() && popped[j] == *stack.last().unwrap() {
                 stack.pop();
-                j+=1;
+                j += 1;
             }
         }
         stack.is_empty()

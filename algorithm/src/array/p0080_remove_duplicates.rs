@@ -15,6 +15,7 @@ impl Solution {
         j as i32
     }
 }
+
 #[test]
 fn test() {
     let mut v = vec![1, 1, 1, 2, 2, 3];

@@ -1,5 +1,6 @@
+use std::collections::HashSet;
+
 use crate::Solution;
-use std::collections::{HashSet};
 
 impl Solution {
     pub fn dest_city(paths: Vec<Vec<String>>) -> String {
@@ -9,7 +10,7 @@ impl Solution {
         }
         for v in paths.iter() {
             if !set.contains(&v[1]) {
-                return v[1].clone()
+                return v[1].clone();
             }
         }
         String::new()

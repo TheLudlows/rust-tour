@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::cmp::max;
+
+use crate::Solution;
 
 ///  映射出每个字符的最晚结束位置，遍历数组，维护一个窗口，每次取当前包含字符的最晚结束，当i和结束相等，划分出一个分区。
 impl Solution {

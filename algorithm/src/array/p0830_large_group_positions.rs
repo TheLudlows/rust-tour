@@ -17,6 +17,7 @@ impl Solution {
         ret
     }
 }
+
 #[test]
 fn test() {
     Solution::large_group_positions("aaa".to_string());

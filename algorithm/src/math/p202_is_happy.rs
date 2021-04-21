@@ -1,6 +1,7 @@
 use std::collections::HashSet;
 
 use crate::Solution;
+
 impl Solution {
     pub fn is_happy(mut n: i32) -> bool {
         if n == 1 {

@@ -1,6 +1,7 @@
-use crate::{Solution, TreeNode};
 use std::cell::RefCell;
 use std::rc::Rc;
+
+use crate::{Solution, TreeNode};
 
 impl Solution {
     pub fn invert_tree(mut root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
@@ -8,6 +9,7 @@ impl Solution {
         root
     }
 }
+
 pub fn trace(node: Option<&mut Rc<RefCell<TreeNode>>>) {
     if node.is_none() {
         return;
@@ -19,5 +21,6 @@ pub fn trace(node: Option<&mut Rc<RefCell<TreeNode>>>) {
     trace(node.left.as_mut());
     trace(node.right.as_mut());
 }
+
 #[test]
 fn test() {}

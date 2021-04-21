@@ -1,4 +1,4 @@
-use crate::{Solution, ListNode};
+use crate::{ListNode, Solution};
 
 impl Solution {
     pub fn kth_to_last(head: Option<Box<ListNode>>, k: i32) -> i32 {
@@ -14,5 +14,4 @@ impl Solution {
         }
         slow.unwrap().val
     }
-
 }

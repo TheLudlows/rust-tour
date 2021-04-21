@@ -4,18 +4,18 @@ use crate::Solution;
 impl Solution {
     pub fn count_smaller(mut nums: Vec<i32>) -> Vec<i32> {
         let mut count = vec![0; nums.len()];
-        mergeSort(&mut nums, 0, 0, &mut count);
+        merge_sort(&mut nums, 0, 0, &mut count);
         count
     }
 }
 
-fn mergeSort(nums: &mut Vec<i32>, left: usize, right: usize, count: &mut Vec<i32>) {
+fn merge_sort(nums: &mut Vec<i32>, left: usize, right: usize, count: &mut Vec<i32>) {
     if left >= right {
-        return
+        return;
     }
     let mid = (left + right) / 2;
-    mergeSort(nums, right, mid, count);
-    mergeSort(nums, mid + 1, right, count);
+    merge_sort(nums, right, mid, count);
+    merge_sort(nums, mid + 1, right, count);
     merge(nums, left, right, count)
 }
 

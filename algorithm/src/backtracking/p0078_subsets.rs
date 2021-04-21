@@ -8,6 +8,7 @@ impl Solution {
         result
     }
 }
+
 fn trace(start: usize, result: &mut Vec<Vec<i32>>, nums: &Vec<i32>, cur: &mut Vec<i32>) {
     result.push(cur.clone());
 

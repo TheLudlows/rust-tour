@@ -5,8 +5,8 @@ use crate::Solution;
 impl Solution {
     pub fn find_and_replace_pattern(words: Vec<String>, pattern: String) -> Vec<String> {
         let mut res = vec![];
-        for  s in words {
-            if isomorphic(&s,&pattern) {
+        for s in words {
+            if isomorphic(&s, &pattern) {
                 res.push(s);
             }
         }
@@ -36,8 +36,9 @@ pub fn isomorphic(s: &String, t: &String) -> bool {
     }
     true
 }
+
 #[test]
 fn test() {
-    let r = isomorphic(&"abc".to_string(),&"abb".to_string());
-    println!("{}",r)
+    let r = isomorphic(&"abc".to_string(), &"abb".to_string());
+    println!("{}", r)
 }

@@ -64,7 +64,7 @@ impl Solution2 {
                 if s[i] != s[j] {
                     dp[i][j] = 0;
                 } else {
-                    if dp[i + 1][j - 1] > 0 || j-i ==1  {
+                    if dp[i + 1][j - 1] > 0 || j - i == 1 {
                         dp[i][j] = dp[i + 1][j - 1] + 2;
                     } else {
                         dp[i][j] = 0;
@@ -76,7 +76,7 @@ impl Solution2 {
                 }
             }
         }
-        println!("{:?}",dp);
+        println!("{:?}", dp);
         unsafe { String::from_utf8_unchecked(Vec::from(&s[start..start + max])) }
     }
 }

@@ -1,7 +1,8 @@
-use crate::{Solution, TreeNode};
 use std::cell::RefCell;
-use std::rc::Rc;
 use std::collections::VecDeque;
+use std::rc::Rc;
+
+use crate::{Solution, TreeNode};
 
 impl Solution {
     pub fn level_order2(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
@@ -25,7 +26,7 @@ impl Solution {
                 }
                 result.push(level);
             }
-            i+=1;
+            i += 1;
         }
         result
     }

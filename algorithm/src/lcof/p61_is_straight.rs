@@ -12,12 +12,12 @@ impl Solution {
                 return false;
             }
         }
-        (nums[nums.len()-1] - nums[joker] - nums.len() as i32) < joker as i32
+        (nums[nums.len() - 1] - nums[joker] - nums.len() as i32) < joker as i32
     }
 }
 
 #[test]
 fn test() {
-    let v = vec![10,11,0,12,6];
+    let v = vec![10, 11, 0, 12, 6];
     Solution::is_straight(v);
 }

@@ -2,7 +2,6 @@ use crate::Solution;
 
 impl Solution {
     pub fn max_area_of_island(mut grid: Vec<Vec<i32>>) -> i32 {
-        let mut lands = 0;
         if grid.len() == 0 || grid[0].len() == 0 {
             return 0;
         }
@@ -10,7 +9,6 @@ impl Solution {
         for i in 0..grid.len() {
             for j in 0..grid[0].len() {
                 if grid[i][j] == 1 {
-                    lands += 1;
                     max_area = std::cmp::max(max_area, dfs(&mut grid, i, j));
                 }
             }

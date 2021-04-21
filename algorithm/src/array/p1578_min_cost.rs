@@ -8,8 +8,8 @@ impl Solution {
         let mut j = 0;
         for i in 1..bytes.len() {
             if bytes[i] == bytes[j] {
-                c += std::cmp::min(cost[i],cost[j]);
-                j = if cost[j] > cost[i] {j}else {i};
+                c += std::cmp::min(cost[i], cost[j]);
+                j = if cost[j] > cost[i] { j } else { i };
             } else {
                 j = i;
             }

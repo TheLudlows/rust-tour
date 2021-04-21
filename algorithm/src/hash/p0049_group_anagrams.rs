@@ -1,5 +1,6 @@
+use std::collections::HashMap;
+
 use crate::Solution;
-use std::collections::{HashMap};
 
 impl Solution {
     pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
@@ -17,7 +18,6 @@ impl Solution {
         res
     }
 }
-#[test]
-fn test() {
 
-}
+#[test]
+fn test() {}

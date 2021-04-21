@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 
 use crate::Solution;
-use std::ops::Add;
 
 impl Solution {
     pub fn min_set_size(arr: Vec<i32>) -> i32 {
@@ -17,8 +16,8 @@ impl Solution {
         let mut rm = 0;
         for (_, v) in v {
             count += v;
-            rm +=1;
-            if count >= (arr.len()/2) as i32  {
+            rm += 1;
+            if count >= (arr.len() / 2) as i32 {
                 break;
             }
         }

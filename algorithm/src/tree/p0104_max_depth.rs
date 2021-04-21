@@ -1,7 +1,8 @@
-use crate::{Solution, TreeNode};
 use std::cell::RefCell;
 use std::cmp::max;
 use std::rc::Rc;
+
+use crate::{Solution, TreeNode};
 
 impl Solution {
     pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {

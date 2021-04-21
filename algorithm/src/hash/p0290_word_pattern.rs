@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::collections::HashMap;
+
+use crate::Solution;
 
 impl Solution {
     pub fn word_pattern(pattern: String, s: String) -> bool {

@@ -4,15 +4,15 @@ use crate::Solution;
 impl Solution {
     pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
         if nums.len() < 1 {
-            return 0
+            return 0;
         }
         let (mut i, mut j) = (0, 1);
         while j < nums.len() {
             if nums[i] != nums[j] {
-                i+=1;
+                i += 1;
                 nums[i] = nums[j];
             }
-            j+=1;
+            j += 1;
         }
         i as i32
     }
