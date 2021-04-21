@@ -6,3 +6,4 @@ mod p0739_daily_temperatures;
 mod p0496_next_greater_element;
 mod p0503_next_greater_elements;
 mod of30_min_stack;
+mod of31_validate_stack_sequences;

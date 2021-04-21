@@ -21,11 +21,7 @@ impl Solution {
                 }
             }
         }
-        let mut result = vec![];
-        for _ in 0..k {
-            result.push(max_heap.pop().unwrap())
-        }
-        result
+        max_heap.into_iter().collect::<Vec<i32>>()
     }
 }
 
