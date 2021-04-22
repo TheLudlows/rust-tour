@@ -1,4 +1,5 @@
-use std::ptr;
+use std::{ptr, fmt};
+use std::fmt::{Pointer, Formatter};
 
 #[test]
 fn test_ptr() {
@@ -7,10 +8,31 @@ fn test_ptr() {
         a:i32
     }
 
-    let f = Foo{a:10};
-    unsafe {
-        let r = ptr::read(&f);
-        println!("{:p}", &r);
-        println!("{:p}", &f);
+    impl Pointer for Foo {
+        fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+            let ptr = self as *const Self;
+            ptr.fmt(f)
+        }
     }
+
+    let mut f1 = Foo{a:10};
+    unsafe {
+        let f2 = ptr::read(&f1);
+        println!("{:p}", f1);
+        println!("{:p}", f2);
+    }
+}
+
+trait P {
+   fn fmtt(&self);
+}
+impl<T> P for T {
+    fn fmtt(&self) {
+        println!("fuck");
+    }
+}
+
+#[test]
+fn test_trait() {
+    P::fmtt(&1);
 }
