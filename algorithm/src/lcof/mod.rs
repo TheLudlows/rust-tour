@@ -10,9 +10,7 @@ mod p62_last_remaining;
 mod p55_is_balanced;
 mod p61_is_straight;
 
-mod p47_max_value;
 mod p57_find_continuous_sequence;
-mod p49_nth_ugly_number;
-mod of45_min_number;
+
 mod p66_construct_arr;
 mod p1606_smallest;

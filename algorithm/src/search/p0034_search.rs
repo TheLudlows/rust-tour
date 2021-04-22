@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    pub fn search_range2(a: Vec<i32>, tgt: i32) -> Vec<i32> {
+    pub fn search(a: Vec<i32>, tgt: i32) -> Vec<i32> {
         if a.is_empty() {
             return vec![-1, -1];
         }
