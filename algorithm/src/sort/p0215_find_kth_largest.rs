@@ -20,9 +20,37 @@ impl Solution {
         }
         heap.pop().unwrap().0
     }
-    // 快排思想
-    pub fn find_kth_largest2(nums: Vec<i32>, k: i32) -> i32 {
-        1
+}
+
+impl Solution {
+    pub fn find_kth_largest2(mut nums: Vec<i32>, k: i32) -> i32 {
+        let len = nums.len();
+        return quick_sort(&mut nums, 0, len-1, len - k as usize)
     }
+}
+pub fn quick_sort(arr: &mut Vec<i32>, l: usize, r: usize,  k: usize) -> i32 {
+    let pivot = partition(arr, l, r);
+    if pivot == k {
+        return arr[pivot]
+    } else if pivot > k {
+        return quick_sort(arr, l, pivot - 1, k);
+    } else {
+        return quick_sort(arr, pivot + 1, r, k);
+    }
+
+}
+
+fn partition(arr: &mut Vec<i32>, l: usize, r: usize) -> usize {
+    let mut j = l+1;
+    let p = arr[l];
+
+    for i in l..=r {
+        if arr[i] < p {
+            arr.swap(i,j);
+            j+=1;
+        }
+    }
+    arr.swap(l, j-1);
+    j-1
 }
 
