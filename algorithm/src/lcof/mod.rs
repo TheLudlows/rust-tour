@@ -1,5 +1,4 @@
 
-mod p50_first_uniq_char;
 mod p53_missing_number;
 mod p54_kth_largest;
 mod p56_single_numbers;

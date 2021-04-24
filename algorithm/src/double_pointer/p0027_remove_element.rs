@@ -7,12 +7,12 @@ impl Solution {
         }
         let mut i = 0;
         let mut j = 0;
-        while i < nums.len() {
+        while j < nums.len() {
             if nums[i] != val {
                 nums[j] = nums[i];
-                j += 1;
+                i+= 1;
             }
-            i += 1;
+            j += 1;
         }
         j as i32
     }
