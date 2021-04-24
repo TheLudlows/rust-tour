@@ -5,7 +5,6 @@ mod p0016_three_sum_closest;
 mod p0018_four_sum;
 mod p0041_first_missing_positive;
 mod p0055_can_jump;
-mod p0088_merge;
 mod p0135_candy;
 mod p0189_rotate;
 mod p0219_contains_nearby_duplicate;
