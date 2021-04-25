@@ -6,7 +6,7 @@ impl Solution {
         if nums.len() < 1 {
             return 0;
         }
-        let (mut i, mut j) = (0, 1);
+        let (mut i, mut j) = (0, 0);
         while j < nums.len() {
             if nums[i] != nums[j] {
                 i += 1;

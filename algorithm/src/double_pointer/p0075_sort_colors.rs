@@ -5,6 +5,7 @@ use crate::Solution;
 /// 若 nums[curr] = 2 ：交换第 curr个和第 p2个元素，并将 p2指针左移 。
 /// 若 nums[curr] = 1 ：将指针curr右移。
 
+/// 計數排序
 impl Solution {
     pub fn sort_colors(nums: &mut Vec<i32>) {
         let mut p0 = 0;
