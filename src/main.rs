@@ -66,6 +66,7 @@ mod conv;
 mod ptr;
 mod drain;
 mod repr;
+mod bytes;
 
 
 fn main() {
