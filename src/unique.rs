@@ -1,7 +1,7 @@
 use std::ptr::Unique;
 
 #[test]
- fn test() {
+fn test() {
     let mut p = 10;
     let u = Unique::new(&mut p).unwrap();
     println!("{:?}", u);

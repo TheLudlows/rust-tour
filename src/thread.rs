@@ -1,5 +1,5 @@
 use std::cell::RefCell;
-use std::sync::{mpsc, Arc, Barrier, Mutex, RwLock, Condvar};
+use std::sync::{Arc, Barrier, Condvar, mpsc, Mutex, RwLock};
 use std::thread;
 use std::thread::{Builder, JoinHandle};
 use std::time::{self, Duration};
@@ -19,7 +19,7 @@ fn new_thread() {
 #[test]
 fn move_test() {
     let v = vec![1, 2, 3];
-    let handle = thread::spawn( move|| {
+    let handle = thread::spawn(move || {
         thread::sleep(Duration::from_secs(1));
         println!("Here's a vector: {:?}", v);
     });
@@ -124,8 +124,8 @@ fn test() {
             println!("Data value :{:?}", data2[0]);
             println!("in")
         })
-        .join()
-        .unwrap();
+            .join()
+            .unwrap();
     }
     thread::sleep(Duration::from_millis(100));
     println!("data:{:?}", data.lock().unwrap())
@@ -172,14 +172,14 @@ fn thread_local() {
             *v.borrow_mut() = 200;
         });
     })
-    .join().unwrap();
+        .join().unwrap();
     LOCAL.with(|v| println!("{:?}", v.borrow()))
 }
 
 pub fn spawn_new<F, T>(f: F) -> JoinHandle<T>
-where
-    F: (FnOnce() -> T) + Send + 'static,
-    T: Send + 'static,
+    where
+        F: (FnOnce() -> T) + Send + 'static,
+        T: Send + 'static,
 {
     Builder::new().spawn(f).expect("failed to spawn thread")
 }
@@ -233,7 +233,7 @@ fn test_park() {
 }
 
 #[test]
-fn test_arc_modify () {
+fn test_arc_modify() {
     let arc = Arc::new(String::from("hello"));
     for _ in 0..3 {
         let c = arc.clone();
@@ -244,7 +244,7 @@ fn test_arc_modify () {
 }
 
 #[test]
-fn test_mux () {
+fn test_mux() {
     let lock = Arc::new(Mutex::new(String::from("hello")));
     let mut v = vec![];
     for _ in 0..3 {
@@ -263,7 +263,7 @@ fn test_mux () {
 }
 
 #[test]
-fn test_mux_panic () {
+fn test_mux_panic() {
     let lock = Arc::new(Mutex::new(String::from("hello ")));
     let mut v = vec![];
     for i in 0..3 {
@@ -280,12 +280,8 @@ fn test_mux_panic () {
 
     for t in v {
         match t.join() {
-            Err(e) => {
-
-            }
-            Ok(()) => {
-
-            }
+            Err(e) => {}
+            Ok(()) => {}
         }
     }
     println!("{:?}", lock)
@@ -293,15 +289,15 @@ fn test_mux_panic () {
 
 #[test]
 fn test_convar() {
-    let pair = Arc::new((Mutex::new(false),Condvar::new()));
+    let pair = Arc::new((Mutex::new(false), Condvar::new()));
     let pair2 = pair.clone();
-    thread::spawn(move|| {
-        let (lock,con) = &*pair;
+    thread::spawn(move || {
+        let (lock, con) = &*pair;
         let mut start = lock.lock().unwrap();
         *start = true;
         con.notify_one();
     });
-    let (lock,con) = &*pair2;
+    let (lock, con) = &*pair2;
     let mut start = lock.lock().unwrap();
     while !*start {
         println!("{}", start);
@@ -313,7 +309,7 @@ fn test_convar() {
 #[test]
 fn tes_borrow() {
     let s = String::from("aaa");
-    thread::spawn(move || println!("{}",&s)).join().unwrap();
+    thread::spawn(move || println!("{}", &s)).join().unwrap();
 }
 /*
 #[test]

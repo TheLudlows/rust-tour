@@ -1,4 +1,5 @@
 use std::option::Option::Some;
+
 #[test]
 fn main() {
     let x = 10;

@@ -92,7 +92,9 @@ impl<T, U> DoubleDrop<T> for U {
     // 此方法获得两个传入参数的所有权，并释放它们。
     fn double_drop(self, _: T) {}
 }
+
 struct StructFoo;
+
 #[test]
 fn test_trait() {
     let a = StructFoo;
@@ -103,9 +105,9 @@ fn test_trait() {
 #[test]
 fn test_ref() {
     let b = Box::new(10);
-    assert_eq!(10,*b.deref());
-    assert_eq!(10,*b);
+    assert_eq!(10, *b.deref());
+    assert_eq!(10, *b);
     //assert_eq!(&10,b);
-    assert_eq!(&10,b.deref());
-    assert_eq!(&10,&*b)
+    assert_eq!(&10, b.deref());
+    assert_eq!(&10, &*b)
 }

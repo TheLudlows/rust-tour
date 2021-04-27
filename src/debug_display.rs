@@ -1,6 +1,6 @@
 use std::fmt;
-use std::fmt::Result;
 use std::fmt::Formatter;
+use std::fmt::Result;
 
 #[test]
 fn test() {

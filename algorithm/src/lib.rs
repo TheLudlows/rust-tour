@@ -1,45 +1,46 @@
 #![feature(type_name_of_val)]
 #![feature(ptr_internals)]
+#![allow(dead_code)]
+#![crate_name="algorithm"]
 
 use std::cell::RefCell;
 use std::rc::Rc;
-#[allow(dead_code)]
+
 mod array;
-#[allow(dead_code)]
+
 mod backtracking;
-#[allow(dead_code)]
+
 mod dp;
-#[allow(dead_code)]
+
 mod hash;
-#[allow(dead_code)]
+
 mod heap;
-#[allow(dead_code)]
+
 mod lcof;
-#[allow(dead_code)]
+
 mod list;
-#[allow(dead_code)]
+
 mod math;
-#[allow(dead_code)]
+
 mod queue;
-#[allow(dead_code)]
+
 mod search;
-#[allow(dead_code)]
+
 mod sort;
-#[allow(dead_code)]
+
 mod stack;
-#[allow(dead_code)]
+
 mod string;
-#[allow(dead_code)]
+
 mod tree;
-#[allow(dead_code)]
+
 mod msjd;
-#[allow(dead_code)]
+
 mod slide_window;
-#[allow(dead_code)]
+
 mod double_pointer;
-#[allow(dead_code)]
+
 mod dc;
-#[allow(dead_code)]
 mod data_struct;
 
 #[derive(PartialEq, Eq, Clone, Debug)]

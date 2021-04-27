@@ -77,9 +77,9 @@ fn test_fn_ref() {
         }
     }
 
-    let a : fn(t:i32) = |i: i32| {};
-    let b  : fn(_)= |_: &u8| {};
-    let c  : fn(&_)= |_: &u8| {};
+    let a: fn(t: i32) = |i: i32| {};
+    let b: fn(_) = |_: &u8| {};
+    let c: fn(&_) = |_: &u8| {};
     a.f();
     b.f();
     c.f();

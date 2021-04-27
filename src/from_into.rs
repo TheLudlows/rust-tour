@@ -1,4 +1,5 @@
 use std::convert::{From, TryFrom};
+
 #[derive(Debug)]
 struct Number {
     value: i32,
@@ -14,10 +15,11 @@ impl From<i32> for Number {
 fn test_from() {
     let n = 5;
     // 试试删除类型说明
-    let num:Number = n.into();
+    let num: Number = n.into();
     let n = Number::from(n);
     println!("My number is {:?}", num);
 }
+
 #[derive(Debug, PartialEq)]
 struct EvenNumber(i32);
 
@@ -34,6 +36,6 @@ impl TryFrom<i32> for EvenNumber {
 }
 
 #[test]
-fn test_try() { assert_eq!(EvenNumber::try_from(8), Ok(EvenNumber(8)));
-
+fn test_try() {
+    assert_eq!(EvenNumber::try_from(8), Ok(EvenNumber(8)));
 }

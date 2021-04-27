@@ -34,10 +34,10 @@ fn test_mut() {
     let key = "key";
     match map.get(key) {
         Some(v) => {
-            println!("{}",v);
+            println!("{}", v);
         }
         None => {
-            map.insert(key,"v");
+            map.insert(key, "v");
         }
     }
 }

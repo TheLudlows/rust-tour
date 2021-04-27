@@ -1,11 +1,11 @@
-use std::{ptr, fmt};
-use std::fmt::{Pointer, Formatter};
+use std::{fmt, ptr};
+use std::fmt::{Formatter, Pointer};
 
 #[test]
 fn test_ptr() {
     #[derive(Debug)]
-    struct Foo{
-        a:i32
+    struct Foo {
+        a: i32,
     }
 
     impl Pointer for Foo {
@@ -15,7 +15,7 @@ fn test_ptr() {
         }
     }
 
-    let mut f1 = Foo{a:10};
+    let f1 = Foo { a: 10 };
     unsafe {
         let f2 = ptr::read(&f1);
         println!("{:p}", f1);
@@ -24,8 +24,9 @@ fn test_ptr() {
 }
 
 trait P {
-   fn fmtt(&self);
+    fn fmtt(&self);
 }
+
 impl<T> P for T {
     fn fmtt(&self) {
         println!("fuck");

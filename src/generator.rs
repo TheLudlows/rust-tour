@@ -45,19 +45,19 @@ fn test() {
 
                     __Generator::Done => panic!("generator resumed after completion"),
                 }
-              /*  match mem::replace(&mut *self, __Generator::Done) {
-                    __Generator::Start(s) => {
-                        *self = __Generator::Yield1(s);
-                        GeneratorState::Yielded(1)
-                    }
+                /*  match mem::replace(&mut *self, __Generator::Done) {
+                      __Generator::Start(s) => {
+                          *self = __Generator::Yield1(s);
+                          GeneratorState::Yielded(1)
+                      }
 
-                    __Generator::Yield1(s) => {
-                        *self = __Generator::Done;
-                        GeneratorState::Complete(s)
-                    }
+                      __Generator::Yield1(s) => {
+                          *self = __Generator::Done;
+                          GeneratorState::Complete(s)
+                      }
 
-                    __Generator::Done => panic!("generator resumed after completion"),
-                }*/
+                      __Generator::Done => panic!("generator resumed after completion"),
+                  }*/
             }
         }
 

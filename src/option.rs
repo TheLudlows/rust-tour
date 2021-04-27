@@ -1,4 +1,3 @@
-
 #[test]
 fn main() {
     let mut a = Some(30);

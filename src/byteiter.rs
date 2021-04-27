@@ -1,5 +1,5 @@
 struct ByteIter<'a> {
-    remainder: &'a [u8]
+    remainder: &'a [u8],
 }
 
 impl<'a> ByteIter<'a> {

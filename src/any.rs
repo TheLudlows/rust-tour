@@ -1,4 +1,4 @@
-use std::any::{type_name_of_val, Any, TypeId};
+use std::any::{Any, type_name_of_val, TypeId};
 
 fn is_string1(s: &dyn Any) -> bool {
     TypeId::of::<String>() == s.type_id()

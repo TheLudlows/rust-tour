@@ -1,6 +1,6 @@
 use std::cell::Cell;
-use std::sync::atomic::{AtomicU32};
-use std::sync::atomic::Ordering::{Relaxed};
+use std::sync::atomic::AtomicU32;
+use std::sync::atomic::Ordering::Relaxed;
 use std::thread;
 use std::time::Instant;
 
@@ -32,7 +32,7 @@ static N: AtomicU32 = AtomicU32::new(0);
 fn test_pre_thread() {
     for i in 0..10 {
         thread::spawn(|| {
-           let x=  COUNTER.with(|it| {
+            let x = COUNTER.with(|it| {
                 if it.get() == 0 {
                     N.fetch_add(1, Relaxed);
                     it.set(N.load(Relaxed));
@@ -46,7 +46,7 @@ fn test_pre_thread() {
 
 mod test {
     pub struct TestStruct {
-        pub a : i32
+        pub a: i32,
     }
 }
 
@@ -55,7 +55,7 @@ mod test_mod {
 
     #[test]
     fn test() {
-        let s = TestStruct{a:1};
+        let s = TestStruct { a: 1 };
         s.a;
     }
 }

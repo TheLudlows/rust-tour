@@ -10,6 +10,7 @@ fn abs_all(input: &mut Cow<[i32]>) {
         println!("{:?}", input.is_owned());
     }
 }
+
 #[test]
 fn main() {
     let arr = [0, 1, 2];

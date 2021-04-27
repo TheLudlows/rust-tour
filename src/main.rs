@@ -67,7 +67,7 @@ mod ptr;
 mod drain;
 mod repr;
 mod bytes;
+mod attr;
 
 
-fn main() {
-}
+fn main() {}

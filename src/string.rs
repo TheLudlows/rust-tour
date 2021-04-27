@@ -1,4 +1,5 @@
 #![allow(unused_variables)]
+
 #[test]
 fn main() {
     let data = "initial contents";

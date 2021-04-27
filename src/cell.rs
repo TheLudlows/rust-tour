@@ -27,8 +27,8 @@ fn test_sync() {
     thread::spawn(move || {
         let x = cc.lock().unwrap();
         let mut xx = x.borrow_mut();
-        *xx +=1;
+        *xx += 1;
     }).join().unwrap();
 
-    println!("{:?}",c);
+    println!("{:?}", c);
 }

@@ -1,4 +1,3 @@
-
 struct Point<T> {
     x: T,
     y: T,
@@ -29,15 +28,20 @@ fn main() {
 
 #[derive(Debug)]
 struct Gen<T>(T);
+
 #[test]
 fn test() {
     let a = Gen::<&str>("aaa");
     let b = Gen("aaa");
-    println!("{:?},{:?}",a,b)
+    println!("{:?},{:?}", a, b)
 }
 
-struct A;          // 具体类型 `A`。
-struct S(A);       // 具体类型 `S`。
+struct A;
+
+// 具体类型 `A`。
+struct S(A);
+
+// 具体类型 `S`。
 struct SGen<T>(T); // 泛型类型 `SGen`。
 
 // 下面全部函数都得到了变量的所有权，并立即使之离开作用域，将变量释放。

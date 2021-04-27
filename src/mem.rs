@@ -9,6 +9,7 @@ struct B {
     a: u32,
     b: usize,
 }
+
 #[repr(C)]
 struct C {
     a: u8,
@@ -34,7 +35,7 @@ enum F {
 
 struct J<'a> {
     //a:i32,
-    b: &'a [u8]
+    b: &'a [u8],
 }
 
 
@@ -79,5 +80,4 @@ fn test_mem() {
     println!("{}", mem::size_of::<J>());
     println!("{}", mem::align_of::<J>());
     println!("{}", mem::align_of::<&i32>());
-
 }

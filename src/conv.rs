@@ -1,20 +1,23 @@
+use std::mem::MaybeUninit;
+use std::ptr;
 
-struct Foo{
-    a:i32
+struct Foo {
+    a: i32,
 }
 
-struct Bar{
-    a:i32
+struct Bar {
+    a: i32,
 }
 
 #[test]
 fn conv() {
-    let f = Foo{a:10};
+    let f = Foo { a: 10 };
     // let b = f as Bar; can't work
-    let t:&Bar = unsafe { &*(&f as *const Foo as *const Bar) };
+    let t: &Bar = unsafe { &*(&f as *const Foo as *const Bar) };
 }
+
 #[test]
-fn  test() {
+fn test() {
     let x;
     if true {
         x = Box::new(0);   // x未初始化；仅覆盖值
@@ -22,8 +25,6 @@ fn  test() {
     }
     // println!("{}", x); 未初始化
 }
-use std::ptr;
-use std::mem::MaybeUninit;
 
 #[test]
 fn test_uninit() {

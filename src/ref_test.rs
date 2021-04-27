@@ -10,5 +10,4 @@ fn no_mutable_aliasing() {
     // 赋值语句中左边的 `ref` 关键字等价于右边的 `&` 符号。
     let ref _c1 = c;
     let ref _c2 = &c;
-
 }
