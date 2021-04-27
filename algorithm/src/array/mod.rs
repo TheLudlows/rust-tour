@@ -12,7 +12,6 @@ mod p0220_contains_nearby_duplicate;
 mod p0303_numarray;
 mod p0392_is_subsequence;
 mod p0463_island_perimeter;
-mod p0560_subarray_sum;
 mod p0867_transpose;
 mod p0925_is_long_pressed_name;
 mod p0977_sort_squares;

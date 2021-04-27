@@ -3,6 +3,9 @@ use std::cmp::min;
 use crate::Solution;
 
 /// double pointer slide window
+///
+/// 最长等于某个数  map + 前缀和 p0516
+/// 不重复 map + 滑动窗口 
 impl Solution {
     pub fn min_sub_array_len(s: i32, nums: Vec<i32>) -> i32 {
         if nums.is_empty() {
