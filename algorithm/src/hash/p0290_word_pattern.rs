@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use crate::Solution;
 
+// 注意 abba [dog dog dog dog]
 impl Solution {
     pub fn word_pattern(pattern: String, s: String) -> bool {
         let words = s.split(' ').collect::<Vec<&str>>();

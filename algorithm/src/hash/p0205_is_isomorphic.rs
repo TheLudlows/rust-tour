@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use crate::Solution;
 
+//双map 和290一样
 impl Solution {
     pub fn is_isomorphic(s: String, t: String) -> bool {
         let mut map1 = HashMap::new();
