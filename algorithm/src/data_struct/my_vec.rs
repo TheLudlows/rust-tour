@@ -87,7 +87,7 @@ impl<T> MyVec<T> {
         if self.len == self.cap() {
             self.vec.grow();
         }
-        unsafe {
+        unsafe {/**/
             ptr::write(self.ptr().offset(self.len as isize), t);
         }
         self.len += 1;
@@ -250,6 +250,7 @@ fn test() {
     let mut v: MyVec<i32> = MyVec::new();
     v.push(1);
     v.push(2);
+    println!("{}", v[0]);
     assert_eq!(v.pop(), Some(2));
     assert_eq!(v.pop(), Some(1));
     assert_eq!(v.pop(), None);
