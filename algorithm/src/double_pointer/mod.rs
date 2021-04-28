@@ -5,3 +5,6 @@ mod p0027_remove_element;
 mod p0080_remove_duplicates;
 mod p0283_move_zeroes;
 mod p0075_sort_colors;
+mod p0015_three_sum;
+mod p0016_three_sum_closest;
+mod p0018_four_sum;

@@ -14,3 +14,4 @@ mod p1338_min_set_size;
 mod p0242_is_anagram;
 mod p202_is_happy;
 mod p0451_frequency_sort;
+mod p0454_four_sum_count;

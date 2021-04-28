@@ -1,8 +1,5 @@
 mod p0001_two_sum;
 mod p0002_add_two_num;
-mod p0015_three_sum;
-mod p0016_three_sum_closest;
-mod p0018_four_sum;
 mod p0041_first_missing_positive;
 mod p0055_can_jump;
 mod p0135_candy;
