@@ -1,6 +1,5 @@
 use crate::Solution;
 use std::collections::HashMap;
-use std::collections::btree_map::Entry;
 
 impl Solution {
     pub fn frequency_sort(s: String) -> String {
