@@ -4,8 +4,6 @@ mod p0041_first_missing_positive;
 mod p0055_can_jump;
 mod p0135_candy;
 mod p0189_rotate;
-mod p0219_contains_nearby_duplicate;
-mod p0220_contains_nearby_duplicate;
 mod p0303_numarray;
 mod p0392_is_subsequence;
 mod p0463_island_perimeter;

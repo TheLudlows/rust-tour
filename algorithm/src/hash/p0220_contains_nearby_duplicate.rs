@@ -1,5 +1,5 @@
 use std::cmp::min;
-use std::collections::BTreeSet;
+use std::collections::{BTreeSet};
 
 use crate::Solution;
 
@@ -17,22 +17,25 @@ impl Solution {
         return false;
     }
     pub fn contains_nearby_almost_duplicate2(nums: Vec<i32>, k: i32, t: i32) -> bool {
-        let k = k as usize;
+        let k = std::cmp::min(k as usize, nums.len());
+        let mut set = BTreeSet::new();
         let t = t as i64;
-        let mut bts: BTreeSet<i64> = BTreeSet::new();
         for i in 0..nums.len() {
-            if i > k {
-                bts.remove(&(nums[i - 1 - k] as i64));
+            let num = nums[i] as i64;
+            if set.range(num - t..=num + t).next().is_some() {
+                return true
             }
-            if bts
-                .range(nums[i] as i64 - t..=nums[i] as i64 + t)
-                .next()
-                .is_some()
-            {
-                return true;
+            set.insert(num);
+            if i >= k {
+                set.remove(&(nums[i - k] as i64));
             }
-            bts.insert(nums[i] as i64);
         }
         false
     }
+}
+
+#[test]
+fn test() {
+    let v = vec![1,2,3,1];
+    Solution::contains_nearby_almost_duplicate2(v, 3,0);
 }

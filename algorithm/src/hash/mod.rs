@@ -15,3 +15,6 @@ mod p0242_is_anagram;
 mod p202_is_happy;
 mod p0451_frequency_sort;
 mod p0454_four_sum_count;
+mod p0447_number_of_boomerangs;
+mod p0219_contains_nearby_duplicate;
+mod p0220_contains_nearby_duplicate;

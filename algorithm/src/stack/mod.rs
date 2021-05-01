@@ -7,3 +7,5 @@ mod p0496_next_greater_element;
 mod p0503_next_greater_elements;
 mod of30_min_stack;
 mod of31_validate_stack_sequences;
+mod p0150_eval_rpn;
+mod p0071_simplify_path;
