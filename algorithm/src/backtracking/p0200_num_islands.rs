@@ -1,6 +1,7 @@
 use crate::Solution;
 
 // 更改相邻所有1为0，深度优先, rust usize负数处理
+// 蔓延所有的1
 impl Solution {
     pub fn num_islands(mut grid: Vec<Vec<char>>) -> i32 {
         let mut lands = 0;
