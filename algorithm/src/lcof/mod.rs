@@ -6,7 +6,6 @@ mod p58_reverse_left_words;
 mod p58_reverse_words;
 mod p59_max_queue;
 mod p62_last_remaining;
-mod p55_is_balanced;
 mod p61_is_straight;
 
 mod p57_find_continuous_sequence;

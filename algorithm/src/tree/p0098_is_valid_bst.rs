@@ -3,22 +3,21 @@ use std::rc::Rc;
 
 use crate::{Solution, TreeNode};
 
-/// 二叉搜索树 只需要左子树的节点小于当前根节点，有子树大于根节点即可
+/// 二叉搜索树 只需要左子树的节点小于当前根节点，右子树大于根节点即可
 ///
 impl Solution {
     pub fn is_valid_bst(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-        check(root, None, None)
+        check(root, i64::MIN, i64::MAX)
     }
 }
 
-pub fn check(mid: Option<Rc<RefCell<TreeNode>>>, min: Option<i32>, max: Option<i32>) -> bool {
+pub fn check(mid: Option<Rc<RefCell<TreeNode>>>, min: i64, max: i64) -> bool {
     match mid {
         Some(node) => {
-            let mid_v = node.borrow().val;
-            min.map_or(true, |x| x < mid_v)
-                && max.map_or(true, |x| x > mid_v)
-                && check(node.borrow().left.clone(), min, Some(mid_v))
-                && check(node.borrow().right.clone(), Some(mid_v), max)
+            let val = node.borrow().val as i64;
+            val > min && max > val
+                && check(node.borrow().left.clone(), min, val)
+                && check(node.borrow().right.clone(), val, max)
         }
         None => true,
     }

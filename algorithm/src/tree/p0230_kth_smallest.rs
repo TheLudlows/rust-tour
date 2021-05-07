@@ -7,6 +7,7 @@ use crate::{Solution, TreeNode};
 /// 中序遍历
 impl Solution {
     pub fn kth_smallest(mut root: Option<Rc<RefCell<TreeNode>>>, k: i32) -> i32 {
+        let k = k as usize;
         let mut stack = Vec::new();
         let mut result = Vec::new();
         while !stack.is_empty() || root.is_some() {
@@ -18,7 +19,10 @@ impl Solution {
                 result.push(node.borrow().val);
                 root = node.borrow().right.clone();
             }
+            if k == stack.len() {
+                return result[k - 1]
+            }
         }
-        result[(k - 1) as usize]
+        result[k - 1]
     }
 }

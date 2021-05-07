@@ -23,17 +23,17 @@ impl Solution {
             return None;
         }
         let mut min_heap = BinaryHeap::new();
-        for mut list in lists {
+        for list in lists {
             if list.is_some() {
-                min_heap.push(list.take()?); // Storing as Option<Box<ListNode>>
-            }
+            min_heap.push(list);
+         }// Storing as Option<Box<ListNode>>
         }
         let mut cur = &mut res;
         while !min_heap.is_empty() {
-            cur.next = min_heap.pop(); // Return as Option<Box<ListNode>>
+            cur.next = min_heap.pop()?; // Return as Option<Box<ListNode>>
             cur = cur.next.as_mut()?;
             if cur.next.is_some() {
-                min_heap.push(cur.next.take()?);
+                min_heap.push(cur.next.take());
             }
         }
         res.next

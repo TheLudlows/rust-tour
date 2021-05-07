@@ -25,3 +25,6 @@ mod p0105_build_tree;
 mod of26_is_sub_structure;
 mod of31_level_order;
 mod of32_level_order;
+mod p0404_sum_of_left_leaves;
+mod p0257_binary_tree_paths;
+mod p0437_path_sum;

@@ -5,7 +5,7 @@ use crate::{Solution, TreeNode};
 
 ///  深度优先 先序遍历
 impl Solution {
-    pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, sum: i32) -> Vec<Vec<i32>> {
+    pub fn path_sum_(root: Option<Rc<RefCell<TreeNode>>>, sum: i32) -> Vec<Vec<i32>> {
         let mut result = vec![];
         let mut cur = Vec::new();
         add_node(&root, &mut result, &mut cur, sum);

@@ -23,3 +23,4 @@ mod p0714_max_profit;
 mod p0509_fib;
 mod p0120_minimum_total;
 mod p0516_longest_palindrome_subseq;
+mod p0279_num_squares;

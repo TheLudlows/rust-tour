@@ -1,9 +1,8 @@
 use std::cell::RefCell;
-/// 二叉树的最近公共祖先
-
 use std::rc::Rc;
-
 use crate::{Solution, TreeNode};
+
+/// 二叉树的最近公共祖先
 
 impl Solution {
     pub fn lowest_common_ancestor(root: Option<Rc<RefCell<TreeNode>>>, p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
