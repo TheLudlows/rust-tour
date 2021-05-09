@@ -11,7 +11,6 @@ impl Solution {
         let n = n as usize;
 
         let mut dp = vec![0; n + 1];
-        dp[0] = 0;
         dp[1] = 1;
         dp[2] = 2;
         for i in 3..=n {

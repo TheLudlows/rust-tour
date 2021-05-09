@@ -2,6 +2,8 @@ use std::cmp::min;
 
 use crate::Solution;
 
+// 头尾特殊处理
+
 impl Solution {
     pub fn minimum_total(mut triangle: Vec<Vec<i32>>) -> i32 {
         for i in 1..triangle.len() {
