@@ -1,6 +1,5 @@
 
 mod p53_missing_number;
-mod p54_kth_largest;
 mod p56_single_numbers;
 mod p58_reverse_left_words;
 mod p58_reverse_words;
