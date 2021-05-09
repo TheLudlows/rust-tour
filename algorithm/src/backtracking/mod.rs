@@ -11,5 +11,6 @@ mod p0017_letter_combinations;
 mod p0216_combination_sum3;
 mod p0695_max_area_of_island;
 mod p0200_num_islands;
+mod p0051_solve_n_queens;
 
 // p0131
