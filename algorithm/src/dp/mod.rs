@@ -24,3 +24,4 @@ mod p0509_fib;
 mod p0120_minimum_total;
 mod p0516_longest_palindrome_subseq;
 mod p0279_num_squares;
+mod p0343_integer_break;
