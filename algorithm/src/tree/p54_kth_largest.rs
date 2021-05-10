@@ -11,14 +11,13 @@ impl Solution {
     }
 }
 
-fn traversal(node: Option<&Rc<RefCell<TreeNode>>>, vec: &mut Vec<i32>, k : usize) {
-
+fn traversal(node: Option<&Rc<RefCell<TreeNode>>>, vec: &mut Vec<i32>, k: usize) {
     if let Some(n) = node {
-        traversal(n.borrow().right.as_ref(), vec);
+        traversal(n.borrow().right.as_ref(), vec, k);
         vec.push(n.borrow().val);
         if vec.len() == k {
             return
         }
-        traversal(n.borrow().left.as_ref(), vec);
+        traversal(n.borrow().left.as_ref(), vec, k);
     }
 }

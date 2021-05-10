@@ -16,8 +16,6 @@ mod hash;
 
 mod heap;
 
-mod lcof;
-
 mod list;
 
 mod math;

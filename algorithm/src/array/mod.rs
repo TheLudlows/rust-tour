@@ -28,6 +28,5 @@ mod p0435_erase_overlap_intervals;
 mod p0605_can_place_flowers;
 mod p0830_large_group_positions;
 mod p0724_pivot_index;
-mod p1578_min_cost;
 mod p0412_fizz_buzz;
 mod p0268_missing_number;

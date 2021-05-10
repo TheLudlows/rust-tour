@@ -1,7 +1,8 @@
 use std::collections::VecDeque;
 
-/// 最大队列，第一个按照加入的顺序保存，
-/// 第二个双向队列，
+// 最大队列，第一个按照加入的顺序保存，
+// 第二个双向队列，
+// 单调队列
 struct MaxQueue {
     queue: VecDeque<i32>,
     max_queue: VecDeque<i32>,

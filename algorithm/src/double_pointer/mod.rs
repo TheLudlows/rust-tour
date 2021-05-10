@@ -8,3 +8,5 @@ mod p0075_sort_colors;
 mod p0015_three_sum;
 mod p0016_three_sum_closest;
 mod p0018_four_sum;
+mod of57_find_continuous_sequence;
+mod p1578_min_cost;
