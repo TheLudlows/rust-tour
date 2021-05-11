@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use crate::Solution;
-
+// 可能有负数， 不能用滑动窗口
 impl Solution {
     /// 暴力
     pub fn subarray_sum(nums: Vec<i32>, k: i32) -> i32 {
