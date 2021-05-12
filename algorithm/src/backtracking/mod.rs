@@ -13,3 +13,4 @@ mod p0695_max_area_of_island;
 mod p0200_num_islands;
 mod p0051_solve_n_queens;
 mod of12_exist;
+mod of38_permutation;
