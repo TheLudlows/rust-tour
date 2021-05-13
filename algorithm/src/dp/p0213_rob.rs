@@ -1,7 +1,7 @@
 use std::cmp::max;
 
 use crate::Solution;
-
+// 198 的2次
 impl Solution {
     pub fn rob_2(nums: Vec<i32>) -> i32 {
         let n = nums.len();
