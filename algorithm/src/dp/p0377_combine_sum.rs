@@ -12,21 +12,27 @@ use crate::Solution;
 
 impl Solution {
     pub fn combination_sum4(nums: Vec<i32>, target: i32) -> i32 {
-        find(&nums, target)
+        let mut memo = vec![-1; target as usize];
+        find(&nums, target, &mut memo)
     }
 }
 // 在nums中寻中和为target的数量
-fn find(nums: &Vec<i32>, target: i32) -> i32 {
+fn find(nums: &Vec<i32>, target: i32, memo: &mut Vec<i32>) -> i32 {
     if target < 0 {
         return 0;
     }
     if target == 0 {
         return 1;
     }
+    let idx = target as usize;
+    if memo[idx] != -1 {
+        return memo[idx];
+    }
     let mut ret = 0;
     for i in 0..nums.len() {
-        ret += find(nums, target - nums[i]);
+        ret += find(nums, target - nums[i], memo);
     }
+    memo[idx] = ret;
     ret
 }
 
