@@ -26,3 +26,5 @@ mod p0516_longest_palindrome_subseq;
 mod p0279_num_squares;
 mod p0343_integer_break;
 mod p0091_num_decodings;
+mod p0309_max_profit;
+mod package;
