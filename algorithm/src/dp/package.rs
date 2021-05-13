@@ -1,5 +1,4 @@
 // 01背包
-
 use crate::Solution;
 
 impl Solution {
@@ -34,3 +33,5 @@ fn test() {
     let r = Solution::max_value(c, ws, vs);
     println!("{}", r);
 }
+
+// 完全背包问题
