@@ -29,3 +29,4 @@ mod p0091_num_decodings;
 mod p0309_max_profit;
 mod package;
 mod p0377_combine_sum;
+mod p0474_find_max_form;

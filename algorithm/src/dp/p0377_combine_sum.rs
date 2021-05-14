@@ -12,8 +12,22 @@ use crate::Solution;
 
 impl Solution {
     pub fn combination_sum4(nums: Vec<i32>, target: i32) -> i32 {
-        let mut memo = vec![-1; target as usize];
+        let mut memo = vec![-1; (target+1) as usize];
         find(&nums, target, &mut memo)
+    }
+
+    pub fn combination_sum42(nums: Vec<i32>, target: i32) -> i32 {
+        let target = target as usize;
+        let mut memo = vec![0; target+1];
+        memo[0] = 1;
+        for i in 1..=target {
+            for j in 0..nums.len() {
+                if i >= nums[j] as usize {
+                    memo[i] += memo[i-nums[j] as usize]
+                }
+            }
+        }
+        memo[target]
     }
 }
 // 在nums中寻中和为target的数量
@@ -39,6 +53,6 @@ fn find(nums: &Vec<i32>, target: i32, memo: &mut Vec<i32>) -> i32 {
 #[test]
 fn test() {
     let v = vec![1,2,3];
-    let r = Solution::combination_sum4(v, 20);
+    let r = Solution::combination_sum42(v, 20);
     println!("{}", r);
 }
