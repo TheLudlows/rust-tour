@@ -30,3 +30,4 @@ mod p0309_max_profit;
 mod package;
 mod p0377_combine_sum;
 mod p0474_find_max_form;
+mod p0494_find_target_sum_ways;
