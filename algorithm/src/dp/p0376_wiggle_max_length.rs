@@ -11,7 +11,6 @@ impl Solution {
         ret
     }
     // 二维DP
-    pub fn wiggle_max_length2(nums: Vec<i32>) -> i32 {}
 }
 
 // 以idx结尾的摇摆序列的最大长度
