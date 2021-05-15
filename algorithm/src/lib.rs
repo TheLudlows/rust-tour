@@ -41,6 +41,7 @@ mod double_pointer;
 mod dc;
 mod data_struct;
 mod prefix;
+mod gready;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
