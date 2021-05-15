@@ -25,6 +25,7 @@ impl Solution {
         ret
     }
 }
+// 以idx结尾的递增子序列最长长度, 初始化都为1
 fn find(nums:&Vec<i32>, idx:usize, memo:&mut Vec<i32>) -> i32 {
     if memo[idx] != -1 {
         return memo[idx]
