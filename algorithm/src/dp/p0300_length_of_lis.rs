@@ -17,21 +17,25 @@ impl Solution {
         result
     }
     pub fn length_of_lis2(nums: Vec<i32>) -> i32 {
-        find(&nums, nums.len())
+        let mut memo = vec![-1; nums.len()];
+        let mut ret = 0;
+        for i in 0..nums.len() {
+            ret = std::cmp::max(ret,find(&nums, i, &mut memo));
+        }
+        ret
     }
 }
-fn find(nums:&Vec<i32>, idx:usize) -> i32 {
-    if idx == 0 {
-        return 0;
+fn find(nums:&Vec<i32>, idx:usize, memo:&mut Vec<i32>) -> i32 {
+    if memo[idx] != -1 {
+        return memo[idx]
     }
-    let mut ret = 0;
+    let mut ret = 1;
     for i in 0..idx {
-        ret = std::cmp::max(ret, find(nums, i));
-
-        if nums[idx-1] > nums[i] {
-           ret = std::cmp::max(ret, 1 + find(nums, i));
+        if nums[idx] > nums[i] {
+           ret = std::cmp::max(ret, 1 + find(nums, i, memo));
        }
     }
+    memo[idx] = ret;
     ret
 }
 #[test]
