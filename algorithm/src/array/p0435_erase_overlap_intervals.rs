@@ -29,7 +29,6 @@ impl Solution {
         intervals.len() as i32 - ret
     }
 }
-}
 fn find(nums: &Vec<Vec<i32>>, idx: usize, memo: &mut Vec<i32>) -> i32 {
     let mut ret = 1;
     if memo[idx] != -1 {
