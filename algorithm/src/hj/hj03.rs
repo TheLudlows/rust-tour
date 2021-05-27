@@ -1,29 +1,33 @@
+use std::collections::HashSet;
 
-fn main() {
-    let mut v = vec![];
+fn main () {
+    let mut vec =vec![vec![]];
     loop {
-        let mut s = String::new();
-        let n = std::io::stdin().read_line(&mut s).unwrap();
-        if n <= 0 {
+        let mut set = HashSet::new();
+
+        let mut line = String::new();
+        let read = std::io::stdin().read_line(&mut line).unwrap();
+
+        if read == 0 {
             break;
         }
-        for ss in s.split_ascii_whitespace() {
-            let str = ss.to_lowercase();
-            let arr = str.split_at(2);
-            let r = i32::from_str_radix(arr.1, 16).unwrap();
-            v.push(r);
+        let n = line.trim().parse::<usize>().unwrap();
+        for _ in 0..n {
+            let mut line = String::new();
+            std::io::stdin().read_line(&mut line).unwrap();
+
+            let s = line.trim();
+            let i = s.parse::<i32>().unwrap();
+            set.insert(i);
+        }
+        let mut v = set.into_iter().collect::<Vec<i32>>();
+        v.sort();
+        vec.push(v);
+    }
+    //println!("{:?}",vec);
+    for i in 0..vec.len() {
+        for j in 0..vec[i].len() {
+            println!("{}", vec[i][j]);
         }
     }
-    for i in v {
-        println!("{}", i);
-    }
-}
-
-#[test]
-fn test() {
-    // 不能0x开头
-    let s = "0x11".to_string();
-
-    println!("{:?}", s.split_at(2));
-    let r = i32::from_str_radix("AA", 16).unwrap();
 }
