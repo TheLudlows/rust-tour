@@ -3,7 +3,7 @@ use std::collections::HashSet;
 use crate::Solution;
 
 impl Solution {
-    pub fn find_subsequences(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+    pub fn find_subsequences(nums: Vec<i32>) -> Vec<Vec<i32>> {
         let mut cur = vec![];
         let mut set = HashSet::new();
         let mut ret = vec![];

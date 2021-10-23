@@ -1,7 +1,6 @@
 use std::cmp;
 
 use crate::Solution;
-use std::fs::read;
 
 impl Solution {
     pub fn longest_palindrome_subseq(s: String) -> i32 {
@@ -41,7 +40,7 @@ fn find(s: &[u8], i: usize, j: usize, memo: &mut Vec<Vec<i32>>) -> i32 {
     if memo[i][j] != -1 {
         return memo[i][j];
     }
-    let mut ret;
+    let ret;
     if s[i] == s[j] {
         ret = 1 + find(s, i + 1, j - 1, memo);
     } else {

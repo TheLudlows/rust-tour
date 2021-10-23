@@ -42,8 +42,8 @@ mod dc;
 mod data_struct;
 mod prefix;
 mod gready;
-mod hj;
 
+mod bit_op;
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,

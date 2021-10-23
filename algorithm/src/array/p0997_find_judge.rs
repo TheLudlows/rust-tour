@@ -11,7 +11,7 @@ impl Solution {
         }
         let mut map = HashMap::new();
         for v in trust {
-            let mut vec = map.entry(v[0]).or_insert(Vec::new());
+            let vec = map.entry(v[0]).or_insert(Vec::new());
             vec.push(v[1]);
         }
         let mut judge = -1;

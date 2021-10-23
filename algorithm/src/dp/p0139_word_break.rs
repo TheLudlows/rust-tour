@@ -4,7 +4,7 @@ use crate::Solution;
 
 // &str is slice
 impl Solution {
-    pub fn word_break(s: String, mut word_dict: Vec<String>) -> bool {
+    pub fn word_break(s: String, word_dict: Vec<String>) -> bool {
         let word_dict = word_dict.into_iter().collect::<HashSet<String>>();
         let s = s.as_str();
         let mut memo = vec![false; s.len() + 1];
@@ -21,7 +21,7 @@ impl Solution {
         memo[s.len()]
     }
 
-    pub fn word_break2(s: String, mut word_dict: Vec<String>) -> bool {
+    pub fn word_break2(s: String, word_dict: Vec<String>) -> bool {
         let word_dict = word_dict.into_iter().collect::<HashSet<String>>(); // hash或者二分
         let mut memo = vec![-1; s.len() + 1];
         find(&word_dict, s.as_str(), &mut memo)
@@ -47,6 +47,6 @@ pub fn find(word_dict: &HashSet<String>, s: &str, memo: &mut Vec<i32>) -> bool {
 #[test]
 fn test_slice() {
     let s = "a".to_string();
-    let wordDict = vec!["a".to_string()];
-    assert_eq!(Solution::word_break(s, wordDict), true);
+    let word_dict = vec!["a".to_string()];
+    assert_eq!(Solution::word_break(s, word_dict), true);
 }
