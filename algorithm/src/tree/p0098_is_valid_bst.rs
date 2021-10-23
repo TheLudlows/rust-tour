@@ -6,7 +6,7 @@ use crate::{Solution, TreeNode};
 /// 二叉搜索树 只需要左子树的节点小于当前根节点，右子树大于根节点即可
 ///
 impl Solution {
-    pub fn is_valid_bst(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    pub fn is_valid_bst1(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
         check(root, i64::MIN, i64::MAX)
     }
 }
