@@ -10,3 +10,11 @@ impl Solution {
         ret
     }
 }
+
+#[test]
+fn test() {
+    println!("{}", 5 & 1);
+    let r:u32 = !7;
+    println!("{}", r);
+
+}

@@ -44,7 +44,7 @@ impl Trie {
     fn starts_with(&self, prefix: String) -> bool {
         let mut cur = self;
         let mut i = 0;
-        for c in word.bytes() {
+        for c in prefix.bytes() {
             i = (c - b'a') as usize;
             if cur.children[i].is_none() {
                 return false;

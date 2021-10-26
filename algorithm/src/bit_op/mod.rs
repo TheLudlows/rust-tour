@@ -3,3 +3,4 @@ mod p1720_decode;
 mod p1601_swap_numbers;
 mod p0338_count_bits;
 mod p0191_hammingWeight;
+mod p0201_rangeBitwiseAnd;
