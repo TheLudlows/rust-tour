@@ -5,3 +5,5 @@ mod p0338_count_bits;
 mod p0191_hammingWeight;
 mod p0201_rangeBitwiseAnd;
 mod p0342_is_power_of_four;
+mod p0393_valid_utf8;
+mod p0190_reverse_bits;
