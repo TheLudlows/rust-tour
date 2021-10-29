@@ -13,3 +13,4 @@ mod p0443_compress;
 mod p1446_max_power;
 mod p0067_add_binary;
 mod of58_reverse_left_words;
+mod of58_reverse_words;

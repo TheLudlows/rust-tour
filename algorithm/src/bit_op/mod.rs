@@ -7,3 +7,5 @@ mod p0201_rangeBitwiseAnd;
 mod p0342_is_power_of_four;
 mod p0393_valid_utf8;
 mod p0190_reverse_bits;
+mod p0461_hamming_distance;
+mod p0739_has_alternating_bits;
