@@ -16,7 +16,7 @@ fn test() {
     });
     let t2 = thread::spawn(move || {
         for i in 0..10000 {
-            c2.store(c2.load(AcqRel) + 1, SeqCst);
+            c2.store(c2.load(SeqCst) + 1, SeqCst);
         }
     });
 
