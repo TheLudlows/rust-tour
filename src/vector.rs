@@ -34,3 +34,7 @@ fn main() {
     v[1] = 2;
     //let x = v[0..1];
 }
+#[test]
+fn test() {
+    let v = vec!{1,2,3};
+}
