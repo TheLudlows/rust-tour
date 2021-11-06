@@ -68,6 +68,7 @@ mod drain;
 mod repr;
 mod bytes;
 mod attr;
+mod vt;
 
 
 fn main() {}
