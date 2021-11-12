@@ -70,9 +70,9 @@ mod bytes;
 mod attr;
 mod static_varable;
 mod Parse;
-mod add;
 mod iter2;
 mod asref;
 mod index_list;
-
+mod mystring;
+mod slice1;
 fn main() {}
