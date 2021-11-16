@@ -53,7 +53,8 @@ impl Storage for Memtable {
     }
 
     fn get_iter(&self, table: &str) -> Result<Box<dyn Iterator<Item = Kvpair>>, KvError> {
-        todo!()
+        let t = self.get_or_default(table).clone();
+         Ok(Box::new(t.into_iter().map(|(k,v)| Kvpair::new(k,v))))
     }
 }
 #[cfg(test)]
