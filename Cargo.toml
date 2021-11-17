@@ -12,5 +12,6 @@ quote = "0.6.3"
 bytes = "1"
 lazy_static = "1"
 regex = "1"
+lazy_static = "1"
 [features]
 some_condition=[]

@@ -1,5 +1,6 @@
 use std::{slice, mem};
 use std::alloc::Layout;
+use std::slice::from_raw_parts_mut;
 
 #[test]
 fn main() {
@@ -118,13 +119,14 @@ fn test_p6() {
     println!("{:?}", ptr);
     println!("{:x}", index);
 
-    let ptr2 = index as * mut _;
+    let ptr2 = index as *mut _;
     unsafe {
         let s2: &mut String = &mut *ptr2;
         s.push('a');
         println!("{:?}", s2);
     }
 }
+
 #[test]
 fn test_p7() {
     let array: [i32; 3] = [1, 2, 3];
@@ -151,12 +153,13 @@ fn test_p8() {
         let a = (index + 0) as *mut i32;
         println!("{:?}", *a); // 1
         let b = (index + 4) as *mut i32;
-        *b +=1;
+        *b += 1;
         println!("{:?}", *b); // 2
         let c = (index + 8) as *mut i32;
         println!("{:?}", *c); // 3
     }
 }
+
 #[test]
 fn test_p9() {
     let array: [i32; 3] = [1, 2, 3];
@@ -185,17 +188,70 @@ fn test_alloc() {
         // 释放内存
         std::alloc::dealloc(ptr as *mut u8, layout);
 
-        let arr = std::ptr::read::<[i32;32]>(ptr as * const [i32;32]);
+        let arr = std::ptr::read::<[i32; 32]>(ptr as *const [i32; 32]);
         println!("{:?}", arr);
     }
 }
+
 #[test]
 fn test_alloc2() {
     unsafe {
         let layout = Layout::from_size_align_unchecked(32 * mem::size_of::<i32>(), mem::size_of::<i32>());
         let ptr = std::alloc::alloc(layout) as *mut i32;
-        let slice = std::slice::from_raw_parts_mut::<i32>(ptr,32);
+        let slice = std::slice::from_raw_parts_mut::<i32>(ptr, 32);
         slice[0] = 100;
         println!("{:?}", slice);
     }
+}
+
+#[test]
+fn test_spilt() {
+    let mut s = "我爱你！中国".to_string();
+    let r = s.as_mut();
+
+    if let Some((s1, s2)) = split(r, '！') {
+        println!("s1: {}, s2: {}", s1, s2);
+    }
+
+    let mut str = "我爱你！中国".to_string();
+
+    println!("{:?}", split_mut(&mut str, '！'));
+}
+
+fn split(s: &str, sep: char) -> Option<(&str, &str)> {
+    let pos = s.find(sep);
+
+    pos.map(|pos| {
+        let len = s.len();
+        let sep_len = sep.len_utf8();
+
+        // SAFETY: pos 是 find 得到的，它位于字符的边界处，同样 pos + sep_len 也是如此
+        // 所以以下代码是安全的
+        unsafe { (s.get_unchecked(0..pos), s.get_unchecked(pos + sep_len..len)) }
+    })
+}
+
+fn split_mut(s: &mut str, sep: char) -> Option<(&mut str, &mut str)> {
+    let pos = s.find(sep);
+
+    pos.map(|pos| {
+        let len = s.len();
+        let sep_len = sep.len_utf8();
+        let ptr = s as * mut str as * mut u8;
+        unsafe {
+            let s1 = from_raw_parts_mut(ptr, pos);
+            let s2 = from_raw_parts_mut(ptr.add(pos + sep_len), len - pos - sep_len);
+            (std::str::from_utf8_unchecked_mut(s1), std::str::from_utf8_unchecked_mut(s2))
+        }
+    })
+}
+#[test]
+fn test_ptr() {
+    let mut string = "我爱你！中国".to_string();
+    let s:&mut str = &mut string;
+    let p1 = s as *mut str;
+    let p2  = s as *mut str as *mut u8;
+    println!("{:p}", p1);
+    println!("{:p}", p2);
+
 }

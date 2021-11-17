@@ -76,4 +76,7 @@ mod index_list;
 mod mystring;
 mod slice1;
 mod impl1;
+mod spinlock;
+mod metric;
+
 fn main() {}
