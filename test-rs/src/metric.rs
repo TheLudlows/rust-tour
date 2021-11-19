@@ -3,6 +3,7 @@ use std::{
     collections::HashMap,
     sync::atomic::{AtomicUsize, Ordering},
 };
+use lazy_static::lazy_static;
 
 // server statistics
 pub struct Metrics(HashMap<&'static str, AtomicUsize>);
@@ -41,7 +42,6 @@ impl Metrics {
             .collect()
     }
 }
-
 lazy_static! {
     pub(crate) static ref METRICS: Metrics = Metrics::new(&[
         "topics",

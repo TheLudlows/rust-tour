@@ -78,5 +78,5 @@ mod slice1;
 mod impl1;
 mod spinlock;
 mod metric;
-
+mod condvar;
 fn main() {}

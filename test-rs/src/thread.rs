@@ -41,6 +41,7 @@ fn mpsc_test() {
 
 #[test]
 fn mpsc_test2() {
+
     let (tx, rx) = mpsc::channel();
     let tx1 = mpsc::Sender::clone(&tx);
     thread::spawn(move || {

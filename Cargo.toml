@@ -1,17 +1,4 @@
-[package]
-name = "rust-tour"
-version = "0.1.0"
-authors = ["four <ai-l@outlook.com>"]
-edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[dependencies]
-rand = "0.7.0"
-syn = "0.14.4"
-quote = "0.6.3"
-bytes = "1"
-lazy_static = "1"
-regex = "1"
-lazy_static = "1"
-[features]
-some_condition=[]
+[workspace]
+
+members=["algorithm","test-rs"]
