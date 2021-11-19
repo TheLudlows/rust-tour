@@ -19,10 +19,10 @@ pub struct Recv<T> {
 }
 impl<T> Channel<T> {
     fn total_sender(&self) -> u32 {
-        self.senders.load(Acquire) 
+        self.senders.load(Acquire)
     }
     fn total_recv(&self) -> u32 {
-        self.recvers.load(Acquire) 
+        self.recvers.load(Acquire)
     }
 }
 
@@ -45,10 +45,10 @@ impl<T> Recv<T> {
             match guard.pop_front() {
                 Some(t) => {
                     return Ok(t);
-                } 
+                }
                 None => {
                     if self.channel.total_sender() == 0 {
-                        return Err(anyhow!("no sender"))
+                        return Err(anyhow!("no sender"));
                     }
                     guard = self
                         .channel
@@ -59,7 +59,6 @@ impl<T> Recv<T> {
             }
         }
     }
-
 }
 impl<T> Iterator for Recv<T> {
     type Item = T;
@@ -77,7 +76,7 @@ impl<T> Drop for Recv<T> {
 impl<T> Sender<T> {
     pub fn send(&self, t: T) -> Result<()> {
         if self.channel.total_recv() == 0 {
-           return Err(anyhow!("no recv"))
+            return Err(anyhow!("no recv"));
         }
         let mut c = self.channel.vec.lock().unwrap();
         let empty = c.is_empty();
@@ -95,7 +94,7 @@ impl<T> Sender<T> {
         }
     }
     pub fn total_queued_items(&self) -> usize {
-        self.channel.vec.lock().unwrap().len() 
+        self.channel.vec.lock().unwrap().len()
     }
 }
 impl<T> Drop for Sender<T> {
@@ -103,8 +102,6 @@ impl<T> Drop for Sender<T> {
         self.channel.senders.fetch_sub(1, AcqRel);
     }
 }
-
-
 
 #[cfg(test)]
 mod test {
@@ -176,44 +173,42 @@ mod test {
         // 如果 receiver 被正常唤醒处理，那么队列里的数据会都被读完
         assert_eq!(s1.total_queued_items(), 0);
     }
-    
 
+    #[test]
+    fn last_sender_drop_should_error_when_receive() {
+        let (s, mut r) = unbounded();
+        let s1 = s.clone();
+        let senders = [s, s1];
+        let total = senders.len();
 
-     #[test]
-     fn last_sender_drop_should_error_when_receive() {
-         let (s, mut r) = unbounded();
-         let s1 = s.clone();
-         let senders = [s, s1];
-         let total = senders.len();
+        // sender 即用即抛
+        for mut sender in senders {
+            thread::spawn(move || {
+                sender.send("hello").unwrap();
+                // sender 在此被丢弃
+            })
+            .join()
+            .unwrap();
+        }
 
-         // sender 即用即抛
-         for mut sender in senders {
-             thread::spawn(move || {
-                 sender.send("hello").unwrap();
-                 // sender 在此被丢弃
-             })
-             .join()
-             .unwrap();
-         }
+        // 虽然没有 sender 了，接收者依然可以接受已经在队列里的数据
+        for _ in 0..total {
+            r.recv().unwrap();
+        }
 
-         // 虽然没有 sender 了，接收者依然可以接受已经在队列里的数据
-         for _ in 0..total {
-             r.recv().unwrap();
-         }
+        // 然而，读取更多数据时会出错
+        assert!(r.recv().is_err());
+    }
+    #[test]
+    fn receiver_drop_should_error_when_send() {
+        let (mut s1, mut s2) = {
+            let (s, _) = unbounded();
+            let s1 = s.clone();
+            let s2 = s.clone();
+            (s1, s2)
+        };
 
-         // 然而，读取更多数据时会出错
-         assert!(r.recv().is_err());
-     }
-     #[test]
-     fn receiver_drop_should_error_when_send() {
-         let (mut s1, mut s2) = {
-             let (s, _) = unbounded();
-             let s1 = s.clone();
-             let s2 = s.clone();
-             (s1, s2)
-         };
-
-         assert!(s1.send(1).is_err());
-         assert!(s2.send(1).is_err());
-    } 
+        assert!(s1.send(1).is_err());
+        assert!(s2.send(1).is_err());
+    }
 }
