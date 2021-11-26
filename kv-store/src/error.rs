@@ -3,7 +3,7 @@ use thiserror::Error;
 use crate::Value;
 
 
-#[derive(Debug,Error,PartialEq)]
+#[derive(Debug,Error)]
 pub enum KvError {
     #[error("Not found for table: {0}, key: {1}")]
     NotFound(String, String),
@@ -22,5 +22,6 @@ pub enum KvError {
 
     #[error("Internal error: {0}")]
     Internal(String),
-    
+    #[error("I/O error")]
+    IoError(#[from] std::io::Error),
 }

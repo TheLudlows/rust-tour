@@ -1,3 +1,4 @@
+use bytes::Bytes;
 use http::StatusCode;
 
 use crate::{CommandResponse, Hget, Hgetall, command_request::RequestData, error::KvError};
@@ -78,6 +79,17 @@ impl From<Value> for CommandResponse {
         }
     }
 }
+
+impl From<Vec<Value>> for CommandResponse {
+    fn from(values: Vec<Value>) -> Self {
+        Self{
+            status: StatusCode::OK.as_u16()  as _,
+            values: values,
+            .. Default::default()
+        }
+    }
+}
+
 impl From<KvError> for CommandResponse {
     fn from(e: KvError) -> Self {
         let mut result = Self {
@@ -103,6 +115,20 @@ impl From<Vec<Kvpair>> for CommandResponse {
             status: StatusCode::OK.as_u16()  as _,
             pairs: pairs,
             .. Default::default()
+        }
+    }
+}
+
+impl<const N: usize> From<&[u8; N]> for Value {
+    fn from(buf: &[u8; N]) -> Self {
+        Bytes::copy_from_slice(&buf[..]).into()
+    }
+}
+
+impl From<Bytes> for Value {
+    fn from(buf: Bytes) -> Self {
+        Self {
+            value: Some(value::Value::Binary(buf)),
         }
     }
 }

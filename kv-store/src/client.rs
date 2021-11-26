@@ -1,6 +1,4 @@
 use anyhow::Result;
-use async_prost::AsyncProstStream;
-use futures::prelude::*;
 use kv_store::*;
 use tokio::net::TcpStream;
 use tracing::info;
@@ -13,18 +11,11 @@ async fn main() -> Result<()> {
     // 连接服务器
     let stream = TcpStream::connect(addr).await?;
 
-    // 使用 AsyncProstStream 来处理 TCP Frame
-    let mut client =
-        AsyncProstStream::<_, CommandResponse, CommandRequest, _>::from(stream).for_async();
+    let mut client_stream = ProstClientStream::new(stream);
 
     // 生成一个 HSET 命令
     let cmd = CommandRequest::new_hset("table1", "hello", "world".to_string().into());
-
-    // 发送 HSET 命令
-    client.send(cmd).await?;
-    if let Some(Ok(data)) = client.next().await {
-        info!("Got response {:?}", data);
-    }
-
+    let data = client_stream.execute(cmd).await?;
+    info!("Recv data {:?}", data);
     Ok(())
 }
