@@ -545,13 +545,6 @@ let mut heap_value = Box::pin(SelfReferential {
 
 当我们尝试运行调整后的示例时，我们看到它无法编译：
 
-作者：Praying
-链接：https://zhuanlan.zhihu.com/p/348648305
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-
-
 ```text
 error[E0594]: cannot assign to data in a dereference of `std::pin::Pin<std::boxed::Box<SelfReferential>>`
   --> src/main.rs:10:5
