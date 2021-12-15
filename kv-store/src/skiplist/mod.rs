@@ -1,8 +1,6 @@
 mod arena;
 mod list;
 mod key;
-mod inline_list;
-
 pub use arena::*;
 pub use key::*;
 
@@ -17,17 +15,20 @@ pub trait Allocator {
 
 #[cfg(test)]
 mod tests {
+    use std::alloc::Layout;
     use std::mem;
     use std::sync::atomic::AtomicPtr;
     use bytes::Bytes;
+    use rand::{Rng, RngCore};
+    use crate::FlexibleCompartor;
 
-    use crate::skiplist::{FixedLengthSuffixComparator, inline_list::InlineSkipList};
+    use crate::skiplist::{FixedLengthSuffixComparator};
 
     use super::{list::Skiplist};
 
     #[test]
     fn test_find_near() {
-        let comp = FixedLengthSuffixComparator::new(8);
+        let comp = FlexibleCompartor::new(8);
         let list = Skiplist::with_capacity(comp, 1 << 20);
         for i in 0..1000 {
             let key = Bytes::from(format!("{:05}{:08}", i * 10 + 5, 0));
@@ -74,29 +75,40 @@ mod tests {
 
     #[test]
     fn test_skl() {
-        let comp = FixedLengthSuffixComparator::new(1);
-        println!("start");
-        let skl = Skiplist::with_capacity(comp, 1024);
-        println!("new");
-        let r = skl.put("a", "a");
-        println!("put");
-        println!("{:?}", r);
-        assert_eq!(skl.get(&Bytes::from("a")), Some(&Bytes::from("a")));
+        let comp = FlexibleCompartor::new(8);
+        let skl = Skiplist::with_capacity(comp, 1024*1024);
+        let mut rng = rand::thread_rng();
+        for _ in 0..1000 {
+           let _ = skl.put(format!("{}", rng.gen_range(0,10000)), "a");
+        }
+        unsafe {skl.println_list();}
     }
 
-    #[test]
-    fn test_inline_skl() {
-        let comp = FixedLengthSuffixComparator::new(1);
-        println!("start");
-        let skl = InlineSkipList::with_capacity(comp, 1024);
-        println!("new");
-        skl.put(Bytes::from("a"), Bytes::from("a"));
-        println!("put");
-        assert_eq!(skl.get(&Bytes::from("a")), Some(&Bytes::from("a")));
-    }
     #[test]
     fn test_bytes() {
         println!("{}", mem::size_of::<Bytes>());
         println!("{}", mem::size_of::<AtomicPtr<u8>>());
+    }
+    #[test]
+    fn test_anena_align() {
+        println!("{}", mem::align_of::<Vec<u64>>());
+        println!("{}", mem::align_of::<u8>());
+        let mut res = vec![];
+        for _ in 0..100000 {
+            let v: Vec<u8> = Vec::with_capacity(1);
+            let p = v.as_ptr();
+            assert_eq!(p as usize % 8, 0);
+            res.push(v);
+        }
+        let _: Vec<u8> = Vec::with_capacity(1);
+        let lay = Layout::array::<u8>(1);
+        println!("{:?}", lay);
+    }
+
+    #[test]
+    fn test_const_fn() {
+        let c1 = FixedLengthSuffixComparator::new(1);
+        let c2 =  FixedLengthSuffixComparator::new(2);
+        println!("{:p}, {:p}", &c1,&c2)
     }
 }

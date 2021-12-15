@@ -15,9 +15,9 @@ fn test_ptr() {
         }
     }
 
-    let f1 = Foo { a: 10 };
+    let mut f1 = Foo { a: 10 };
     unsafe {
-        let f2 = ptr::read(&f1);
+        let f2 = ptr::read(&f1 as *const Foo);
         println!("{:p}", f1);
         println!("{:p}", f2);
     }

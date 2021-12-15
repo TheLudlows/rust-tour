@@ -9,6 +9,7 @@ use std::ptr::NonNull;
 use std::sync::atomic::{AtomicU32, AtomicUsize, Ordering};
 use std::sync::Arc;
 use std::{mem, ptr, u32};
+use std::sync::atomic::Ordering::Relaxed;
 
 // Uses C layout to make sure tower is at the bottom
 #[derive(Debug)]
@@ -83,6 +84,26 @@ impl<C> Skiplist<C> {
     fn height(&self) -> usize {
         self.core.height.load(Ordering::SeqCst)
     }
+
+    pub unsafe fn println_list(&self) {
+        let head = self.core.head.as_ptr();
+        let h = (*head).height;
+        for i in (0..=h).rev() {
+            let mut cur= head;
+            print!("level {} ", i);
+            while !cur.is_null() {
+                let node = &*cur;
+                print!("{} ", String::from_utf8_unchecked(node.key.to_vec()));
+                let ht = node.height;
+                if ht >= i {
+                    cur = self.core.arena.get_mut(node.tower[i].load(Relaxed));
+                } else {
+                    cur = ptr::null_mut::<Node>();
+                }
+            }
+            println!();
+        }
+    }
 }
 
 impl<C: KeyComparator> Skiplist<C> {
@@ -143,7 +164,7 @@ impl<C: KeyComparator> Skiplist<C> {
         }
     }
 
-    unsafe fn find_splice_for_level(&self, key: &[u8], mut before: *mut Node, level: usize, ) -> (*mut Node, *mut Node) {
+    unsafe fn find_splice_for_level(&self, key: &[u8], mut before: *mut Node, level: usize) -> (*mut Node, *mut Node) {
         loop {
             let next_offset = (&*before).next_offset(level);
             if next_offset == 0 {
@@ -308,24 +329,17 @@ impl Drop for SkiplistCore {
                 unsafe {
                     ptr::drop_in_place(node);
                 }
-                let old = node;
-                unsafe {
-                    println!("drop node is {:?}", (*old));
-                }
                 node = next_ptr;
                 continue;
             }
             unsafe { ptr::drop_in_place(node) };
-            Vec::with_capacity()
-            unsafe {
-                println!("drop node is {:?}", (*node));
-            }
             return;
         }
     }
 }
 
 unsafe impl<C: Send> Send for Skiplist<C> {}
+
 unsafe impl<C: Sync> Sync for Skiplist<C> {}
 
 pub struct IterRef<'a, C> {
