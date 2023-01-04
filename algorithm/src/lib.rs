@@ -1,5 +1,5 @@
-#![feature(type_name_of_val)]
 #![feature(ptr_internals)]
+
 #![allow(dead_code)]
 #![crate_name="algorithm"]
 
