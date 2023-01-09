@@ -11,3 +11,4 @@ mod p0461_hamming_distance;
 mod p0739_has_alternating_bits;
 mod p1310_xor_queries;
 mod p1342_number_of_steps;
+mod p2166_bit_set;

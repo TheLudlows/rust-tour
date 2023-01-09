@@ -3,6 +3,8 @@
 #![allow(dead_code)]
 #![crate_name="algorithm"]
 
+extern crate core;
+
 use std::cell::RefCell;
 use std::rc::Rc;
 
