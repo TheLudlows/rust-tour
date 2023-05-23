@@ -10,11 +10,6 @@ mod tests {
         b.iter(|| { add_two(2); });
     }
 
-    #[bench]
-    fn bench_add_two1(b: &mut Bencher) {
-        run_once(|b| { add_two(1); });
-    }
-
     pub fn add_two(a: i32) -> i32 {
         println!("{}", 1);
         a + 2

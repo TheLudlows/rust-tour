@@ -55,8 +55,21 @@ struct Bar;
 
 trait T {}
 
+
+
 #[test]
 fn test_mem() {
+    println!("{}", mem::size_of::<&str>());
+    //println!("{}", mem::size_of::<str>());
+
+    println!("{}", mem::size_of::<char>());
+
+    let a: (char, u8, i32) = ('a', 7, 354);
+    println!("{}", mem::size_of_val(&a));
+
+    println!("{}", mem::size_of::<Option<u8>>());
+    println!("{}", mem::size_of::<Vec<u8>>());
+
     println!("{}", mem::size_of::<A>());
     println!("{}", mem::size_of::<B>());
 
@@ -80,6 +93,8 @@ fn test_mem() {
     println!("{}", mem::size_of::<J>());
     println!("{}", mem::align_of::<J>());
     println!("{}", mem::align_of::<&i32>());
+    println!("{}", mem::align_of::<i32>());
+
 }
 
 #[test]

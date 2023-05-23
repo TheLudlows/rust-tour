@@ -1,3 +1,4 @@
+extern crate test;
 
 fn test_panic(num: i32) {
     if num >= 0 {
@@ -22,8 +23,9 @@ fn main() {
 // cfg(test) 为条件编译
 #[cfg(test)]
 mod tests {
-    use crate::test;
-    use crate::test::{test_add, test_panic};
+    use std::hint::black_box;
+    use crate::test_;
+    use crate::test_::{test_add, test_panic, tests};
 
     #[test] //test 为属性标注
     fn test_case0() {
@@ -54,16 +56,6 @@ mod tests {
     #[test]
     fn test_case4() {
         println!("run me only");
-    }
-
-    //dev-dep
-
-    #[bench]
-    fn bench_add_two(b: &mut Bencher) {
-        b.iter(||
-            for i in 0..10000 {
-                test::black_box(test_add(0));
-            });
     }
 
 }

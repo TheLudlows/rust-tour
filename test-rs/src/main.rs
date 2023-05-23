@@ -6,7 +6,6 @@
 #![feature(type_name_of_val)]
 #![allow(unused_variables)]
 #![feature(test)]
-#![feature(in_band_lifetimes)]
 #![allow(dead_code)]
 
 mod any;
@@ -55,7 +54,6 @@ mod file;
 mod bench;
 mod ownership;
 mod static_;
-mod byteiter;
 mod atomic;
 mod fatpointer;
 mod thread_local;
@@ -78,4 +76,7 @@ mod slice1;
 mod impl1;
 mod spinlock;
 mod metric;
+mod lifetime2;
+mod test_;
+
 fn main() {}
