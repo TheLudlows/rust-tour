@@ -78,5 +78,11 @@ mod spinlock;
 mod metric;
 mod lifetime2;
 mod test_;
-
-fn main() {}
+mod type_ts;
+mod lock;
+mod mpmc;
+fn main() {
+    for arg in std::env::args() {
+        println!("{}", arg);
+    }
+}
