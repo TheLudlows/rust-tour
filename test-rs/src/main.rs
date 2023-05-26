@@ -81,6 +81,7 @@ mod test_;
 mod type_ts;
 mod lock;
 mod mpmc;
+mod async_test;
 fn main() {
     for arg in std::env::args() {
         println!("{}", arg);

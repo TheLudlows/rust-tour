@@ -1,8 +1,38 @@
-[toc]
+- [多任务](#多任务)
+  - [抢占式多任务（Preemptive Multitasking）](#抢占式多任务preemptive-multitasking)
+    - [保存状态](#保存状态)
+    - [讨论](#讨论)
+  - [协作式多任务（Cooperative Multitasking）](#协作式多任务cooperative-multitasking)
+    - [保存状态](#保存状态-1)
+    - [讨论](#讨论-1)
+- [Async/Await in Rust](#asyncawait-in-rust)
+  - [Futures](#futures)
+    - [Futures in Rust](#futures-in-rust)
+  - [使用 Future](#使用-future)
+    - [等待 Future](#等待-future)
+    - [Future组合器](#future组合器)
+    - [优势](#优势)
+    - [缺点](#缺点)
+  - [Async/Await 模式](#asyncawait-模式)
+    - [状态机转换](#状态机转换)
+    - [保存状态](#保存状态-2)
+    - [完整的状态机类型](#完整的状态机类型)
+  - [Pin](#pin)
+    - [自引用结构体（Self-Referential Structs）](#自引用结构体self-referential-structs)
+    - [自引用结构体的问题](#自引用结构体的问题)
+    - [可能的解决方案](#可能的解决方案)
+    - [堆上的值（Heap Values）](#堆上的值heap-values)
+    - [`Pin<Box<T>>` and `Unpin`](#pinboxt-and-unpin)
+    - [栈 Pinning 和 Pin\<\&mut T\>](#栈-pinning-和-pinmut-t)
+    - [Pinning 和 Futures](#pinning-和-futures)
+  - [Executors and Wakers](#executors-and-wakers)
+    - [Executors](#executors)
+    - [Waker](#waker)
+  - [协作式多任务？](#协作式多任务)
+
 
 在本文中我们将讨论协作式多任务和 Rust 中的 `async/await `特性，我们会详细了解 async/await 在 Rust 中是如何工作的，包括`Future` trait 的设计，状态机的转换和*pinning*。 然后，我们通过创建一个异步键盘任务和一个基本的执行器（executor），为我们的内核添加基本的 async/await 支持。
 
-本文在[Github](http://link.zhihu.com/?target=https%3A//github.com/phil-opp/blog_os)上是公开的。如果你有任何问题，请在 Github 上提 issue。你还可以在底部留下评论，本文完整的源码可以在[post-12](http://link.zhihu.com/?target=https%3A//github.com/phil-opp/blog_os/tree/post-12)分支看到。
 
 ### 多任务
 

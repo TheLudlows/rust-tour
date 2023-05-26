@@ -13,3 +13,5 @@ bytes = "1.4.0"
 lazy_static = "1.4.0"
 regex = "1.8.2"
 anyhow = "1.0.71"
+tokio = {version = "1.28.1", feature = "full"}
+serde_yaml = "0.9"
