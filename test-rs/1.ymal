@@ -1,0 +1,6 @@
+workspace:
+  members:
+  - algorithm
+  - test-rs
+  - kv-store
+  - queryer
