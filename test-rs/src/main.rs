@@ -7,7 +7,7 @@
 #![allow(unused_variables)]
 #![feature(test)]
 #![allow(dead_code)]
-
+#![feature(future_join)]
 mod any;
 pub mod array;
 pub mod boxes;
