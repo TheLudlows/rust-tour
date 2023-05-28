@@ -10,10 +10,10 @@ anyhow = "1" # 错误处理
 async-trait = "0.1" # 允许 trait 里有 async fn
 sqlparser = "0.33.0" # SQL 解析器
 polars = { version = "0.28.0", features = ["json", "lazy"] } # DataFrame 库
-reqwest = { version = "0.11", default-features = false, features = ["rustls-tls"] } 
+reqwest = { version = "0.11.18", features = ["rustls-tls", "blocking"] } 
 tokio = { version = "1", features = ["fs"]} 
 tracing = "0.1" # 日志处理
 tracing-subscriber = "0.2" # 日志处理
-
+arrow = "40.0.0"
 [dev-dependencies]
 tokio = { version = "1", features = ["full"]} # 在 example 下我们需要更多的 tokio feature

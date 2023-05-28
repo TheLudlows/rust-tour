@@ -6,6 +6,7 @@ use tokio::{try_join, net::TcpListener, sync::{Mutex, oneshot, mpsc}};
 use tokio_util::codec::{Framed, LinesCodec};
 use toml::Value;
 use rayon::prelude::*;
+use futures::{SinkExt, StreamExt};
 
 #[tokio::test]
 async fn test_async() -> Result<()> {
@@ -128,17 +129,6 @@ fn blake3_hash(mut hasher: blake3::Hasher, nonce: &u32) -> blake3::Hash {
     hasher.update(&nonce.to_be_bytes()[..]);
     hasher.finalize()
 }
-use tokio::fs;
-
-
-#[tokio::test]
-async fn test_async() {
-    let r = fs::read_to_string("./Cargo.yaml").await;
-    println!("{:?}", r);
-    
-}
-
-
 
 // 计算数据的哈希
 fn blake3_base_hash(data: &[u8]) -> Hasher {
@@ -146,3 +136,4 @@ fn blake3_base_hash(data: &[u8]) -> Hasher {
     hasher.update(data);
     hasher
 }
+

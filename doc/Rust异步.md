@@ -673,3 +673,7 @@ async fn write_file() {
 - 因为`poll`方法在返回时放弃了调用栈，所以同一个栈可以被用于轮询其他的 future。
 
 我们可以看到，future 和 async/await 完美契合协作式多任务模式，它们只是用了一些不同的技术。接下来，我们将会交替使用“任务（task）”和“future”。
+
+
+
+https://os.phil-opp.com/async-await/#executors-and-wakers
