@@ -1,4 +1,4 @@
 
 [workspace]
 
-members=["algorithm","test-rs", "kv-store", "queryer"]
+members=["algorithm","test-rs", "queryer", "async_tour"]
