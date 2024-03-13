@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::os::fd::RawFd;
 use std::task::Context;
+use nix::libc::SYS_nanosleep;
 use polling::{Event, Events, Poller};
 use crate::waker::Waker;
 
@@ -10,7 +11,20 @@ pub struct Reactor {
     buffer: Events
 }
 
+impl Default for Reactor {
+    fn default() -> Self {
+        return Self::new()
+    }
+}
+
 impl Reactor {
+    pub fn new() -> Self {
+        Self {
+            poller: Poller::new().unwrap(),
+            waker_map: Default::default(),
+            buffer: Default::default(),
+        }
+    }
     pub fn add(&mut self, fd: RawFd) {
         println!("[reactor]add fd {} to reactor", fd);
         let flags = nix::fcntl::OFlag::from_bits(nix::fcntl::fcntl(fd, nix::fcntl::F_GETFL).unwrap())
