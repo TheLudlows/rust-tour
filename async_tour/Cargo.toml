@@ -6,10 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-polling = "3"
+polling = "2"
 nix = "0.23"
 futures = "0.3"
 scoped-tls = "1"
 socket2 = "0.4"
-tokio = "1"
+tokio = {version = "1", features = ["full"]}
 waker-fn = "1"

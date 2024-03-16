@@ -3,13 +3,13 @@ use std::collections::HashMap;
 use std::os::fd::{AsRawFd, BorrowedFd, RawFd};
 use std::rc::Rc;
 use std::task::{Context, Waker};
-use polling::{AsRawSource, Event, Events, Poller};
+use polling::{Event, Poller};
 use crate::executor;
 
 pub struct Reactor {
     poller: Poller,
     waker_map: HashMap<u64, Waker>,
-    buffer: Events
+    buffer: Vec<Event>
 }
 
 impl Reactor {
@@ -48,16 +48,17 @@ impl Reactor {
             fd * 2 + 1
         );
     }
-    pub fn modify_readable(&mut self, fd: BorrowedFd<'_>, cx: &mut Context) {
+    pub fn modify_readable(&mut self, fd: RawFd, cx: &mut Context) {
         let raw = fd.as_raw_fd();
         println!("[reactor] modify_readable fd {} token {}", raw, raw * 2);
 
         self.push_completion(raw as u64 * 2, cx);
         let event = Event::readable(raw as usize);
+
         self.poller.modify(fd, event).unwrap();
     }
 
-    pub fn modify_writable(&mut self, fd: BorrowedFd<'_>, cx: &mut Context) {
+    pub fn modify_writable(&mut self, fd: RawFd, cx: &mut Context) {
         let raw = fd.as_raw_fd();
 
         println!("[reactor] modify_writable fd {}, token {}", raw, raw * 2 + 1);
@@ -67,6 +68,9 @@ impl Reactor {
         self.poller.modify(fd, event).unwrap();
     }
     fn push_completion(&mut self, token: u64, cx: &mut Context) {
+        if(self.waker_map.contains_key(&token)) {
+            return;
+        }
         println!("[reactor token] token {} waker saved", token);
 
         self.waker_map.insert(token, cx.waker().clone());

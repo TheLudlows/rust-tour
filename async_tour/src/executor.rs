@@ -2,10 +2,11 @@ use std::cell::RefCell;
 use std::collections::VecDeque;
 use std::future::Future;
 use std::mem;
+use std::pin::Pin;
 use std::rc::Rc;
-use std::task::{Context, RawWaker, RawWakerVTable, Waker};
+use std::task::{Context, Poll, RawWaker, RawWakerVTable, Waker};
 use futures::future::LocalBoxFuture;
-use futures::FutureExt;
+use futures::{FutureExt, pin_mut};
 use scoped_tls::scoped_thread_local;
 use crate::reactor::Reactor;
 
@@ -27,7 +28,7 @@ impl Task {
 
 pub struct Executor {
     local_queue: RefCell<VecDeque<Rc<Task>>>,
-     pub(crate) reactor: Rc<RefCell<Reactor>>,
+    pub(crate) reactor: Rc<RefCell<Reactor>>,
 }
 
 impl Executor {
@@ -47,6 +48,27 @@ impl Executor {
     pub fn block_on<F, O, T>(&self, f: F) -> O where F: Fn() -> T, T: Future<Output=O> + 'static {
         let _waker = waker_fn::waker_fn(|| {});
         let cx = &mut Context::from_waker(&_waker);
+
+        EX.set(self, || {
+            let fut = f();
+            pin_mut!(fut);
+            loop {
+                if let Poll::Ready(t) = fut.as_mut().poll(cx) {
+                    return t;
+                }
+                // do all task
+                while let Some(task) = self.pop() {
+                    let w = waker(task.clone());
+                    let mut cx = Context::from_waker(&w);
+                    let future = task.future.borrow_mut();
+                    let _ = Pin::new(future).as_mut().poll(&mut cx);
+                }
+                if let Poll::Ready(t) = fut.as_mut().poll(cx) {
+                    return t;
+                }
+                self.reactor.borrow_mut().wait();
+            }
+        })
     }
     fn push(&self, task: Rc<Task>) {
         self.local_queue.borrow_mut().push_back(task);
@@ -55,6 +77,7 @@ impl Executor {
         self.local_queue.borrow_mut().pop_front()
     }
 }
+
 fn waker(wake: Rc<Task>) -> Waker {
     let ptr = Rc::into_raw(wake) as *const ();
     let vtable = &Helper::VTABLE;
@@ -62,6 +85,7 @@ fn waker(wake: Rc<Task>) -> Waker {
 }
 
 struct Helper;
+
 impl Helper {
     const VTABLE: RawWakerVTable = RawWakerVTable::new(
         Self::clone_waker,
