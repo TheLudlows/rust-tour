@@ -1,8 +1,10 @@
+use std::cell::RefCell;
 use std::collections::HashMap;
-use std::os::fd::RawFd;
-use std::task::Context;
-use polling::{Event, Events, Poller};
-use crate::waker::Waker;
+use std::os::fd::{AsRawFd, BorrowedFd, RawFd};
+use std::rc::Rc;
+use std::task::{Context, Waker};
+use polling::{AsRawSource, Event, Events, Poller};
+use crate::executor;
 
 pub struct Reactor {
     poller: Poller,
@@ -11,6 +13,16 @@ pub struct Reactor {
 }
 
 impl Reactor {
+    pub fn new() -> Self {
+        Self {
+            poller: Poller::new().unwrap(),
+            waker_map: Default::default(),
+            buffer: Default::default(),
+        }
+    }
+    pub fn reactor() -> Rc<RefCell<Self>> {
+        executor::EX.with(|e| e.reactor.clone())
+    }
     pub fn add(&mut self, fd: RawFd) {
         println!("[reactor]add fd {} to reactor", fd);
         let flags = nix::fcntl::OFlag::from_bits(nix::fcntl::fcntl(fd, nix::fcntl::F_GETFL).unwrap())
@@ -20,27 +32,45 @@ impl Reactor {
         unsafe  {
             self.poller
             .add(fd,
-            polling::Event::none(fd as usize))
+             Event::none(fd as usize))
             .unwrap();
         }
     }
 
-    pub fn modify_readable(&mut self, fd: RawFd, cx: &mut Context) {
-        println!("[reactor] modify_readable fd {} token {}", fd, fd * 2);
+    pub fn delete(&mut self, fd: RawFd) {
+        println!("now delete fd {}", fd);
+        self.waker_map.remove(&(fd as u64 * 2));
+        self.waker_map.remove(&(fd as u64 * 2 + 1));
+        println!(
+            "[reactor token] fd {} wakers token {}, {} removed",
+            fd,
+            fd * 2,
+            fd * 2 + 1
+        );
+    }
+    pub fn modify_readable(&mut self, fd: BorrowedFd<'_>, cx: &mut Context) {
+        let raw = fd.as_raw_fd();
+        println!("[reactor] modify_readable fd {} token {}", raw, raw * 2);
 
-        self.push_completion(fd as u64 * 2, cx);
-        let event = polling::Event::readable(fd as usize);
+        self.push_completion(raw as u64 * 2, cx);
+        let event = Event::readable(raw as usize);
         self.poller.modify(fd, event).unwrap();
     }
 
-    pub fn modify_writable(&mut self, fd: RawFd, cx: &mut Context) {
-        println!("[reactor] modify_writable fd {}, token {}", fd, fd * 2 + 1);
+    pub fn modify_writable(&mut self, fd: BorrowedFd<'_>, cx: &mut Context) {
+        let raw = fd.as_raw_fd();
 
-        self.push_completion(fd as u64 * 2 + 1, cx);
-        let event = polling::Event::writable(fd as usize);
+        println!("[reactor] modify_writable fd {}, token {}", raw, raw * 2 + 1);
+
+        self.push_completion(raw as u64 * 2 + 1, cx);
+        let event = polling::Event::writable(raw as usize);
         self.poller.modify(fd, event).unwrap();
     }
+    fn push_completion(&mut self, token: u64, cx: &mut Context) {
+        println!("[reactor token] token {} waker saved", token);
 
+        self.waker_map.insert(token, cx.waker().clone());
+    }
     pub fn wait(&mut self) {
         println!("[reactor] waiting");
         self.poller.wait(&mut self.buffer, None).unwrap();

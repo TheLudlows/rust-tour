@@ -8,4 +8,8 @@ edition = "2021"
 [dependencies]
 polling = "3"
 nix = "0.23"
-
+futures = "0.3"
+scoped-tls = "1"
+socket2 = "0.4"
+tokio = "1"
+waker-fn = "1"
